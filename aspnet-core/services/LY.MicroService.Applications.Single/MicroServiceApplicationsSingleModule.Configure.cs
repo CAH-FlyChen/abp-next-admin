@@ -1,6 +1,6 @@
 ﻿using Elsa;
 using Elsa.Options;
-using LINGYUN.Abp.AspNetCore.HttpOverrides.Forwarded;
+//using LINGYUN.Abp.AspNetCore.HttpOverrides.Forwarded;
 using LINGYUN.Abp.BackgroundTasks;
 using LINGYUN.Abp.ExceptionHandling;
 using LINGYUN.Abp.ExceptionHandling.Emailing;
@@ -85,12 +85,12 @@ public partial class MicroServiceApplicationsSingleModule
 
     private void PreConfigureForwardedHeaders()
     {
-        PreConfigure<AbpForwardedHeadersOptions>(options =>
-        {
-            options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
-            options.KnownNetworks.Clear();
-            options.KnownProxies.Clear();
-        });
+        //PreConfigure<AbpForwardedHeadersOptions>(options =>
+        //{
+        //    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+        //    options.KnownNetworks.Clear();
+        //    options.KnownProxies.Clear();
+        //});
     }
 
     private void PreConfigureApp(IConfiguration configuration)

@@ -33,4 +33,10 @@
 		<ProjectReference Include="..\LY.MicroService.LocalizationManagement.EntityFrameworkCore\LY.MicroService.LocalizationManagement.EntityFrameworkCore.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Update="appsettings.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
 </Project>

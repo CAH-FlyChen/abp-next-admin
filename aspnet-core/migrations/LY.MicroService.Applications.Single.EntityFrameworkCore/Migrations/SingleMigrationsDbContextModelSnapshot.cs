@@ -1002,11 +1002,17 @@ namespace LY.MicroService.Applications.Single.EntityFrameworkCore.Migrations
                         .HasMaxLength(64)
                         .HasColumnType("varchar(64)");
 
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("EditionId");
 
                     b.HasIndex("Name");
+
+                    b.HasIndex("NormalizedName");
 
                     b.ToTable("AbpTenants", (string)null);
                 });
@@ -1322,13 +1328,9 @@ namespace LY.MicroService.Applications.Single.EntityFrameworkCore.Migrations
                         .HasColumnType("varchar(100)")
                         .HasColumnName("Name");
 
-                    b.Property<Guid?>("TenantId")
-                        .HasColumnType("char(36)")
-                        .HasColumnName("TenantId");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("TenantId", "Name")
+                    b.HasIndex("Name")
                         .HasDatabaseName("IX_Tenant_Text_Template_Name");
 
                     b.ToTable("AbpTextTemplates", (string)null);
@@ -1602,6 +1604,9 @@ namespace LY.MicroService.Applications.Single.EntityFrameworkCore.Migrations
 
                     b.Property<Guid?>("TenantId")
                         .HasColumnType("char(36)");
+
+                    b.Property<int?>("TimeoutDuration")
+                        .HasColumnType("int");
 
                     b.Property<string>("WebhookUri")
                         .IsRequired()
