@@ -1,0 +1,6 @@
+single模式可以源代码打开运行
+客户端 3100
+服务器 30000
+没有使用gateway
+验证用的是openiddict
+都调整为development运行，在此模式下某些配置参数不起作用会跳过
