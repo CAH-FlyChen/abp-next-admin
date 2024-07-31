@@ -4,3 +4,6 @@ single模式可以源代码打开运行
 没有使用gateway
 验证用的是openiddict
 都调整为development运行，在此模式下某些配置参数不起作用会跳过
+
+需要执行一个singleton的migrationupdate
+需要一个一个执行migrator
