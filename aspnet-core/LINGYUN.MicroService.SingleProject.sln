@@ -519,35 +519,35 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "bizmodules", "bizmodules", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "product", "product", "{841FB03E-8943-44B6-AD08-4D43661C3B3C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zion.Product.Application", "bizmodules\Zion.Product\Zion.Product.Application\Zion.Product.Application.csproj", "{71F6BBE2-DBD5-42F3-87CF-15F466F58812}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zion.Product.Application", "bizmodules\Zion.Product\src\Zion.Product.Application\Zion.Product.Application.csproj", "{71F6BBE2-DBD5-42F3-87CF-15F466F58812}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zion.Product.Application.Contracts", "bizmodules\Zion.Product\Zion.Product.Application.Contracts\Zion.Product.Application.Contracts.csproj", "{34E9A1C6-C621-44D3-8240-7412C61B6E9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zion.Product.Application.Contracts", "bizmodules\Zion.Product\src\Zion.Product.Application.Contracts\Zion.Product.Application.Contracts.csproj", "{34E9A1C6-C621-44D3-8240-7412C61B6E9E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zion.Product.Domain", "bizmodules\Zion.Product\Zion.Product.Domain\Zion.Product.Domain.csproj", "{9DFDD78A-0620-4658-B740-DC234D325372}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zion.Product.Domain", "bizmodules\Zion.Product\src\Zion.Product.Domain\Zion.Product.Domain.csproj", "{9DFDD78A-0620-4658-B740-DC234D325372}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zion.Product.Domain.Shared", "bizmodules\Zion.Product\Zion.Product.Domain.Shared\Zion.Product.Domain.Shared.csproj", "{A20EA70E-4CEC-4114-B656-BE4CCCC20D37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zion.Product.Domain.Shared", "bizmodules\Zion.Product\src\Zion.Product.Domain.Shared\Zion.Product.Domain.Shared.csproj", "{A20EA70E-4CEC-4114-B656-BE4CCCC20D37}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zion.Product.EntityFrameworkCore", "bizmodules\Zion.Product\Zion.Product.EntityFrameworkCore\Zion.Product.EntityFrameworkCore.csproj", "{458F337A-1F4F-4E1B-830D-597ED04B0CFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zion.Product.EntityFrameworkCore", "bizmodules\Zion.Product\src\Zion.Product.EntityFrameworkCore\Zion.Product.EntityFrameworkCore.csproj", "{458F337A-1F4F-4E1B-830D-597ED04B0CFD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zion.Product.HttpApi", "bizmodules\Zion.Product\Zion.Product.HttpApi\Zion.Product.HttpApi.csproj", "{D00A183D-3020-4293-B233-34AE1D282024}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zion.Product.HttpApi", "bizmodules\Zion.Product\src\Zion.Product.HttpApi\Zion.Product.HttpApi.csproj", "{D00A183D-3020-4293-B233-34AE1D282024}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zion.Product.HttpApi.Client", "bizmodules\Zion.Product\Zion.Product.HttpApi.Client\Zion.Product.HttpApi.Client.csproj", "{F019A046-8D0B-4C1B-BF2D-9F9C5B2F034B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zion.Product.HttpApi.Client", "bizmodules\Zion.Product\src\Zion.Product.HttpApi.Client\Zion.Product.HttpApi.Client.csproj", "{F019A046-8D0B-4C1B-BF2D-9F9C5B2F034B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zion.Product.Installer", "bizmodules\Zion.Product\Zion.Product.Installer\Zion.Product.Installer.csproj", "{75656E7F-92D3-4165-BBAE-E4042B2AC7C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zion.Product.Installer", "bizmodules\Zion.Product\src\Zion.Product.Installer\Zion.Product.Installer.csproj", "{75656E7F-92D3-4165-BBAE-E4042B2AC7C6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{6638AA53-1A60-4867-8C06-666F553E8C90}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "system", "system", "{8652BC03-8E03-411C-B15C-F9DC50C6C6A6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zion.System.Application", "bizmodules\Zion.System\Zion.System.Application\Zion.System.Application.csproj", "{CF6DB89B-4C90-475E-8799-B31895F9DA04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zion.System.Application", "bizmodules\Zion.System\src\Zion.System.Application\Zion.System.Application.csproj", "{CF6DB89B-4C90-475E-8799-B31895F9DA04}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zion.System.Application.Contracts", "bizmodules\Zion.System\Zion.System.Application.Contracts\Zion.System.Application.Contracts.csproj", "{23FE59C8-C8FE-4FA8-83BC-F5C5743562E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zion.System.Application.Contracts", "bizmodules\Zion.System\src\Zion.System.Application.Contracts\Zion.System.Application.Contracts.csproj", "{23FE59C8-C8FE-4FA8-83BC-F5C5743562E9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zion.System.Domain", "bizmodules\Zion.System\Zion.System.Domain\Zion.System.Domain.csproj", "{1B28FC7E-6E29-4B41-98E2-CA9751D858DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zion.System.Domain", "bizmodules\Zion.System\src\Zion.System.Domain\Zion.System.Domain.csproj", "{1B28FC7E-6E29-4B41-98E2-CA9751D858DE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zion.System.Domain.Shared", "bizmodules\Zion.System\Zion.System.Domain.Shared\Zion.System.Domain.Shared.csproj", "{6FF7745C-BF39-4193-A2F4-9F8B71D3C3F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zion.System.Domain.Shared", "bizmodules\Zion.System\src\Zion.System.Domain.Shared\Zion.System.Domain.Shared.csproj", "{6FF7745C-BF39-4193-A2F4-9F8B71D3C3F1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zion.System.EntityFrameworkCore", "bizmodules\Zion.System\Zion.System.EntityFrameworkCore\Zion.System.EntityFrameworkCore.csproj", "{B8BFF7FD-9809-40B3-9312-52BDDD900240}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zion.System.EntityFrameworkCore", "bizmodules\Zion.System\src\Zion.System.EntityFrameworkCore\Zion.System.EntityFrameworkCore.csproj", "{B8BFF7FD-9809-40B3-9312-52BDDD900240}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

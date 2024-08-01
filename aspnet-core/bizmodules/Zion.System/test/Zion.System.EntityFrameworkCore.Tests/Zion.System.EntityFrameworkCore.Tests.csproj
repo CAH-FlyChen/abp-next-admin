@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<Import Project="..\..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Zion.System</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" />
+    <ProjectReference Include="..\..\src\Zion.System.EntityFrameworkCore\Zion.System.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\Zion.System.Application.Tests\Zion.System.Application.Tests.csproj" />
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite"/>
+  </ItemGroup>
+
+</Project>
