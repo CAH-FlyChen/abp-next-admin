@@ -10,11 +10,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.VirtualFileSystem"/>
+    <PackageReference Include="Volo.Abp.VirtualFileSystem" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="..\..\Zion.System.abpmdl"/>
+    <None Remove="..\..\Zion.System.abpmdl" />
     <Content Include="..\..\Zion.System.abpmdl">
       <Pack>true</Pack>
       <PackagePath>content\</PackagePath>
@@ -24,6 +24,11 @@
       <Pack>true</Pack>
       <PackagePath>content\</PackagePath>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="..\..\src\**" />
+    <Content Remove="..\..\test\**" />
   </ItemGroup>
 
 </Project>

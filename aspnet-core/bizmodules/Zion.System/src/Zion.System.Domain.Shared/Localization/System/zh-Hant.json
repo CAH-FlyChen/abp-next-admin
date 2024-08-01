@@ -2,6 +2,25 @@
   "culture": "zh-Hant",
   "texts": {
     "MyAccount": "我的賬戶",
-    "SamplePageMessage": "System 模塊的示例頁面"
+    "SamplePageMessage": "System 模塊的示例頁面",
+    "Permission:Company": "Company",
+    "Permission:Create": "Create",
+    "Permission:Update": "Update",
+    "Permission:Delete": "Delete",
+    "Menu:Company": "MenuCompany",
+    "Company": "Company",
+    "CompanyName": "CompanyName",
+    "CompanyLogoUrl": "CompanyLogoUrl",
+    "CompanyShortName": "CompanyShortName",
+    "CompanyJP": "CompanyJP",
+    "CompanyStatusCode": "CompanyStatusCode",
+    "CompanyCompanyUsers": "CompanyCompanyUsers",
+    "CompanyDeleteUniqueId": "CompanyDeleteUniqueId",
+    "CompanyCompanyLocation": "CompanyCompanyLocation",
+    "CreateCompany": "CreateCompany",
+    "EditCompany": "EditCompany",
+    "CompanyDeletionConfirmationMessage": "Are you sure to delete the company {0}?",
+    "SuccessfullyDeleted": "Successfully deleted",
+    "TableFilter": "TableFilter"
   }
 }

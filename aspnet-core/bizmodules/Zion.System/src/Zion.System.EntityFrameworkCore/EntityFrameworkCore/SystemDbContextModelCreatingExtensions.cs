@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Zion.System.CompanyContext;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
+using Volo.Abp.EntityFrameworkCore.Modeling;
 
 namespace Zion.System.EntityFrameworkCore;
 
@@ -29,5 +31,15 @@ public static class SystemDbContextModelCreatingExtensions
             b.HasIndex(q => q.CreationTime);
         });
         */
+
+
+        builder.Entity<Company>(b =>
+        {
+            b.ToTable(SystemDbProperties.DbTablePrefix + "Companies", SystemDbProperties.DbSchema);
+            b.ConfigureByConvention(); 
+            
+
+            /* Configure more properties here */
+        });
     }
 }

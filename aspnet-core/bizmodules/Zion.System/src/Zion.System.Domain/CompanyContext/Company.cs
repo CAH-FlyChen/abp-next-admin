@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
@@ -62,7 +62,6 @@ public class Company : FullAuditedAggregateRoot<Guid>
         string name,
         string? logoUrl,
         string shortName,
-        List<CompanyUser> companyUsers,
         CompanyLocation companyLocation
     ) : base(id)
     {
@@ -71,12 +70,34 @@ public class Company : FullAuditedAggregateRoot<Guid>
         ShortName = shortName;
         JP = Pinyin.GetInitials(shortName).ToLower();
         StatusCode = CompanyStatus.有效;
-        CompanyUsers = companyUsers;
+        CompanyUsers = new List<CompanyUser>();
         CompanyLocation = companyLocation;
     }
 
     public void AddUser(Guid userId)
     {
         CompanyUsers!.Add(new CompanyUser(GloableGuidGenerator.Create(), userId));
+    }
+
+    public Company(
+        Guid id,
+        string name,
+        string? logoUrl,
+        string shortName,
+        string jP,
+        CompanyStatus statusCode,
+        List<CompanyUser>? companyUsers,
+        Guid deleteUniqueId,
+        CompanyLocation companyLocation
+    ) : base(id)
+    {
+        Name = name;
+        LogoUrl = logoUrl;
+        ShortName = shortName;
+        JP = jP;
+        StatusCode = statusCode;
+        CompanyUsers = companyUsers;
+        DeleteUniqueId = deleteUniqueId;
+        CompanyLocation = companyLocation;
     }
 }

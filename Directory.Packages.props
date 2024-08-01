@@ -132,6 +132,7 @@
     <PackageVersion Include="Volo.Abp.Users.Domain.Shared" Version="$(VoloAbpPackageVersion)" />
     <PackageVersion Include="Volo.Abp.Validation" Version="$(VoloAbpPackageVersion)" />
     <PackageVersion Include="Volo.Abp.VirtualFileSystem" Version="$(VoloAbpPackageVersion)" />
+    <PackageVersion Include="Volo.Abp.TenantManagement.EntityFrameworkCore" Version="$(VoloAbpPackageVersion)" />
   </ItemGroup>
   <!-- .NET -->
   <ItemGroup>
@@ -154,6 +155,7 @@
     <PackageVersion Include="Microsoft.Extensions.Options" Version="$(MicrosoftExtensionsPackageVersion)" />
     <PackageVersion Include="Microsoft.Extensions.FileProviders.Embedded" Version="8.0.4" />
     <PackageVersion Include="NPinyin.Core" Version="3.0.0" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="$(MicrosoftEntityFrameworkCorePackageVersion)" />
   </ItemGroup>
   <!-- Elsa -->
   <ItemGroup>

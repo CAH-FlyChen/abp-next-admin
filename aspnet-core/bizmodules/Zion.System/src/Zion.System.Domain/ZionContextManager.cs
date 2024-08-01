@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Volo.Abp.Uow;
 using Volo.Abp.Users;
+using Zion.System.CompanyContext;
 
 namespace Zion.System;
 
@@ -18,16 +19,14 @@ public class ZionContextManager : IZionContextManager
     public ICurrentUser CurrentUser { get; set; }
 
     IMemoryCache _cahce;
-    private ICompanyRepository CompanyRepository { get; set; }
-    private ICompanyUserRepository CompanyUserRepository { get; set; }
+    private ICompanyRepository companyRepository { get; set; }
 
-    public ZionContextManager(IMemoryCache cahce, ICompanyRepository companyRepository, ICompanyUserRepository companyUserRepository, ICurrentUser currentUser)
+    public ZionContextManager(IMemoryCache cahce, ICompanyRepository companyRepository, ICurrentUser currentUser)
     {
         _cahce = cahce;
         CurrentUser = currentUser;
         CurrentUserId = currentUser.Id == null ? null : currentUser.Id.Value;
-        CompanyRepository = companyRepository;
-        CompanyUserRepository = companyUserRepository;
+        this.companyRepository = companyRepository;
         InitAsync(currentUser).GetAwaiter().GetResult();
     }
     [UnitOfWork]
@@ -46,20 +45,21 @@ public class ZionContextManager : IZionContextManager
         await SetCompany(currentUser);
     }
 
+    public class CompanyCacheItem
+    {
+        public Guid CompanyId { get; set; }
+        public string ShortName { get; set; }
+    }
 
     private async Task SetCompany(ICurrentUser currentUser)
     {
         var x = await _cahce.GetOrCreateAsync("UserCompany_" + currentUser.Id.ToString(), async entry =>
         {
             entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(60);
-            var companyRelQ = await CompanyUserRepository.GetQueryableAsync();
-            var companyQ = await CompanyRepository.GetQueryableAsync();
-            var q = from a in companyRelQ
-                    join b in companyQ on a.CompanyId equals b.Id
-                    where a.UserId == currentUser.Id
-                    select new { a.CompanyId, b.ShortName };
-            var d = q.SingleOrDefault();
-            return d;
+            var d = (await companyRepository.WithDetailsAsync(t => t.CompanyUsers))
+                    .Single(t => t.CompanyUsers.Any(u => u.UserId == currentUser.Id))
+                    ;
+            return new CompanyCacheItem { CompanyId = d.Id, ShortName = d.ShortName };
         });
 
         //if(item == null) {

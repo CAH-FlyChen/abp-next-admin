@@ -2,6 +2,25 @@
   "culture": "pl-PL",
   "texts": {
     "MyAccount": "Moje konto",
-    "SamplePageMessage": "Przykładowa strona modułu System"
+    "SamplePageMessage": "Przykładowa strona modułu System",
+    "Permission:Company": "Company",
+    "Permission:Create": "Create",
+    "Permission:Update": "Update",
+    "Permission:Delete": "Delete",
+    "Menu:Company": "MenuCompany",
+    "Company": "Company",
+    "CompanyName": "CompanyName",
+    "CompanyLogoUrl": "CompanyLogoUrl",
+    "CompanyShortName": "CompanyShortName",
+    "CompanyJP": "CompanyJP",
+    "CompanyStatusCode": "CompanyStatusCode",
+    "CompanyCompanyUsers": "CompanyCompanyUsers",
+    "CompanyDeleteUniqueId": "CompanyDeleteUniqueId",
+    "CompanyCompanyLocation": "CompanyCompanyLocation",
+    "CreateCompany": "CreateCompany",
+    "EditCompany": "EditCompany",
+    "CompanyDeletionConfirmationMessage": "Are you sure to delete the company {0}?",
+    "SuccessfullyDeleted": "Successfully deleted",
+    "TableFilter": "TableFilter"
   }
 }
