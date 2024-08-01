@@ -114,10 +114,18 @@ using Volo.Abp.PermissionManagement.Identity;
 using Volo.Abp.PermissionManagement.IdentityServer;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
+using Zion.Product;
+using Zion.Product.EntityFrameworkCore;
 
 namespace LY.MicroService.Applications.Single;
 
 [DependsOn(
+    typeof(ProductApplicationModule),
+    typeof(ProductApplicationContractsModule),
+    typeof(ProductDomainModule),
+    typeof(ProductDomainSharedModule),
+    typeof(ProductEntityFrameworkCoreModule),
+
     typeof(AbpAccountApplicationModule),
     typeof(AbpAccountHttpApiModule),
     typeof(AbpAccountWebOpenIddictModule),
