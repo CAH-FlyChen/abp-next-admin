@@ -42,8 +42,6 @@ public class CompanyUpdateDto
     //[DisplayName("CompanyCompanyUsers")]
     //public List<CompanyUser>? CompanyUsers { get; set; }
 
-    [DisplayName("CompanyDeleteUniqueId")]
-    public Guid DeleteUniqueId { get; set; }
 
     [DisplayName("CompanyCompanyLocation")]
     public CompanyLocationDto CompanyLocation { get; set; }

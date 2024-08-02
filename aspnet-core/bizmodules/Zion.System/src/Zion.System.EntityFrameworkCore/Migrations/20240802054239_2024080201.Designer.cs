@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 using Zion.System.EntityFrameworkCore;
@@ -11,9 +12,11 @@ using Zion.System.EntityFrameworkCore;
 namespace Zion.System.Migrations
 {
     [DbContext(typeof(SystemDbContext))]
-    partial class SystemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240802054239_2024080201")]
+    partial class _2024080201
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

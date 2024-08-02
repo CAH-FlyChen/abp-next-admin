@@ -36,7 +36,5 @@ public class CompanyDto : FullAuditedEntityDto<Guid>
     ///// </summary>
     //public List<CompanyUser>? CompanyUsers { get; set; }
 
-    public Guid DeleteUniqueId { get; set; }
-
     public CompanyLocationDto CompanyLocation { get; set; }
 }

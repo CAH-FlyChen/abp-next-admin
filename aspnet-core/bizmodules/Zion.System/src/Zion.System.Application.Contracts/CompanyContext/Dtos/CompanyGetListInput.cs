@@ -37,7 +37,5 @@ public class CompanyGetListInput : PagedAndSortedResultRequestDto
     [DisplayName("CompanyStatusCode")]
     public CompanyStatus? StatusCode { get; set; }
 
-    [DisplayName("CompanyDeleteUniqueId")]
-    public Guid? DeleteUniqueId { get; set; }
 
 }

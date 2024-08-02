@@ -25,12 +25,6 @@ public class CompanyCreateDto
     public string ShortName { get; set; }
 
     /// <summary>
-    /// 简拼
-    /// </summary>
-    [DisplayName("CompanyJP")]
-    public string JP { get; set; }
-
-    /// <summary>
     /// 状态
     /// </summary>
     [DisplayName("CompanyStatusCode")]
@@ -42,8 +36,6 @@ public class CompanyCreateDto
     //[DisplayName("CompanyCompanyUsers")]
     //public List<CompanyUser>? CompanyUsers { get; set; }
 
-    [DisplayName("CompanyDeleteUniqueId")]
-    public Guid DeleteUniqueId { get; set; }
 
     [DisplayName("CompanyCompanyLocation")]
     public CompanyLocationDto CompanyLocation { get; set; }

@@ -9,7 +9,9 @@
     <PreserveCompilationReferences>true</PreserveCompilationReferences>
     <UserSecretsId>Zion.System-c2d31439-b723-48e2-b061-5ebd7aeb6010</UserSecretsId>
   </PropertyGroup>
-
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<OutputPath>bin\Debug\</OutputPath>
+	</PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Serilog.AspNetCore" />
     <PackageReference Include="Serilog.Sinks.Async" />

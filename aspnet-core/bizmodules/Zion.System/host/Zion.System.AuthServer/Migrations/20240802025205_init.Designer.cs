@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
@@ -13,8 +12,8 @@ using Zion.System.EntityFrameworkCore;
 namespace Zion.System.Migrations
 {
     [DbContext(typeof(AuthServerDbContext))]
-    [Migration("20240801074734_Initial")]
-    partial class Initial
+    [Migration("20240802025205_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,8 +23,6 @@ namespace Zion.System.Migrations
                 .HasAnnotation("_Abp_DatabaseProvider", EfCoreDatabaseProvider.MySql)
                 .HasAnnotation("ProductVersion", "8.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
-
-            MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>
                 {
@@ -643,58 +640,6 @@ namespace Zion.System.Migrations
                     b.HasIndex("TenantId", "UserId");
 
                     b.ToTable("AbpSecurityLogs", (string)null);
-                });
-
-            modelBuilder.Entity("Volo.Abp.Identity.IdentitySession", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("ClientId")
-                        .HasMaxLength(64)
-                        .HasColumnType("varchar(64)");
-
-                    b.Property<string>("Device")
-                        .IsRequired()
-                        .HasMaxLength(64)
-                        .HasColumnType("varchar(64)");
-
-                    b.Property<string>("DeviceInfo")
-                        .HasMaxLength(64)
-                        .HasColumnType("varchar(64)");
-
-                    b.Property<string>("IpAddresses")
-                        .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
-
-                    b.Property<DateTime?>("LastAccessed")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("SessionId")
-                        .IsRequired()
-                        .HasMaxLength(128)
-                        .HasColumnType("varchar(128)");
-
-                    b.Property<DateTime>("SignedIn")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<Guid?>("TenantId")
-                        .HasColumnType("char(36)")
-                        .HasColumnName("TenantId");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("char(36)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Device");
-
-                    b.HasIndex("SessionId");
-
-                    b.HasIndex("TenantId", "UserId");
-
-                    b.ToTable("AbpSessions", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.Identity.IdentityUser", b =>

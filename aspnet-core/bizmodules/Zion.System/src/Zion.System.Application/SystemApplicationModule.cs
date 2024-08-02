@@ -15,6 +15,8 @@ public class SystemApplicationModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
+        GloableGuidGenerator.InitMySQLGUID();
+
         context.Services.AddAutoMapperObjectMapper<SystemApplicationModule>();
         Configure<AbpAutoMapperOptions>(options =>
         {

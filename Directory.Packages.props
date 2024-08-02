@@ -11,6 +11,7 @@
   </PropertyGroup>
   <!-- Abp Framework -->
   <ItemGroup>
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageVersion Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.LeptonXLite" Version="3.0.5" />
     <PackageVersion Include="Volo.Abp.Core" Version="$(VoloAbpPackageVersion)" />
     <PackageVersion Include="Volo.Abp.Account.Application" Version="$(VoloAbpPackageVersion)" />
@@ -133,6 +134,9 @@
     <PackageVersion Include="Volo.Abp.Validation" Version="$(VoloAbpPackageVersion)" />
     <PackageVersion Include="Volo.Abp.VirtualFileSystem" Version="$(VoloAbpPackageVersion)" />
     <PackageVersion Include="Volo.Abp.TenantManagement.EntityFrameworkCore" Version="$(VoloAbpPackageVersion)" />
+    <PackageVersion Include="Volo.Abp.TenantManagement.Application" Version="$(VoloAbpPackageVersion)" />
+    <PackageVersion Include="Volo.Abp.TenantManagement.HttpApi" Version="$(VoloAbpPackageVersion)" />
+
   </ItemGroup>
   <!-- .NET -->
   <ItemGroup>
@@ -209,8 +213,8 @@
     <PackageVersion Include="xunit.extensibility.execution" Version="2.6.1" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="2.5.3" />
     <PackageVersion Include="NSubstitute.Analyzers.CSharp" Version="1.0.16" />
-	<PackageVersion Include="Microsoft.EntityFrameworkCore.Proxies" Version="8.0.4" />
-	  <PackageVersion Include="Volo.Abp.EntityFrameworkCore.Sqlite" Version="8.2.0"/>
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Proxies" Version="8.0.4" />
+    <PackageVersion Include="Volo.Abp.EntityFrameworkCore.Sqlite" Version="8.2.0" />
   </ItemGroup>
   <!-- Fody -->
   <ItemGroup>

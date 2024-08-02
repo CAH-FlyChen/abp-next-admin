@@ -33,6 +33,7 @@ using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.Swashbuckle;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
 using Volo.Abp.VirtualFileSystem;
+using Volo.Abp.AspNetCore.Mvc;
 
 namespace Zion.System;
 
@@ -53,6 +54,15 @@ namespace Zion.System;
     )]
 public class SystemHttpApiHostModule : AbpModule
 {
+    public override void PreConfigureServices(ServiceConfigurationContext context)
+    {
+        PreConfigure<AbpAspNetCoreMvcOptions>(options =>
+        {
+            options
+                .ConventionalControllers
+                .Create(typeof(SystemApplicationModule).Assembly);
+        });
+    }
 
     public override void ConfigureServices(ServiceConfigurationContext context)
     {

@@ -10,7 +10,7 @@ using NPinyin;
 
 namespace Zion.System.CompanyContext;
 
-public class Company : FullAuditedAggregateRoot<Guid>
+public class Company : FullAuditedAggregateRoot<Guid>,IHasDeleteUniqueId
 {
     /// <summary>
     /// 名称
@@ -49,7 +49,7 @@ public class Company : FullAuditedAggregateRoot<Guid>
     /// </summary>
     public List<CompanyUser>? CompanyUsers { get; set; }
 
-    public Guid DeleteUniqueId { get; set; } = Guid.Empty;
+    public Guid DUId { get; set; } = Guid.Empty;
 
     public CompanyLocation CompanyLocation { get; set; }
 
@@ -97,7 +97,7 @@ public class Company : FullAuditedAggregateRoot<Guid>
         JP = jP;
         StatusCode = statusCode;
         CompanyUsers = companyUsers;
-        DeleteUniqueId = deleteUniqueId;
+        DUId = deleteUniqueId;
         CompanyLocation = companyLocation;
     }
 }

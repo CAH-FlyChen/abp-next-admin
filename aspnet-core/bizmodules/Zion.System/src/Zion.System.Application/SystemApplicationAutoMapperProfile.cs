@@ -14,5 +14,8 @@ public class SystemApplicationAutoMapperProfile : Profile
         CreateMap<Company, CompanyDto>();
         CreateMap<CompanyCreateDto, Company>(MemberList.Source);
         CreateMap<CompanyUpdateDto, Company>(MemberList.Source);
+
+        CreateMap<CompanyLocation, CompanyLocationDto>();
+        CreateMap<CompanyLocationDto, CompanyLocation>(MemberList.Source);
     }
 }

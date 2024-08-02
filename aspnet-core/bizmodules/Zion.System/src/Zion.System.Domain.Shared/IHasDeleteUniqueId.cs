@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 namespace Zion.System;
 public interface IHasDeleteUniqueId
 {
-    public Guid DeleteUniqueId { get; set; }
+    public Guid DUId { get; set; }
 }
