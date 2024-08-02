@@ -2,7 +2,7 @@
 
 public static class SystemDbProperties
 {
-    public static string DbTablePrefix { get; set; } = "AppSystem";
+    public static string DbTablePrefix { get; set; } = "App_System_";
 
     public static string? DbSchema { get; set; } = null;
 

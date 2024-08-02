@@ -36,9 +36,18 @@ public static class SystemDbContextModelCreatingExtensions
         builder.Entity<Company>(b =>
         {
             b.ToTable(SystemDbProperties.DbTablePrefix + "Companies", SystemDbProperties.DbSchema);
+            b.OwnsOne(t => t.CompanyLocation);
             b.ConfigureByConvention(); 
             
 
+            /* Configure more properties here */
+        });
+
+        builder.Entity<CompanyUser>(b =>
+        {
+            b.ToTable(SystemDbProperties.DbTablePrefix + "CompanyUsers", SystemDbProperties.DbSchema);
+            b.ConfigureByConvention();
+            b.HasKey(c => new { c.CompanyId, c.UserId });
             /* Configure more properties here */
         });
     }
