@@ -14,6 +14,11 @@ public class SystemPermissionDefinitionProvider : PermissionDefinitionProvider
         companyPermission.AddChild(SystemPermissions.Company.Create, L("Permission:Create"));
         companyPermission.AddChild(SystemPermissions.Company.Update, L("Permission:Update"));
         companyPermission.AddChild(SystemPermissions.Company.Delete, L("Permission:Delete"));
+
+        var regionPermission = myGroup.AddPermission(SystemPermissions.Region.Default, L("Permission:Region"));
+        regionPermission.AddChild(SystemPermissions.Region.Create, L("Permission:Create"));
+        regionPermission.AddChild(SystemPermissions.Region.Update, L("Permission:Update"));
+        regionPermission.AddChild(SystemPermissions.Region.Delete, L("Permission:Delete"));
     }
 
     private static LocalizableString L(string name)

@@ -1,3 +1,4 @@
+using Zion.System.RegionContext;
 using Zion.System.CompanyContext;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
@@ -48,6 +49,20 @@ public static class SystemDbContextModelCreatingExtensions
             b.ToTable(SystemDbProperties.DbTablePrefix + "CompanyUsers", SystemDbProperties.DbSchema);
             b.ConfigureByConvention();
             b.HasKey(c => new { c.CompanyId, c.UserId });
+            /* Configure more properties here */
+        });
+
+
+        builder.Entity<Region>(b =>
+        {
+            b.ToTable(SystemDbProperties.DbTablePrefix + "Regions", SystemDbProperties.DbSchema, table => table.HasComment("行政区域"));
+            b.ConfigureByConvention(); 
+            
+            b.HasKey(e => new
+            {
+                e.Code,
+            });
+
             /* Configure more properties here */
         });
     }

@@ -1,3 +1,4 @@
+using Zion.System.RegionContext;
 using Zion.System.CompanyContext;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
@@ -19,6 +20,7 @@ public class SystemEntityFrameworkCoreModule : AbpModule
                  * options.AddRepository<Question, EfCoreQuestionRepository>();
                  */
             options.AddRepository<Company, CompanyRepository>();
+            options.AddRepository<Region, RegionRepository>();
         });
     }
 }

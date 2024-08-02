@@ -2,10 +2,11 @@
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
 using Volo.Abp.Application;
+using LINGYUN.Abp.UI.Navigation;
 
 namespace Zion.System;
-
 [DependsOn(
+    typeof(AbpUINavigationModule),//用于生成菜单
     typeof(SystemDomainModule),
     typeof(SystemApplicationContractsModule),
     typeof(AbpDddApplicationModule),

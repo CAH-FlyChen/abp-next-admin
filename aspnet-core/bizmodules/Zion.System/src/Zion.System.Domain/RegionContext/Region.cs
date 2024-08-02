@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
@@ -35,13 +35,13 @@ public class Region : FullAuditedAggregateRoot
     /// </summary>
     [Description("上级Code")]
     [MaxLength(10)]
-    public string ParentCode { get; set; }
+    public string? ParentCode { get; set; }
 
     /// <summary>
     /// 类型 区域类型，国家 0，省 1，市 2，区县 3
     /// </summary>
     [Description("区域类型，国家 0，省 1，市 2，区县 3")]
-    public RegionType ReginTypeCode { get; set; }
+    public RegionType RegionTypeCode { get; set; }
 
     public override object[] GetKeys()
     {
@@ -56,12 +56,12 @@ public class Region : FullAuditedAggregateRoot
         string code,
         string name,
         string parentCode,
-        RegionType reginTypeCode
+        RegionType regionTypeCode
     )
     {
         Code = code;
         Name = name;
         ParentCode = parentCode;
-        ReginTypeCode = reginTypeCode;
+        RegionTypeCode = regionTypeCode;
     }
 }

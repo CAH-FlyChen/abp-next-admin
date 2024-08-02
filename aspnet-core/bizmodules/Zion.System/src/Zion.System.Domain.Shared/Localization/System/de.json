@@ -21,6 +21,16 @@
     "EditCompany": "EditCompany",
     "CompanyDeletionConfirmationMessage": "Are you sure to delete the company {0}?",
     "SuccessfullyDeleted": "Successfully deleted",
-    "TableFilter": "TableFilter"
+    "TableFilter": "TableFilter",
+    "Permission:Region": "Region",
+    "Menu:Region": "MenuRegion",
+    "Region": "Region",
+    "RegionCode": "RegionCode",
+    "RegionName": "RegionName",
+    "RegionParentCode": "RegionParentCode",
+    "RegionRegionTypeCode": "RegionRegionTypeCode",
+    "CreateRegion": "CreateRegion",
+    "EditRegion": "EditRegion",
+    "RegionDeletionConfirmationMessage": "Are you sure to delete the region {0}?"
   }
 }

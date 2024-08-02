@@ -98,6 +98,7 @@ using LY.MicroService.Applications.Single.EntityFrameworkCore;
 using Volo.Abp;
 using Volo.Abp.Account.Web;
 using Volo.Abp.AspNetCore.Authentication.JwtBearer;
+using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
 using Volo.Abp.AspNetCore.Serilog;
@@ -114,17 +115,25 @@ using Volo.Abp.PermissionManagement.Identity;
 using Volo.Abp.PermissionManagement.IdentityServer;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
-using Zion.Product;
-using Zion.Product.EntityFrameworkCore;
+using Zion.System;
+using Zion.System.EntityFrameworkCore;
+//using Zion.Product;
+//using Zion.Product.EntityFrameworkCore;
 
 namespace LY.MicroService.Applications.Single;
 
 [DependsOn(
-    typeof(ProductApplicationModule),
-    typeof(ProductApplicationContractsModule),
-    typeof(ProductDomainModule),
-    typeof(ProductDomainSharedModule),
-    typeof(ProductEntityFrameworkCoreModule),
+    //typeof(ProductApplicationModule),
+    //typeof(ProductApplicationContractsModule),
+    //typeof(ProductDomainModule),
+    //typeof(ProductDomainSharedModule),
+    //typeof(ProductEntityFrameworkCoreModule),
+
+    typeof(SystemApplicationModule),
+    typeof(SystemApplicationContractsModule),
+    typeof(SystemDomainModule),
+    typeof(SystemDomainSharedModule),
+    typeof(SystemEntityFrameworkCoreModule),
 
     typeof(AbpAccountApplicationModule),
     typeof(AbpAccountHttpApiModule),
@@ -290,6 +299,13 @@ public partial class MicroServiceApplicationsSingleModule : AbpModule
         PreConfigureAuthServer(configuration);
         PreConfigureElsa(context.Services, configuration);
         PreConfigureCertificate(configuration, hostingEnvironment);
+
+        PreConfigure<AbpAspNetCoreMvcOptions>(options =>
+        {
+            options
+                .ConventionalControllers
+                .Create(typeof(SystemApplicationModule).Assembly);
+        });
     }
 
     public override void ConfigureServices(ServiceConfigurationContext context)

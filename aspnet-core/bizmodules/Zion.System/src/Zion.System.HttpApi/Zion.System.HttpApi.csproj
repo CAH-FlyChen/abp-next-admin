@@ -13,4 +13,8 @@
     <ProjectReference Include="..\Zion.System.Application.Contracts\Zion.System.Application.Contracts.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="SystemContext\" />
+  </ItemGroup>
+
 </Project>

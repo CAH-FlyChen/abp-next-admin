@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 using Zion.System.CompanyContext;
+using Zion.System.RegionContext;
 
 namespace Zion.System.EntityFrameworkCore;
 
@@ -12,4 +13,8 @@ public interface ISystemDbContext : IEfCoreDbContext
      * DbSet<Question> Questions { get; }
      */
     DbSet<Company> Companies { get; set; }
+    /// <summary>
+    /// 行政区域
+    /// </summary>
+    DbSet<Region> Regions { get; set; }
 }
