@@ -3,6 +3,7 @@ using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
 using Volo.Abp.Application;
 using LINGYUN.Abp.UI.Navigation;
+using Volo.Abp.Application.Dtos;
 
 namespace Zion.System;
 [DependsOn(
@@ -23,5 +24,7 @@ public class SystemApplicationModule : AbpModule
         {
             options.AddMaps<SystemApplicationModule>(validate: true);
         });
+
+        LimitedResultRequestDto.MaxMaxResultCount = 10000;
     }
 }

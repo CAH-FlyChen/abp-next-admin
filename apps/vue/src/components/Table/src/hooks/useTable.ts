@@ -154,15 +154,19 @@ export function useTable(tableProps?: Props): [
       return toRaw(getTableInstance().getShowPagination());
     },
     expandAll: () => {
+      console.log("expand all")
       getTableInstance().expandAll();
     },
     collapseAll: () => {
+      console.log("collapse all")
       getTableInstance().collapseAll();
     },
     expandRows: (keyValues: Key[]) => {
+      console.log("expand rows")
       getTableInstance().expandRows(keyValues);
     },
     collapseRows: (keyValues: Key[]) => {
+      console.log("collapse rows")
       getTableInstance().collapseRows(keyValues);
     },
     scrollTo: (pos: string) => {

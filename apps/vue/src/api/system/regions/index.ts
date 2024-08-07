@@ -21,9 +21,9 @@ export const update = (id: string, input: UpdateRegion) => {
   });
 };
 
-export const deleteById = (id: string) => {
+export const deleteByCode = (code: string) => {
   return defHttp.delete<void>({
-    url: `/api/system/region/${id}`,
+    url: `/api/system/region/${code}`,
   });
 };
 
@@ -34,6 +34,7 @@ export const getById = (id: string) => {
 };
 
 export const getAll = (input: GetAllRegionRequest) => {
+  input.maxResultCount = 10000
   return defHttp.get<ListResultDto<Region>>({
     url: '/api/system/region',
     params: input,

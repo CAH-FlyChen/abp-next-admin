@@ -16,4 +16,10 @@
 	  <PackageReference Include="Volo.Abp.Identity.Domain" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Seed\SysRegion.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

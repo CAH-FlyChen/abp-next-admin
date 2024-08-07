@@ -57,6 +57,7 @@
 		<ProjectReference Include="..\..\bizmodules\Zion.Product\Zion.Product.EntityFrameworkCore\Zion.Product.EntityFrameworkCore.csproj" />
 		<ProjectReference Include="..\..\bizmodules\Zion.System\src\Zion.System.Application\Zion.System.Application.csproj" />
 		<ProjectReference Include="..\..\bizmodules\Zion.System\src\Zion.System.EntityFrameworkCore\Zion.System.EntityFrameworkCore.csproj" />
+		<ProjectReference Include="..\..\bizmodules\Zion.System\src\Zion.System.HttpApi\Zion.System.HttpApi.csproj" />
 		<ProjectReference Include="..\..\framework\auditing\LINGYUN.Abp.AuditLogging.EntityFrameworkCore\LINGYUN.Abp.AuditLogging.EntityFrameworkCore.csproj" />
 		<ProjectReference Include="..\..\framework\auditing\LINGYUN.Abp.AuditLogging\LINGYUN.Abp.AuditLogging.csproj" />
 		<ProjectReference Include="..\..\framework\authentication\LINGYUN.Abp.Authentication.QQ\LINGYUN.Abp.Authentication.QQ.csproj" />

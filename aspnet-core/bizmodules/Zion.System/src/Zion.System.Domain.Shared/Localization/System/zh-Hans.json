@@ -31,6 +31,11 @@
     "RegionRegionTypeCode": "RegionRegionTypeCode",
     "CreateRegion": "CreateRegion",
     "EditRegion": "EditRegion",
-    "RegionDeletionConfirmationMessage": "Are you sure to delete the region {0}?"
+    "RegionDeletionConfirmationMessage": "Are you sure to delete the region {0}?",
+
+    "DisplayName:RegionType": "区域类型",
+    "DisplayName:ParentRegion": "上级区域",
+    "DisplayName:Region": "区域",
+    "DisplayName:RegionTypeCode": "区域类型"
   }
 }

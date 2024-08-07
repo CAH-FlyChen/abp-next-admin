@@ -1,5 +1,4 @@
 import { number } from "vue-types";
-import { Route } from "../../layouts/model";
 
 export interface Region{
   code: string;
@@ -31,15 +30,15 @@ export type UpdateRegion = CreateOrUpdateRegion;
 export interface GetAllRegionRequest extends SortedResultRequest {
   filter?: string;
   sorting?: string;
-  parentId?: string;
-  layoutId?: string;
+  parentCode?: string;
   framework?: string;
+  maxResultCount?:number;
 }
 
 export interface GetRegionPagedRequest extends PagedAndSortedResultRequestDto {
   code?: string;
   name?: string;
   parentCode?: string;
-  regjionTypeCode?: number;
+  regionTypeCode?: number;
 }
 

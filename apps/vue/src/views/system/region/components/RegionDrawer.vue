@@ -29,30 +29,34 @@
   import { TabForm, TabFormActionType } from '/@/components/Form';
   import { BasicDrawer, useDrawerInner } from '/@/components/Drawer';
   import { basicProps } from './props';
-  import { Menu } from '/@/api/platform/menus/model';
-  import { useMenuFormContext } from '../hooks/useMenuFormContext';
+  import { Region } from '/@/api/system/regions/model';
+  import { useRegionFormContext } from '../hooks/useRegionFormContext';
 
   const emits = defineEmits(['change', 'register']);
   const props = defineProps(basicProps);
 
   const { createMessage } = useMessage();
   const { L } = useLocalization(['AppPlatform', 'AbpUi']);
-  const menu = ref<Menu>({} as Menu);
+  const region = ref<Region>({} as Region);
   const framework = ref<string | undefined>('');
   const formElRef = ref<Nullable<TabFormActionType>>(null);
-  const { formTitle, getFormSchemas, handleFormSubmit, fetchLayoutResource } = useMenuFormContext({
-    menuModel: menu,
+
+  const { formTitle, getFormSchemas, handleFormSubmit, fetchRegionResource } = useRegionFormContext({
+    regionModel: region,
     formElRef: formElRef,
     framework: framework,
   });
-
+  
   const [registerDrawer, { setDrawerProps, changeOkLoading, closeDrawer }] = useDrawerInner(
+    //回调函数
     (dataVal) => {
-      menu.value = dataVal;
+      region.value = dataVal;
       framework.value = props.framework;
       nextTick(() => {
         setDrawerProps({ confirmLoading: false });
-        fetchLayoutResource(dataVal.layoutId);
+        
+        fetchRegionResource();
+
         const formEl = unref(formElRef);
         formEl?.changeTab(L('DisplayName:Basic'));
       });

@@ -128,7 +128,7 @@ namespace LY.MicroService.Applications.Single;
     //typeof(ProductDomainModule),
     //typeof(ProductDomainSharedModule),
     //typeof(ProductEntityFrameworkCoreModule),
-
+    typeof(SystemHttpApiModule),
     typeof(SystemApplicationModule),
     typeof(SystemApplicationContractsModule),
     typeof(SystemDomainModule),
@@ -300,12 +300,12 @@ public partial class MicroServiceApplicationsSingleModule : AbpModule
         PreConfigureElsa(context.Services, configuration);
         PreConfigureCertificate(configuration, hostingEnvironment);
 
-        PreConfigure<AbpAspNetCoreMvcOptions>(options =>
-        {
-            options
-                .ConventionalControllers
-                .Create(typeof(SystemApplicationModule).Assembly);
-        });
+        //PreConfigure<AbpAspNetCoreMvcOptions>(options =>
+        //{
+        //    options
+        //        .ConventionalControllers
+        //        .Create(typeof(SystemApplicationModule).Assembly);
+        //});
     }
 
     public override void ConfigureServices(ServiceConfigurationContext context)

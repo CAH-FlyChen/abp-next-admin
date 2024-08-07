@@ -72,13 +72,12 @@ export function useDrawer(): UseDrawerReturnType {
     getVisible: computed((): boolean => {
       return visibleData[~~unref(uid)];
     }),
-
+    //外部调用
     openDrawer: <T = any>(visible = true, data?: T, openOnSet = true): void => {
       getInstance()?.setDrawerProps({
         visible: visible,
       });
       if (!data) return;
-
       if (openOnSet) {
         dataTransferRef[unref(uid)] = null;
         dataTransferRef[unref(uid)] = toRaw(data);
@@ -96,6 +95,9 @@ export function useDrawer(): UseDrawerReturnType {
 
   return [register, methods];
 }
+
+
+
 
 export const useDrawerInner = (callbackFn?: Fn): UseDrawerInnerReturnType => {
   const drawerInstanceRef = ref<Nullable<DrawerInstance>>(null);

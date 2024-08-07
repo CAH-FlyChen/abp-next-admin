@@ -3,20 +3,25 @@
     <BasicTable @register="registerTable">
       <template #toolbar>
         <a-button v-auth="['Platform.Menu.Create']" type="primary" @click="handleAddNew">{{
-          L('Menu:AddNew')
+          L('AddNew')
         }}</a-button>
       </template>
       <template #bodyCell="{ column, record }">
-        <template v-if="column.key === 'displayName'">
-          <Icon v-if="record.meta.icon" style="margin-right: 10px" :icon="record.meta.icon" />
-          <span>{{ record.displayName }}</span>
+        <template v-if="column.key === 'name'">
+          <span>{{ record.name}}</span>
+        </template>
+        <template v-else-if="column.key === 'regionTypeCode'">
+          <span v-if="record.regionTypeCode===0">国家</span>
+          <span v-if="record.regionTypeCode===1">省</span>
+          <span v-if="record.regionTypeCode===2">市</span>
+          <span v-if="record.regionTypeCode===3">区</span>
         </template>
         <template v-else-if="column.key === 'action'">
           <TableAction
             :actions="[
               {
                 auth: 'Platform.Menu.Create',
-                label: L('Menu:AddNew'),
+                label: L('AddNew'),
                 icon: 'ant-design:plus-outlined',
                 onClick: handleAddNew.bind(null, record),
               },
@@ -38,7 +43,7 @@
         </template>
       </template>
     </BasicTable>
-    <MenuDrawer @register="registerDrawer" @change="handleChange" :framework="useFramework" />
+    <RegionDrawer @register="registerDrawer" @change="handleChange" :framework="useFramework" />
   </div>
 </template>
 
@@ -47,19 +52,19 @@
   import { useMessage } from '/@/hooks/web/useMessage';
   import { useLocalization } from '/@/hooks/abp/useLocalization';
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
-  import { Icon } from '/@/components/Icon';
   import { useDrawer } from '/@/components/Drawer';
   import { getDataColumns } from './RegionData';
   import { getSearchFormSchemas } from './ModalData';
-  import { getAll, getById, deleteById } from '/@/api/system/regions';
+  import { getAll, getById, deleteByCode } from '/@/api/system/regions';
   import { listToTree } from '/@/utils/helper/treeHelper';
-  import MenuDrawer from './MenuDrawer.vue';
+  import RegionDrawer from './RegionDrawer.vue';
 
   const { createMessage, createConfirm } = useMessage();
-  const { L } = useLocalization(['AppPlatform', 'AbpUi']);
+  const { L } = useLocalization(['AppPlatform', 'AbpUi', 'System']);
+
   const useFramework = ref('');
   const [registerTable, { reload }] = useTable({
-    rowKey: 'id',
+    rowKey: 'code',
     title: L('DisplayName:Region'),
     columns: getDataColumns(),
     api: getAll,
@@ -92,15 +97,12 @@
   const [registerDrawer, { openDrawer }] = useDrawer();
 
   function handleAddNew(record?: Recordable) {
-    openDrawer(true, {
-      layoutId: record?.layoutId,
-      parentId: record?.id,
-    });
+    openDrawer(true, {});
   }
 
   function handleEdit(record: Recordable) {
-    getById(record.id).then((menu) => {
-      openDrawer(true, menu);
+    getById(record.code).then((data) => {
+      openDrawer(true, data);
     });
   }
 
@@ -108,10 +110,10 @@
     createConfirm({
       iconType: 'warning',
       title: L('AreYouSure'),
-      content: L('ItemWillBeDeletedMessageWithFormat', [record.displayName]),
+      content: L('ItemWillBeDeletedMessageWithFormat', [record.name]),
       okCancel: true,
       onOk: () => {
-        return deleteById(record.id).then(() => {
+        return deleteByCode(record.code).then(() => {
           createMessage.success(L('SuccessfullyDeleted'));
           reload();
         });
@@ -120,6 +122,7 @@
   }
 
   function handleChange() {
+    console.log("on handle change called");
     reload();
   }
 </script>

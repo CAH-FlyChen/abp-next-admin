@@ -163,6 +163,7 @@
         state.checkedKeys = checkAll ? getEnabledKeys() : ([] as KeyType[]);
       }
       function expandAll(expandAll: boolean) {
+        console.log("111111111111111")
         state.expandedKeys = expandAll ? getAllKeys() : ([] as KeyType[]);
       }
       function onStrictlyChange(strictly: boolean) {
