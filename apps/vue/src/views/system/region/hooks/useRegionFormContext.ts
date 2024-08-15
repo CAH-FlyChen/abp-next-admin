@@ -11,10 +11,9 @@ import { Region, UpdateRegion, CreateRegion } from '/@/api/system/regions/model'
 interface UseRegionFormContext {
   regionModel: Ref<Region>;
   formElRef: Ref<Nullable<TabFormActionType>>;
-  framework: Ref<string | undefined>,
 }
 
-export function useRegionFormContext({ regionModel, formElRef, framework }: UseRegionFormContext) {
+export function useRegionFormContext({ regionModel, formElRef }: UseRegionFormContext) {
   console.log("region module is");
   console.log(regionModel);
 
@@ -86,20 +85,6 @@ export function useRegionFormContext({ regionModel, formElRef, framework }: UseR
     return L('Menu:AddNew');
   });
 
-  function removeAllMetaSchemas() {
-    const tabKey = L('DisplayName:Meta');
-    const formEl = unref(formElRef);
-    const schemas = unref(getFormSchemas);
-    const metaSchemas= schemas.filter((x) => x.tab === tabKey);
-    metaSchemas.forEach((x) => {
-      formEl?.removeSchemaByField(x.field);
-      const index = schemas.findIndex((s) => s.field === x.field);
-      if (index) {
-        schemas.splice(index, 1);
-      }
-    });
-  }
-
   function removeAllParentMenus() {
     const formEl = unref(formElRef);
     formEl?.updateSchema({
@@ -109,11 +94,6 @@ export function useRegionFormContext({ regionModel, formElRef, framework }: UseR
   }
   // 应该没使用
   async function fetchRegionResource() {
-      removeAllMetaSchemas();
-      await warpParentRootMenu();
-  }
-  
-  async function warpParentRootMenu() {
     removeAllParentMenus();
     const formEl = unref(formElRef);
     const { items } = await getAllRegion({});
@@ -140,10 +120,10 @@ export function useRegionFormContext({ regionModel, formElRef, framework }: UseR
 
   watch(
     () => unref(regionModel),
-    (model) => {
+    (newModel) => {
       const formEl = unref(formElRef);
       formEl?.resetFields();
-      formEl?.setFieldsValue(model);
+      formEl?.setFieldsValue(newModel);
     },
     { immediate: true },
   );
