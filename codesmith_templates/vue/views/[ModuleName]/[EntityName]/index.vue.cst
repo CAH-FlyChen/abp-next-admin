@@ -5,17 +5,17 @@
 
 
 <template>
-  <RegionTable />
+  <<% =EntityName %>Table />
 </template>
 
 <script lang="ts">
   import { defineComponent } from 'vue';
 
-  import RegionTable from './components/<% =ModuleName %>Table.vue';
+  import <% =EntityName %>Table from './components/<% =EntityName %>Table.vue';
   export default defineComponent({
-    name: '<% =ModuleName %>s',
+    name: '<% =EntityName %>s',
     components: {
-      <% =ModuleName %>Table,
+      <% =EntityName %>Table,
     },
     setup() {},
   });
