@@ -1,0 +1,50 @@
+﻿<%@ CodeTemplate Language="C#" TargetLanguage="JScript" Description="Demonstrates the most basic template." Debug="True" %>
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="System.IO" %>
+<%@ Import Namespace="System.Diagnostics.Tracing" %>
+<%@ Property Name="ModuleName" Type="System.String" Default="SampleString" Category="Options" Description="模块名称" %>
+<%@ Property Name="EntityName" Type="System.String" Default="SampleString" Category="Options" Description="功能名称" %>
+
+<%@ Property Name="TemplateRootFolder" Type="System.String" Default="E:\Code\MyABPProject\abp-next-admin\codesmith_templates\vue" Category="Options" Description="模板根路径" %>
+<%@ Property Name="VUEFolder" Type="System.String" Default="C:\abc" Category="Options" Description="VUE根路径" %>
+<script runat="template">
+public void Gen(){
+    Debug.WriteLine("Entering Main");
+    string[] files = Directory.GetFiles(TemplateRootFolder,"*.*",SearchOption.AllDirectories);
+    foreach (var file in files)
+    {
+        
+        if (Path.GetFileName(file) == "Main.cst") continue;
+        CodeTemplateCompiler compiler = new CodeTemplateCompiler(file);
+        compiler.Compile();
+        if (compiler.Errors.Count == 0)
+        {
+            CodeTemplate codeTemplate = compiler.CreateInstance();
+            codeTemplate.SetProperty("ModuleName", ModuleName);
+            codeTemplate.SetProperty("EntityName", EntityName);
+            
+            string templateRelPath = file.Substring(TemplateRootFolder.Length);
+            Debug.WriteLine(templateRelPath);
+            templateRelPath = templateRelPath.TrimEnd('t').TrimEnd('s').TrimEnd('c').TrimEnd('.');
+            
+            string tarFilePath = VUEFolder + templateRelPath;
+            tarFilePath = tarFilePath.Replace("[ModuleName]",ModuleName);
+            tarFilePath = tarFilePath.Replace("[EntityName]",EntityName);
+            
+            var tarFileFolder = Path.GetDirectoryName(tarFilePath).ToLower();
+            var tarFileName = Path.GetFileName(tarFilePath);
+            tarFilePath = Path.Combine(tarFileFolder,tarFileName);
+            Debug.WriteLine(tarFilePath);
+            
+            string tarFolder = Path.GetDirectoryName(tarFilePath);
+            if(!Directory.Exists(tarFolder)) Directory.CreateDirectory(tarFolder);
+            if(File.Exists(tarFilePath)) continue;
+            codeTemplate.RenderToFile(tarFilePath, false);
+        }
+    }
+}
+
+</script>
+
+<% this.Gen();  %>

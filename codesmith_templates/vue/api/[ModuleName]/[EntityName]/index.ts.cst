@@ -1,0 +1,52 @@
+﻿<%@ CodeTemplate Language="c#" TargetLanguage="JScript" Description="Demonstrates the most basic template." %>
+<%@ Property Name="ModuleName" Type="System.String" Default="SampleString" Category="Options" Description="模块名称" %>
+<%@ Property Name="EntityName" Type="System.String" Default="SampleString" Category="Options" Description="功能名称" %>
+
+
+import { defHttp } from '/@/utils/http/axios';
+import {
+  <% =EntityName %>,
+  Create<% =EntityName %>,
+  Update<% =EntityName %>,
+  Get<% =EntityName %>PagedRequest,
+} from './model';
+
+export const create = (input: Create<% =EntityName %>) => {
+  return defHttp.post<<% =EntityName %>>({
+    url: '/api/<% =ModuleName.ToLower() %>/<% =EntityName.ToLower() %>',
+    data: input,
+  });
+};
+
+export const update = (id: string, input: Update<% =EntityName %>) => {
+  return defHttp.put<<% =EntityName %>>({
+    url: `/api/<% =ModuleName.ToLower() %>/<% =EntityName.ToLower() %>/${id}`,
+    data: input,
+  });
+};
+
+export const deleteById = (id: string) => {
+  return defHttp.delete<void>({
+    url: `/api/<% =ModuleName.ToLower() %>/<% =EntityName.ToLower() %>/${id}`,
+  });
+};
+
+export const getById = (id: string) => {
+  return defHttp.get<<% =EntityName %>>({
+    url: `/api/<% =ModuleName.ToLower() %>/<% =EntityName.ToLower() %>/${id}`,
+  });
+};
+
+export const getList = (input: Get<% =EntityName %>PagedRequest) => {
+  return defHttp.get<PagedResultDto<<% =EntityName %>>>({
+    url: '/api/<% =ModuleName.ToLower() %>/<% =EntityName.ToLower() %>',
+    params: input,
+  });
+};
+
+<script runat="template">
+public string GetFileName()
+{
+    return "index.ts";
+}
+</script>
