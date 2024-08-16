@@ -62,6 +62,7 @@ public class RegionAppService : AbstractKeyCrudAppService<Region, RegionDto, Reg
             .WhereIf(!input.Name.IsNullOrWhiteSpace(), x => x.Name.Contains(input.Name))
             .WhereIf(!input.ParentCode.IsNullOrWhiteSpace(), x => x.ParentCode.Contains(input.ParentCode))
             .WhereIf(input.RegionTypeCode != null, x => x.RegionTypeCode == input.RegionTypeCode)
+            .WhereIf(input.ContainsCountry==false,x=>x.RegionTypeCode!=RegionType.国家)
             ;
     }
 

@@ -118,4 +118,5 @@ export type ComponentType =
   | 'CodeEditorX'
   | 'ExtraPropertyDictionary'
   | 'LocalizableInput'
-  | 'ColorPicker';
+  | 'ColorPicker'
+  | 'AddressSelector';

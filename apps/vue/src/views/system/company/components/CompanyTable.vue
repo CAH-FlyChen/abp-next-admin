@@ -65,7 +65,7 @@
   const useFramework = ref('');
   const [registerTable, { reload }] = useTable({
     rowKey: 'code',
-    title: L('DisplayName:Region'),
+    title: L('DisplayName:Company'),
     columns: getDataColumns(),
     api: getList,
     beforeFetch: (request) => {

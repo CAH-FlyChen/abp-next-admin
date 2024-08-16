@@ -26,6 +26,7 @@ export function useRuleFormItem<T extends Recordable>(
   const defaultState = readonly(innerState);
 
   const setState = (val: UnwrapRef<T[keyof T]>): void => {
+    debugger;
     innerState.value = val as T[keyof T];
   };
 
@@ -42,6 +43,10 @@ export function useRuleFormItem<T extends Recordable>(
 
       innerState.value = value as T[keyof T];
       setTimeout(() => {
+        console.log("emit")
+        console.log(changeEvent)
+        console.log(value)
+        console.log((toRaw(unref(emitData)) || []))
         emit?.(changeEvent, value, ...(toRaw(unref(emitData)) || []));
       });
     },

@@ -39,6 +39,8 @@ import {
   ExtraPropertyDictionary,
   LocalizableInput
 } from '/@/components/Abp';
+import { AddressSelector } from '/@/components/Address';
+
 
 const componentMap = new Map<ComponentType, Component>();
 const customComponentMap = new Map<ComponentType, Component>();
@@ -56,6 +58,8 @@ customComponentMap.set('IconPicker', IconPicker);
 customComponentMap.set('Upload', BasicUpload);
 customComponentMap.set('ApiTransfer', ApiTransfer);
 customComponentMap.set('RadioButtonGroup', RadioButtonGroup);
+
+customComponentMap.set('AddressSelector', AddressSelector);
 
 componentMap.set('InputGroup', Input.Group);
 componentMap.set('InputPassword', Input.Password);

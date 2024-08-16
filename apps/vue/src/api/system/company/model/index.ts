@@ -6,11 +6,13 @@ import { number } from "vue-types";
 export interface Company{
   id: string;
   name: string;
+  shortName:string;
 }
 
 
 export interface CreateOrUpdateCompanyBase {
   name: string;
+  shortName:string;
 }
 
 export interface CreateCompany extends CreateOrUpdateCompanyBase {

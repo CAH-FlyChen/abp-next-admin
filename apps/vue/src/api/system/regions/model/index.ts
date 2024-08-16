@@ -33,6 +33,7 @@ export interface GetAllRegionRequest extends SortedResultRequest {
   parentCode?: string;
   framework?: string;
   maxResultCount?:number;
+  containsCountry?:boolean;
 }
 
 export interface GetRegionPagedRequest extends PagedAndSortedResultRequestDto {

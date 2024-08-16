@@ -30,4 +30,6 @@ public class RegionGetListInput : PagedAndSortedResultRequestDto
     /// </summary>
     [DisplayName("RegionReginTypeCode")]
     public RegionType? RegionTypeCode { get; set; }
+
+    public bool ContainsCountry { get; set; } = true;
 }

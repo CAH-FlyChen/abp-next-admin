@@ -23,5 +23,13 @@ export function getDataColumns(): BasicColumn[] {
       width: 150,
       resizable: true,
     },
+    {
+      title: L('DisplayName:ShortName'),
+      dataIndex: 'shortName',
+      align: 'left',
+      width: 150,
+      resizable: true,
+    },
+    
   ];
 }

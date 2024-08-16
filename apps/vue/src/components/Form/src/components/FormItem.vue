@@ -232,6 +232,7 @@
       }
 
       function renderComponent() {
+        
         const {
           renderComponentContent,
           component,
@@ -252,9 +253,11 @@
             }
             const target = e ? e.target : null;
             const value = target ? (isCheck ? target.checked : target.value) : e;
+            debugger;
             props.setFormModel(field, value, props.schema);
           },
         };
+
         const Comp = componentMap.get(component) as ReturnType<typeof defineComponent>;
 
         const { autoSetPlaceHolder, size } = props.formProps;
@@ -284,6 +287,10 @@
           ...on,
           ...bindValue,
         };
+        console.log('bind value is')
+        console.log(bindValue)
+
+
 
         if (!renderComponentContent) {
           return <Comp {...compAttr} />;

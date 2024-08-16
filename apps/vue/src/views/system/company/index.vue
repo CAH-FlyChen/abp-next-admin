@@ -9,6 +9,8 @@
   import { defineComponent } from 'vue';
 
   import CompanyTable from './components/CompanyTable.vue';
+
+
   export default defineComponent({
     name: 'Companys',
     components: {

@@ -36,6 +36,10 @@
     "DisplayName:RegionType": "区域类型",
     "DisplayName:ParentRegion": "上级区域",
     "DisplayName:Region": "区域",
-    "DisplayName:RegionTypeCode": "区域类型"
+    "DisplayName:RegionTypeCode": "区域类型",
+    "DisplayName:ShortName": "简称",
+    "DisplayName:Address": "地址",
+    "DisplayName:Company": "公司",
+
   }
 }

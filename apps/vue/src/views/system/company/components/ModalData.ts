@@ -19,6 +19,12 @@ export function getSearchFormSchemas(): Partial<FormProps> {
         label: L('DisplayName:Name'),
         colProps: { span: 8 },
       },
+      {
+        field: 'shortName',
+        component: 'Input',
+        label: L('DisplayName:ShortName'),
+        colProps: { span: 8 },
+      },
       /*
       {
         field: 'layoutId',
