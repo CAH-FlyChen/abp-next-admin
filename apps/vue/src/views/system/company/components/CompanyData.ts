@@ -30,6 +30,26 @@ export function getDataColumns(): BasicColumn[] {
       width: 150,
       resizable: true,
     },
-    
+    {
+      title: L('DisplayName:JP'),
+      dataIndex: 'jp',
+      align: 'left',
+      width: 150,
+      resizable: true,
+    },
+    {
+      title: L('DisplayName:CreationTime'),
+      dataIndex: 'creationTime',
+      align: 'left',
+      width: 150,
+      resizable: true,
+    },
+    {
+      title: L('DisplayName:StatusCode'),
+      dataIndex: 'statusCode',
+      align: 'left',
+      width: 150,
+      resizable: true,
+    },
   ];
 }

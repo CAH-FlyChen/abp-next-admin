@@ -43,25 +43,55 @@ export function useCompanyFormContext({ companyModel, formElRef }: UseCompanyFor
         colProps: { span: 24 },
         required: true,
       },
-      // {
-      //   tab: L('DisplayName:Basic'),
-      //   field: 'shortName',
-      //   component: 'Input',
-      //   label: L('DisplayName:ShortName'),
-      //   colProps: { span: 24 },
-      //   required: true,
-      // },
       {
         tab: L('DisplayName:Basic'),
         field: 'shortName',
-        component: 'AddressSelector',
-        label: L('DisplayName:Address'),
+        component: 'Input',
+        label: L('DisplayName:ShortName'),
         colProps: { span: 24 },
-        //valueField:"valueX",//控件的哪个属性
-        // componentProps: {
-        //   valueX:{countryCode:'100000'}
-        // },
+        required: true,
+      },
+      {
+        tab: L('DisplayName:Basic'),
+        field: 'jp',
+        component: 'Input',
+        label: L('DisplayName:JP'),
+        colProps: { span: 24 },
         required: false,
+        ifShow: ({ values }) => {
+          return values.id ? true : false;
+        },
+      },
+      {
+        tab: L('DisplayName:Basic'),
+        field: 'logoUrl',
+        component: 'Input',
+        label: L('DisplayName:LogoUrl'),
+        colProps: { span: 24 },
+        required: false,
+      },
+      {
+        tab: L('DisplayName:Basic'),
+        field: 'companyLocation',
+        component: 'AddressSelector',
+        label: L('DisplayName:CompanyLocation'),
+        colProps: { span: 24 },
+        required: true,
+      },
+      {
+        tab: L('DisplayName:Basic'),
+        field: 'statusCode',
+        component: 'Select',
+        label: L('DisplayName:StatusCode'),
+        colProps: { span: 24 },
+        componentProps: {
+          options: [
+            { value: 0, label: '无效' },
+            { value: 1, label: '有效' },
+            { value: 2, label: '锁定' },
+          ],
+        },
+        required: true,
       },
     ];
   }

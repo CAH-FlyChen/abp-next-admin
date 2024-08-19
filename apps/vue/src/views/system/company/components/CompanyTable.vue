@@ -10,18 +10,14 @@
         }}</a-button>
       </template>
       <template #bodyCell="{ column, record }">
-        <template v-if="column.key === 'name'">
-          <span>{{ record.name}}</span>
+        <template v-if="column.key === 'statusCode'">
+          <span v-if="record.statusCode==0">无效</span>
+          <span v-if="record.statusCode==1">有效</span>
+          <span v-if="record.statusCode==2">锁定</span>
         </template>
         <template v-else-if="column.key === 'action'">
           <TableAction
             :actions="[
-              {
-                auth: 'System.Company.Create',
-                label: L('AddNew'),
-                icon: 'ant-design:plus-outlined',
-                onClick: handleAddNew.bind(null, record),
-              },
               {
                 auth: 'System.Company.Update',
                 label: L('Edit'),
@@ -103,7 +99,7 @@
   }
 
   function handleEdit(record: Recordable) {
-    getById(record.code).then((data) => {
+    getById(record.id).then((data) => {
       openDrawer(true, data);
     });
   }
@@ -115,7 +111,7 @@
       content: L('ItemWillBeDeletedMessageWithFormat', [record.name]),
       okCancel: true,
       onOk: () => {
-        return deleteById(record.code).then(() => {
+        return deleteById(record.id).then(() => {
           createMessage.success(L('SuccessfullyDeleted'));
           reload();
         });

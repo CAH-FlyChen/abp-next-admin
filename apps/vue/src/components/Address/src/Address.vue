@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineEmits ,defineProps, ref } from 'vue';
+import { defineEmits ,defineProps, ref  } from 'vue';
 import { getAll } from '/@/api/system/regions';
 import { listToTree } from '/@/utils/helper/treeHelper';
 
@@ -27,11 +27,12 @@ interface ILocation{
   districtCode:string,
 }
 
-defineProps({
+var props = defineProps({
      value:{
        type: Object as PropType<ILocation>
      }
 })
+
 
 var emits = defineEmits(['change'])
 
@@ -50,10 +51,26 @@ getAll({containsCountry:false}).then((rData)=>{
       pid: 'parentCode',
     });
   options.value = treeData;
+  if(props.value)
+  {
+    console.log('props.value exist')
+    casecadeValue.value = [props.value.provinceCode,props.value.cityCode,props.value.districtCode]
+
+    var p = rData.items.find(t=>t.code==props.value.provinceCode)?.name
+    var c = rData.items.find(t=>t.code==props.value.cityCode)?.name
+    var d = rData.items.find(t=>t.code==props.value.districtCode)?.name
+    text.value = p+","+c+","+d;
+  }
+  else
+  {
+    console.log('props.value not exist')
+  }
+    
 });
 
 
 const onChange = (value: string, selectedOptions: Option[]) => {
+  console.log(value)
   text.value = selectedOptions.map(o => o.label).join(', ');
   var obj:ILocation = {
     countryCode:'CN',
@@ -63,12 +80,9 @@ const onChange = (value: string, selectedOptions: Option[]) => {
   }
   //通知父模型变更
   emits('change',obj);
-
 };
 
   defineExpose({
-      casecadeValue,
-      value:'xxxxxxxx',
       text,
       options,
       onChange,

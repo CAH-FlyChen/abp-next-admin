@@ -1,15 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\..\..\..\common.props" />
+	<Import Project="..\..\..\..\..\common.props" />
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFrameworks>net8.0</TargetFrameworks>
     <Nullable>enable</Nullable>
     <RootNamespace>Zion.Product</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Ddd.Domain"/>
+    <PackageReference Include="Volo.Abp.Ddd.Domain" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Zion.System\src\Zion.System.Domain.Shared\Zion.System.Domain.Shared.csproj" />
     <ProjectReference Include="..\Zion.Product.Domain.Shared\Zion.Product.Domain.Shared.csproj" />
   </ItemGroup>
 

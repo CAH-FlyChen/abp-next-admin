@@ -287,10 +287,6 @@
           ...on,
           ...bindValue,
         };
-        console.log('bind value is')
-        console.log(bindValue)
-
-
 
         if (!renderComponentContent) {
           return <Comp {...compAttr} />;

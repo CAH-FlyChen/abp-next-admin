@@ -2,7 +2,7 @@
 
 public static class ProductDbProperties
 {
-    public static string DbTablePrefix { get; set; } = "AppProduct";
+    public static string DbTablePrefix { get; set; } = "Product";
 
     public static string? DbSchema { get; set; } = null;
 
