@@ -2,6 +2,23 @@
   "culture": "hr",
   "texts": {
     "MyAccount": "Moj račun",
-    "SamplePageMessage": "Ogledna stranica za modul Product"
+    "SamplePageMessage": "Ogledna stranica za modul Product",
+    "Permission:Category": "Category",
+    "Permission:Create": "Create",
+    "Permission:Update": "Update",
+    "Permission:Delete": "Delete",
+    "Menu:Category": "MenuCategory",
+    "Category": "Category",
+    "CategoryName": "CategoryName",
+    "CategoryLevel": "CategoryLevel",
+    "CategoryParentId": "CategoryParentId",
+    "CategoryParent": "CategoryParent",
+    "CategoryChildren": "CategoryChildren",
+    "CategoryDUId": "CategoryDUId",
+    "CreateCategory": "CreateCategory",
+    "EditCategory": "EditCategory",
+    "CategoryDeletionConfirmationMessage": "Are you sure to delete the category {0}?",
+    "SuccessfullyDeleted": "Successfully deleted",
+    "TableFilter": "TableFilter"
   }
 }

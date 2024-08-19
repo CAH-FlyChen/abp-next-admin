@@ -1,4 +1,4 @@
-﻿using Volo.Abp.Reflection;
+using Volo.Abp.Reflection;
 
 namespace Zion.Product.Permissions;
 
@@ -9,5 +9,12 @@ public class ProductPermissions
     public static string[] GetAll()
     {
         return ReflectionHelper.GetPublicConstantsRecursively(typeof(ProductPermissions));
+    }
+    public class Category
+    {
+        public const string Default = GroupName + ".Category";
+        public const string Update = Default + ".Update";
+        public const string Create = Default + ".Create";
+        public const string Delete = Default + ".Delete";
     }
 }

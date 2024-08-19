@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<Import Project="..\..\..\..\..\common.props" />
 
@@ -11,6 +11,7 @@
   <ItemGroup>
     <PackageReference Include="Volo.Abp.AutoMapper" />
     <PackageReference Include="Volo.Abp.Ddd.Application" />
+    <ProjectReference Include="..\..\..\..\framework\navigation\LINGYUN.Abp.UI.Navigation\LINGYUN.Abp.UI.Navigation.csproj" />
     <ProjectReference Include="..\Zion.Product.Application.Contracts\Zion.Product.Application.Contracts.csproj" />
     <ProjectReference Include="..\Zion.Product.Domain\Zion.Product.Domain.csproj" />
   </ItemGroup>

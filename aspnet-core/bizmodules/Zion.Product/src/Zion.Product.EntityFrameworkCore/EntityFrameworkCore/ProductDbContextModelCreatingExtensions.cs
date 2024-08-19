@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Zion.Product;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
+using Volo.Abp.EntityFrameworkCore.Modeling;
 
 namespace Zion.Product.EntityFrameworkCore;
 
@@ -29,5 +31,15 @@ public static class ProductDbContextModelCreatingExtensions
             b.HasIndex(q => q.CreationTime);
         });
         */
+
+
+        builder.Entity<Category>(b =>
+        {
+            b.ToTable(ProductDbProperties.DbTablePrefix + "Categories", ProductDbProperties.DbSchema);
+            b.ConfigureByConvention(); 
+            
+
+            /* Configure more properties here */
+        });
     }
 }

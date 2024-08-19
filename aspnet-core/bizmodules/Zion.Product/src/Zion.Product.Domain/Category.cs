@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -58,5 +58,27 @@ public class Category : FullAuditedAggregateRoot<Guid>, IHasDeleteUniqueId
         catalog.Level = Level + 1;
         catalog.ParentId = Id;
         Children.Add(catalog);
+    }
+
+    protected Category()
+    {
+    }
+
+    public Category(
+        Guid id,
+        string name,
+        int level,
+        Guid? parentId,
+        Category? parent,
+        ICollection<Category>? children,
+        Guid dUId
+    ) : base(id)
+    {
+        Name = name;
+        Level = level;
+        ParentId = parentId;
+        Parent = parent;
+        Children = children;
+        DUId = dUId;
     }
 }
