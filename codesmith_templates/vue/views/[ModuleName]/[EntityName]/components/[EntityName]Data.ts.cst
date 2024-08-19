@@ -6,7 +6,7 @@
 //系统组件
 import { BasicColumn } from '/@/components/Table/src/types/table';
 import { useLocalization } from '/@/hooks/abp/useLocalization';
-const { L } = useLocalization(['AppPlatform','<% =ModuleName %>']);
+const { L } = useLocalization(['AppPlatform','System','<% =ModuleName %>']);
 
 // 自有组件
 

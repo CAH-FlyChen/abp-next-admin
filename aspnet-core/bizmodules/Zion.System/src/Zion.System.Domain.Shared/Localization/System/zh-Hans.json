@@ -44,6 +44,7 @@
     "DisplayName:StatusCode": "状态",
     "DisplayName:LogoUrl": "Logo地址",
     "DisplayName:JP": "简拼",
-    "DisplayName:CreationTime": "创建时间"
+    "DisplayName:CreationTime": "创建时间",
+    "AddNewSub": "添加子项"
   }
 }

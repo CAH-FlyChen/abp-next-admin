@@ -29,8 +29,8 @@ public class ZionUIVBenAdminNavigationDefinitionProvider: NavigationDefinitionPr
           new ApplicationMenu(
               name: "Category",
               displayName: "产品分类",
-              url: "/system/category",
-              component: "/system/company/category",
+              url: "/product/category",
+              component: "/product/category/index",
               description: "产品分类信息",
               multiTenancySides: MultiTenancySides.Host));
 

@@ -24,7 +24,7 @@ export function use<%=EntityName%>FormContext({ <%=EntityName.ToLower()%>Model, 
   console.log("module is");
   console.log(<%=EntityName.ToLower()%>Model);
 
-  const { L } = useLocalization(['AppPlatform','System']);
+  const { L } = useLocalization(['AppPlatform','System','<%=ModuleName%>']);
 
   function getBasicFormSchemas(): TabFormSchema[] {
     return [

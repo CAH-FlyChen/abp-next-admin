@@ -19,6 +19,7 @@
     "EditCategory": "EditCategory",
     "CategoryDeletionConfirmationMessage": "Are you sure to delete the category {0}?",
     "SuccessfullyDeleted": "Successfully deleted",
-    "TableFilter": "TableFilter"
+    "TableFilter": "TableFilter",
+    "DisplayName:ParentCategory": "上级类别"
   }
 }

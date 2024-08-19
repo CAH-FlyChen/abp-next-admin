@@ -19,11 +19,11 @@ public class CategoryDto : FullAuditedEntityDto<Guid>
 
     public Guid? ParentId { get; set; }
 
-    /// <summary>
-    /// 上级分类
-    /// </summary>
-    public CategoryDto? Parent { get; set; }
+    ///// <summary>
+    ///// 上级分类
+    ///// </summary>
+    //public CategoryDto? Parent { get; set; }
 
-    public ICollection<CategoryDto>? Children { get; set; }
+    //public ICollection<CategoryDto>? Children { get; set; }
 
 }

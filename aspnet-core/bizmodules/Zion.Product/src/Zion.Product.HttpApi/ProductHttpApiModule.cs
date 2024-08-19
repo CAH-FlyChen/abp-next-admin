@@ -4,6 +4,8 @@ using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Microsoft.Extensions.DependencyInjection;
+using Volo.Abp.Json;
+using System.Text.Json.Serialization;
 
 namespace Zion.Product;
 
@@ -27,6 +29,11 @@ public class ProductHttpApiModule : AbpModule
             options.Resources
                 .Get<ProductResource>()
                 .AddBaseTypes(typeof(AbpUiResource));
+        });
+
+        Configure<Microsoft.AspNetCore.Mvc.JsonOptions>(options =>
+        {
+            options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
         });
     }
 }
