@@ -1,3 +1,4 @@
+using Zion.Product.ProductContext;
 using Zion.Product;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
@@ -36,6 +37,16 @@ public static class ProductDbContextModelCreatingExtensions
         builder.Entity<Category>(b =>
         {
             b.ToTable(ProductDbProperties.DbTablePrefix + "Categories", ProductDbProperties.DbSchema);
+            b.ConfigureByConvention(); 
+            
+
+            /* Configure more properties here */
+        });
+
+
+        builder.Entity<Brand>(b =>
+        {
+            b.ToTable(ProductDbProperties.DbTablePrefix + "Brands", ProductDbProperties.DbSchema, table => table.HasComment("产品品牌"));
             b.ConfigureByConvention(); 
             
 

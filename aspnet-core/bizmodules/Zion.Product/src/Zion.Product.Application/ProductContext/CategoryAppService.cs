@@ -5,7 +5,7 @@ using Zion.Product.Permissions;
 using Zion.Product.Dtos;
 using Volo.Abp.Application.Services;
 
-namespace Zion.Product;
+namespace Zion.Product.ProductContext;
 
 
 public class CategoryAppService : CrudAppService<Category, CategoryDto, Guid, CategoryGetListInput, CategoryCreateDto, CategoryUpdateDto>,

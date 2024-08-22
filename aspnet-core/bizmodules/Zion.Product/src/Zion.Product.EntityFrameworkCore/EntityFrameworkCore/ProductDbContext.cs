@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 using Zion.Product;
+using Zion.Product.ProductContext;
 
 namespace Zion.Product.EntityFrameworkCore;
 
@@ -12,6 +13,10 @@ public class ProductDbContext : AbpDbContext<ProductDbContext>, IProductDbContex
      * public DbSet<Question> Questions { get; set; }
      */
     public DbSet<Category> Categories { get; set; }
+    /// <summary>
+    /// 产品品牌
+    /// </summary>
+    public DbSet<Brand> Brands { get; set; }
 
     public ProductDbContext(DbContextOptions<ProductDbContext> options)
         : base(options)

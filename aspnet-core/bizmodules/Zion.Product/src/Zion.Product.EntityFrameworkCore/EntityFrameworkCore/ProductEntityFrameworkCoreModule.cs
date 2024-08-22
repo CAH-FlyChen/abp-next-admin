@@ -1,3 +1,4 @@
+using Zion.Product.ProductContext;
 using Zion.Product;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
@@ -19,6 +20,7 @@ public class ProductEntityFrameworkCoreModule : AbpModule
                  * options.AddRepository<Question, EfCoreQuestionRepository>();
                  */
             options.AddRepository<Category, CategoryRepository>();
+            options.AddRepository<Brand, BrandRepository>();
         });
     }
 }

@@ -1,7 +1,7 @@
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
-namespace Zion.Product;
+namespace Zion.Product.ProductContext;
 
 public static class CategoryEfCoreQueryableExtensions
 {

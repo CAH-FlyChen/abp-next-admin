@@ -6,7 +6,7 @@
 //系统组件
 import { useLocalization } from '/@/hooks/abp/useLocalization';
 import { FormProps } from '/@/components/Form';
-const { L } = useLocalization(['AppPlatform','<% =ModuleName %>']);
+const { L } = useLocalization(['AppPlatform','System','<% =ModuleName %>']);
 
 // 自有组件
 

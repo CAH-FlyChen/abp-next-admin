@@ -45,6 +45,8 @@
     "DisplayName:LogoUrl": "Logo地址",
     "DisplayName:JP": "简拼",
     "DisplayName:CreationTime": "创建时间",
-    "AddNewSub": "添加子项"
+    "AddNewSub": "添加子项",
+    "DisplayName:InitialChar": "首字母",
+    "DisplayName:ImageUrl": "图片地址"
   }
 }

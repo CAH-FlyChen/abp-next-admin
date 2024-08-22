@@ -20,6 +20,16 @@
     "CategoryDeletionConfirmationMessage": "Are you sure to delete the category {0}?",
     "SuccessfullyDeleted": "Successfully deleted",
     "TableFilter": "TableFilter",
-    "DisplayName:ParentCategory": "上级类别"
+    "DisplayName:ParentCategory": "上级类别",
+    "Permission:Brand": "Brand",
+    "Menu:Brand": "MenuBrand",
+    "Brand": "Brand",
+    "BrandName": "BrandName",
+    "BrandJP": "BrandJP",
+    "BrandInitialChar": "BrandInitialChar",
+    "BrandImgUrl": "BrandImgUrl",
+    "CreateBrand": "CreateBrand",
+    "EditBrand": "EditBrand",
+    "BrandDeletionConfirmationMessage": "Are you sure to delete the brand {0}?"
   }
 }

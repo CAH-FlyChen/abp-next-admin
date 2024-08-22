@@ -5,7 +5,7 @@ using Zion.Product.EntityFrameworkCore;
 using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 
-namespace Zion.Product;
+namespace Zion.Product.ProductContext;
 
 public class CategoryRepository : EfCoreRepository<IProductDbContext, Category, Guid>, ICategoryRepository
 {
