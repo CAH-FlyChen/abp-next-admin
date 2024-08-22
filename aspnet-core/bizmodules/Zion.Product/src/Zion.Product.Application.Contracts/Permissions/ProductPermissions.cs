@@ -27,4 +27,14 @@ public class ProductPermissions
         public const string Create = Default + ".Create";
         public const string Delete = Default + ".Delete";
     }
+    /// <summary>
+    /// 产品单位
+    /// </summary>
+    public class Unit
+    {
+        public const string Default = GroupName + ".Unit";
+        public const string Update = Default + ".Update";
+        public const string Create = Default + ".Create";
+        public const string Delete = Default + ".Delete";
+    }
 }

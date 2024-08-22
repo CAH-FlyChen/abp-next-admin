@@ -21,6 +21,7 @@ public class ProductEntityFrameworkCoreModule : AbpModule
                  */
             options.AddRepository<Category, CategoryRepository>();
             options.AddRepository<Brand, BrandRepository>();
+            options.AddRepository<Unit, UnitRepository>();
         });
     }
 }

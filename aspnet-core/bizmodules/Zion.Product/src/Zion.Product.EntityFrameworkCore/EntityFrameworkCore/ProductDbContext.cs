@@ -17,6 +17,10 @@ public class ProductDbContext : AbpDbContext<ProductDbContext>, IProductDbContex
     /// 产品品牌
     /// </summary>
     public DbSet<Brand> Brands { get; set; }
+    /// <summary>
+    /// 产品单位
+    /// </summary>
+    public DbSet<Unit> Units { get; set; }
 
     public ProductDbContext(DbContextOptions<ProductDbContext> options)
         : base(options)

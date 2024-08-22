@@ -43,6 +43,15 @@ public class ZionUIVBenAdminNavigationDefinitionProvider: NavigationDefinitionPr
               description: "产品品牌信息",
               multiTenancySides: MultiTenancySides.Host));
 
+        root.AddItem(
+          new ApplicationMenu(
+              name: "Unit",
+              displayName: "产品单位",
+              url: "/product/unit",
+              component: "/product/unit/index",
+              description: "产品单位信息",
+              multiTenancySides: MultiTenancySides.Host));
+
         return new NavigationDefinition(root);
     }
 }

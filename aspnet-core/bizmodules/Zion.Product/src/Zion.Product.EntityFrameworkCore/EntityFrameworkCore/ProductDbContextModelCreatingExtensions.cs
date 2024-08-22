@@ -52,5 +52,15 @@ public static class ProductDbContextModelCreatingExtensions
 
             /* Configure more properties here */
         });
+
+
+        builder.Entity<Unit>(b =>
+        {
+            b.ToTable(ProductDbProperties.DbTablePrefix + "Units", ProductDbProperties.DbSchema, table => table.HasComment("产品单位"));
+            b.ConfigureByConvention(); 
+            
+
+            /* Configure more properties here */
+        });
     }
 }

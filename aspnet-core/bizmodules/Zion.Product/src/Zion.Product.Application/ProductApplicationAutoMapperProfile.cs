@@ -19,5 +19,8 @@ public class ProductApplicationAutoMapperProfile : Profile
         CreateMap<Brand, BrandDto>();
         CreateMap<BrandCreateDto, Brand>(MemberList.Source);
         CreateMap<BrandUpdateDto, Brand>(MemberList.Source);
+        CreateMap<Unit, UnitDto>();
+        CreateMap<UnitCreateDto, Unit>(MemberList.Source);
+        CreateMap<UnitUpdateDto, Unit>(MemberList.Source);
     }
 }

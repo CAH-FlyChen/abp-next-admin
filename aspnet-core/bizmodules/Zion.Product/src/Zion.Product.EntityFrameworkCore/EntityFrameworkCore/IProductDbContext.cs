@@ -17,4 +17,8 @@ public interface IProductDbContext : IEfCoreDbContext
     /// 产品品牌
     /// </summary>
     DbSet<Brand> Brands { get; set; }
+    /// <summary>
+    /// 产品单位
+    /// </summary>
+    DbSet<Unit> Units { get; set; }
 }

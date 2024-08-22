@@ -30,6 +30,13 @@
     "BrandImgUrl": "BrandImgUrl",
     "CreateBrand": "CreateBrand",
     "EditBrand": "EditBrand",
-    "BrandDeletionConfirmationMessage": "Are you sure to delete the brand {0}?"
+    "BrandDeletionConfirmationMessage": "Are you sure to delete the brand {0}?",
+    "Permission:Unit": "Unit",
+    "Menu:Unit": "MenuUnit",
+    "Unit": "Unit",
+    "UnitName": "UnitName",
+    "CreateUnit": "CreateUnit",
+    "EditUnit": "EditUnit",
+    "UnitDeletionConfirmationMessage": "Are you sure to delete the unit {0}?"
   }
 }
