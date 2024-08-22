@@ -80,13 +80,13 @@ export function useCategoryFormContext({ categoryModel, formElRef }: UseCategory
     const formEl = unref(formElRef);
     const { items } = await getList({});
     const treeData = listToTree(items, { id: 'id', pid: 'parentId' });
-    const category = unref(categoryModel);
-    debugger;
-    console.log('update parentid to',category)
-
+    //const category = unref(categoryModel);
+    
+    //更新options
     formEl?.updateSchema({
       field: 'parentId',
-      defaultValue: category.parentId,
+      //defaultValue: category.parentId,
+      defaultValue: null,
       componentProps: { treeData },
     });
   }

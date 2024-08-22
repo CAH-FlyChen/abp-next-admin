@@ -8,7 +8,7 @@ using Volo.Abp;
 using Volo.Abp.Domain.Entities.Auditing;
 using Zion.System;
 
-namespace Zion.Product;
+namespace Zion.Product.ProductContext;
 
 public class Category : FullAuditedAggregateRoot<Guid>, IHasDeleteUniqueId
 {

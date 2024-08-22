@@ -56,17 +56,16 @@
   const [registerDrawer, { setDrawerProps, changeOkLoading, closeDrawer }] = useDrawerInner(
     //回调函数
     (dataVal) => {
+      //设置绑定值
       entity.value = dataVal;
       framework.value = props.framework;
       nextTick(() => {
         setDrawerProps({ confirmLoading: false });
-        
+        //后加载选择对象
         fetchCategoryResource();
-        console.log('6666666666666666')
-        console.log(entity.value)
-        entity.value.parentId = null;
-        const formEl = unref(formElRef);
-        formEl?.changeTab(L('DisplayName:Basic'));
+
+        // const formEl = unref(formElRef);
+        // formEl?.changeTab(L('DisplayName:Basic'));
       });
     },
   );
