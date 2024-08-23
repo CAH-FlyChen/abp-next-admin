@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
@@ -15,7 +15,7 @@ public class Product : FullAuditedAggregateRoot<Guid>,IHasCompanyIdFilter, IHasD
     /// 自有唯一编码
     /// </summary>
     [MaxLength(100)]
-    public string Code { get; set; }
+    public string? Code { get; set; }
     /// <summary>
     /// 产品名称
     /// </summary>
@@ -35,6 +35,10 @@ public class Product : FullAuditedAggregateRoot<Guid>,IHasCompanyIdFilter, IHasD
     /// </summary>
     [MaxLength(2000)]
     public string? Description { get; set; }
+    /// <summary>
+    /// 是否为推荐商品
+    /// </summary>
+    public bool IsSuggest { get; set; } = false;
 
     /// <summary>
     /// 公司Id
@@ -44,4 +48,29 @@ public class Product : FullAuditedAggregateRoot<Guid>,IHasCompanyIdFilter, IHasD
     public bool IsValid { get; set; } = true;
 
     public Guid DUId { get; set; } = Guid.Empty;
+
+    protected Product()
+    {
+    }
+
+    public Product(
+        Guid id,
+        string? code,
+        string name,
+        Guid? brandId,
+        Guid? categoryId,
+        string? description,
+        bool isSuggest,
+        bool isValid,
+        Guid companyId) : base(id)
+    {
+        Code = code;
+        Name = name;
+        BrandId = brandId;
+        CategoryId = categoryId;
+        Description = description;
+        IsSuggest = isSuggest;
+        CompanyId = companyId;
+        IsValid = isValid;
+    }
 }

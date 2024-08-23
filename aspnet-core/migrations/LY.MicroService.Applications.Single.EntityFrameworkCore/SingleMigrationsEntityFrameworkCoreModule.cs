@@ -19,10 +19,17 @@ using Volo.Abp.Modularity;
 using Volo.Abp.OpenIddict.EntityFrameworkCore;
 using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
+using Zion.Product.ProductContext.EntityFrameworkCore;
+using Zion.Sales.EntityFrameworkCore;
+using Zion.System.EntityFrameworkCore;
 
 namespace LY.MicroService.Applications.Single.EntityFrameworkCore;
 
 [DependsOn(
+    typeof(SalesEntityFrameworkCoreModule),
+    typeof(ProductEntityFrameworkCoreModule),
+    typeof(SystemEntityFrameworkCoreModule),
+
     typeof(AbpSaasEntityFrameworkCoreModule),
     typeof(AbpAuditLoggingEntityFrameworkCoreModule),
     typeof(AbpSettingManagementEntityFrameworkCoreModule),

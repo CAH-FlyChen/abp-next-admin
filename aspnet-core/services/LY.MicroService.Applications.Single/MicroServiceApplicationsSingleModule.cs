@@ -116,7 +116,9 @@ using Volo.Abp.PermissionManagement.IdentityServer;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Zion.Product;
-using Zion.Product.EntityFrameworkCore;
+using Zion.Product.ProductContext.EntityFrameworkCore;
+using Zion.Sales;
+using Zion.Sales.EntityFrameworkCore;
 using Zion.System;
 using Zion.System.EntityFrameworkCore;
 //using Zion.Product;
@@ -125,6 +127,13 @@ using Zion.System.EntityFrameworkCore;
 namespace LY.MicroService.Applications.Single;
 
 [DependsOn(
+    typeof(SalesHttpApiModule),
+    typeof(SalesApplicationModule),
+    typeof(SalesApplicationContractsModule),
+    typeof(SalesDomainModule),
+    typeof(SalesDomainSharedModule),
+    typeof(SalesEntityFrameworkCoreModule),
+
     typeof(ProductHttpApiModule),
     typeof(ProductApplicationModule),
     typeof(ProductApplicationContractsModule),

@@ -253,7 +253,6 @@
             }
             const target = e ? e.target : null;
             const value = target ? (isCheck ? target.checked : target.value) : e;
-            debugger;
             props.setFormModel(field, value, props.schema);
           },
         };

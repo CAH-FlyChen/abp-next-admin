@@ -1,6 +1,10 @@
 using System;
 using Zion.Product.Dtos;
 using Volo.Abp.Application.Services;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Zion.Product.ProductContext.Dtos;
+using Volo.Abp.Application.Dtos;
 
 namespace Zion.Product;
 
@@ -13,5 +17,6 @@ public interface ICategoryAppService :
         CategoryCreateDto,
         CategoryUpdateDto>
 {
-
+    Task<List<GetCategoryTreeResultItemDto>> GetTreeData();
+    Task<PagedResultDto<CategoryDto>> GetRootListAsync(CategoryGetListInput input);
 }

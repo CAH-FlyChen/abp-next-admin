@@ -37,6 +37,26 @@
     "UnitName": "UnitName",
     "CreateUnit": "CreateUnit",
     "EditUnit": "EditUnit",
-    "UnitDeletionConfirmationMessage": "Are you sure to delete the unit {0}?"
+    "UnitDeletionConfirmationMessage": "Are you sure to delete the unit {0}?",
+    "Permission:Product": "Product",
+    "Menu:Product": "MenuProduct",
+    "Product": "Product",
+    "ProductCode": "ProductCode",
+    "ProductName": "ProductName",
+    "ProductBrandId": "ProductBrandId",
+    "ProductCategoryId": "ProductCategoryId",
+    "ProductDescription": "ProductDescription",
+    "ProductCompanyId": "ProductCompanyId",
+    "ProductIsValid": "ProductIsValid",
+    "ProductDUId": "ProductDUId",
+    "CreateProduct": "CreateProduct",
+    "EditProduct": "EditProduct",
+    "ProductDeletionConfirmationMessage": "Are you sure to delete the product {0}?",
+    "DisplayName:Brand": "品牌",
+    "DisplayName:Unit": "单位",
+    "DisplayName:Category": "分类",
+    "DisplayName:Product": "产品",
+    "DisplayName:IsValid": "有效",
+    "DisplayName:IsSuggest": "推荐"
   }
 }

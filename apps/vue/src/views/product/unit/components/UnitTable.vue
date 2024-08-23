@@ -17,12 +17,6 @@
           <TableAction
             :actions="[
               {
-                auth: 'Product.Unit.Create',
-                label: L('AddNew'),
-                icon: 'ant-design:plus-outlined',
-                onClick: handleAddNew.bind(null, record),
-              },
-              {
                 auth: 'Product.Unit.Update',
                 label: L('Edit'),
                 icon: 'ant-design:edit-outlined',
@@ -65,7 +59,7 @@
   const useFramework = ref('');
   const [registerTable, { reload }] = useTable({
     rowKey: 'code',
-    title: L('DisplayName:Region'),
+    title: L('DisplayName:Unit'),
     columns: getDataColumns(),
     api: getList,
     beforeFetch: (request) => {

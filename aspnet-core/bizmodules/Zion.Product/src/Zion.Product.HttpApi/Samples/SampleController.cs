@@ -8,7 +8,7 @@ namespace Zion.Product.Samples;
 [Area(ProductRemoteServiceConsts.ModuleName)]
 [RemoteService(Name = ProductRemoteServiceConsts.RemoteServiceName)]
 [Route("api/Product/sample")]
-public class SampleController : ProductController, ISampleAppService
+public class SampleController : ProductBaseController, ISampleAppService
 {
     private readonly ISampleAppService _sampleAppService;
 

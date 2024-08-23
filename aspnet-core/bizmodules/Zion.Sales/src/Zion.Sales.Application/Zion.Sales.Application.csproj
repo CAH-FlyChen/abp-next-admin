@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Zion.Sales</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.AutoMapper" />
+    <PackageReference Include="Volo.Abp.Ddd.Application" />
+    <ProjectReference Include="..\..\..\..\framework\navigation\LINGYUN.Abp.UI.Navigation\LINGYUN.Abp.UI.Navigation.csproj" />
+    <ProjectReference Include="..\Zion.Sales.Application.Contracts\Zion.Sales.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Zion.Sales.Domain\Zion.Sales.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

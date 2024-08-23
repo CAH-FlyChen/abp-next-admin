@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Modularity;
 
-namespace Zion.Product.EntityFrameworkCore;
+namespace Zion.Product.ProductContext.EntityFrameworkCore;
 
 [DependsOn(
     typeof(ProductDomainModule),
@@ -22,6 +22,7 @@ public class ProductEntityFrameworkCoreModule : AbpModule
             options.AddRepository<Category, CategoryRepository>();
             options.AddRepository<Brand, BrandRepository>();
             options.AddRepository<Unit, UnitRepository>();
+            options.AddRepository<Product, ProductRepository>();
         });
     }
 }

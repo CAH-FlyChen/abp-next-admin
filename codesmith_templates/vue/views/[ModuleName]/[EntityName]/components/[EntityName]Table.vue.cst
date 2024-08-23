@@ -19,12 +19,12 @@
         <template v-else-if="column.key === 'action'">
           <TableAction
             :actions="[
-              {
-                auth: '<%=ModuleName%>.<%=EntityName%>.Create',
-                label: L('AddNew'),
-                icon: 'ant-design:plus-outlined',
-                onClick: handleAddNew.bind(null, record),
-              },
+              //{
+              //  auth: '<%=ModuleName%>.<%=EntityName%>.Create',
+              //  label: L('AddNew'),
+              //  icon: 'ant-design:plus-outlined',
+              //  onClick: handleAddNew.bind(null, record),
+              //},
               {
                 auth: '<%=ModuleName%>.<%=EntityName%>.Update',
                 label: L('Edit'),
@@ -68,7 +68,7 @@
   const useFramework = ref('');
   const [registerTable, { reload }] = useTable({
     rowKey: 'code',
-    title: L('DisplayName:Region'),
+    title: L('<% = "DisplayName:"+EntityName %>'),
     columns: getDataColumns(),
     api: getList,
     beforeFetch: (request) => {

@@ -79,7 +79,6 @@ export function use<%=EntityName%>FormContext({ <%=EntityName.ToLower()%>Model, 
   function handleFormSubmit() {
     const formEl = unref(formElRef);
     return formEl?.validate().then(() => {
-      debugger;
       const model = unref(<%=EntityName.ToLower()%>Model);
       const input = formEl?.getFieldsValue();
       return model.id

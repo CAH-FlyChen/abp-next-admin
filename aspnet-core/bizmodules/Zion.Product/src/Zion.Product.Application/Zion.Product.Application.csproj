@@ -12,6 +12,7 @@
     <PackageReference Include="Volo.Abp.AutoMapper" />
     <PackageReference Include="Volo.Abp.Ddd.Application" />
     <ProjectReference Include="..\..\..\..\framework\navigation\LINGYUN.Abp.UI.Navigation\LINGYUN.Abp.UI.Navigation.csproj" />
+    <ProjectReference Include="..\..\..\Zion.System\src\Zion.System.Application\Zion.System.Application.csproj" />
     <ProjectReference Include="..\Zion.Product.Application.Contracts\Zion.Product.Application.Contracts.csproj" />
     <ProjectReference Include="..\Zion.Product.Domain\Zion.Product.Domain.csproj" />
   </ItemGroup>

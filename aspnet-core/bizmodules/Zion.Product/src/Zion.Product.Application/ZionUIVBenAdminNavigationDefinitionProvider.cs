@@ -17,7 +17,7 @@ public class ZionUIVBenAdminNavigationDefinitionProvider: NavigationDefinitionPr
     private static NavigationDefinition GetSystem()
     {
         var root = new ApplicationMenu(
-            name: "Product",
+            name: "ProductGroup",
             displayName: "产品管理",
             url: "/product",
             component: "",
@@ -50,6 +50,15 @@ public class ZionUIVBenAdminNavigationDefinitionProvider: NavigationDefinitionPr
               url: "/product/unit",
               component: "/product/unit/index",
               description: "产品单位信息",
+              multiTenancySides: MultiTenancySides.Host));
+
+        root.AddItem(
+          new ApplicationMenu(
+              name: "Product",
+              displayName: "产品信息",
+              url: "/product/product",
+              component: "/product/product/index",
+              description: "产品信息",
               multiTenancySides: MultiTenancySides.Host));
 
         return new NavigationDefinition(root);

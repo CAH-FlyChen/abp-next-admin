@@ -31,6 +31,8 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\bizmodules\Zion.Product\src\Zion.Product.Application\Zion.Product.Application.csproj" />
 		<ProjectReference Include="..\..\bizmodules\Zion.Product\src\Zion.Product.EntityFrameworkCore\Zion.Product.EntityFrameworkCore.csproj" />
+		<ProjectReference Include="..\..\bizmodules\Zion.Sales\src\Zion.Sales.Application\Zion.Sales.Application.csproj" />
+		<ProjectReference Include="..\..\bizmodules\Zion.Sales\src\Zion.Sales.EntityFrameworkCore\Zion.Sales.EntityFrameworkCore.csproj" />
 		<ProjectReference Include="..\..\bizmodules\Zion.System\src\Zion.System.EntityFrameworkCore\Zion.System.EntityFrameworkCore.csproj" />
 		<ProjectReference Include="..\..\modules\platform\LINGYUN.Abp.UI.Navigation.VueVbenAdmin\LINGYUN.Abp.UI.Navigation.VueVbenAdmin.csproj" />
 		<ProjectReference Include="..\LY.MicroService.Applications.Single.EntityFrameworkCore\LY.MicroService.Applications.Single.EntityFrameworkCore.csproj" />

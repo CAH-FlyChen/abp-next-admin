@@ -5,6 +5,7 @@ import {
   CreateCategory,
   UpdateCategory,
   GetCategoryPagedRequest,
+  CategoryTreeItem
 } from './model';
 
 export const create = (input: CreateCategory) => {
@@ -37,5 +38,11 @@ export const getList = (input: GetCategoryPagedRequest) => {
   return defHttp.get<PagedResultDto<Category>>({
     url: '/api/product/category',
     params: input,
+  });
+};
+
+export const getTreeList = () => {
+  return defHttp.get<CategoryTreeItem[]>({
+    url: '/api/product/category/treedata',
   });
 };

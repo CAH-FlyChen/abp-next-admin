@@ -9,7 +9,7 @@ namespace Zion.Product.ProductContext;
 
 [RemoteService(Name = ProductRemoteServiceConsts.RemoteServiceName)]
 [Route("/api/product/brand")]
-public class BrandController : ProductController, IBrandAppService
+public class BrandController : ProductBaseController, IBrandAppService
 {
     private readonly IBrandAppService _service;
 

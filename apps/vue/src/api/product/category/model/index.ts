@@ -23,6 +23,13 @@ export interface UpdateCategory extends CreateOrUpdateCategoryBase {
 }
 
 export interface GetCategoryPagedRequest extends PagedAndSortedResultRequestDto {
-  name: string;
+  name?: string;
+}
+
+export interface CategoryTreeItem{
+  id:string;
+  name:string;
+  parentId:string;
+  children:CategoryTreeItem[]
 }
 

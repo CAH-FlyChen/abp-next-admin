@@ -4,6 +4,10 @@ using System.Threading.Tasks;
 using Zion.Product.Permissions;
 using Zion.Product.Dtos;
 using Volo.Abp.Application.Services;
+using System.Collections.Generic;
+using Zion.System.RegionContext;
+using Zion.Product.ProductContext.Dtos;
+using Volo.Abp.Application.Dtos;
 
 namespace Zion.Product.ProductContext;
 
@@ -34,5 +38,91 @@ public class CategoryAppService : CrudAppService<Category, CategoryDto, Guid, Ca
             .WhereIf(input.Children != null, x => x.Children == input.Children)
             .WhereIf(input.DUId != null, x => x.DUId == input.DUId)
             ;
+    }
+
+    public async Task<PagedResultDto<CategoryDto>> GetRootListAsync(CategoryGetListInput input)
+    {
+        //await CheckGetListPolicyAsync();
+
+
+        var query = await CreateFilteredQueryAsync(input);
+        query.Where(t => t.ParentId == null);
+
+        var totalCount = await AsyncExecuter.CountAsync(query);
+
+
+        query = ApplySorting(query, input);
+        query = ApplyPaging(query, input);
+
+
+        var entities = await AsyncExecuter.ToListAsync(query);
+        var entityDtos = await MapToGetListOutputDtosAsync(entities);
+
+
+        return new PagedResultDto<CategoryDto>(
+            totalCount,
+            entityDtos
+        );
+    }
+
+    public override async Task<PagedResultDto<CategoryDto>> GetListAsync(CategoryGetListInput input)
+    {
+        //await CheckGetListPolicyAsync();
+
+
+        var query = await CreateFilteredQueryAsync(input);
+
+
+        var totalCount = await AsyncExecuter.CountAsync(query);
+
+
+        query = ApplySorting(query, input);
+        query = ApplyPaging(query, input);
+
+
+        var entities = await AsyncExecuter.ToListAsync(query);
+        var entityDtos = await MapToGetListOutputDtosAsync(entities);
+
+
+        return new PagedResultDto<CategoryDto>(
+            totalCount,
+            entityDtos
+        );
+    }
+
+    /// <summary>
+    /// 获取树状数据
+    /// </summary>
+    /// <returns></returns>
+    public async Task<List<GetCategoryTreeResultItemDto>> GetTreeData()
+    {
+        var data = await _repository.GetListAsync();
+
+        return BuildTreeItems(data,null);
+    }
+
+    /// <summary>
+    /// 构建树装结构
+    /// </summary>
+    /// <param name="data"></param>
+    /// <returns></returns>
+    
+
+
+    private List<GetCategoryTreeResultItemDto> BuildTreeItems(List<Category> data, Guid? parentId)
+    {
+        var items = data.Where(t => t.ParentId == parentId).Select(t => new GetCategoryTreeResultItemDto()
+        {
+            Name = t.Name,
+            Id = t.Id,
+            ParentId = t.ParentId
+        }).ToList();
+
+        foreach(var  item in items)
+        {
+            item.Children = BuildTreeItems(data, item.Id);
+        }
+
+        return items;
     }
 }

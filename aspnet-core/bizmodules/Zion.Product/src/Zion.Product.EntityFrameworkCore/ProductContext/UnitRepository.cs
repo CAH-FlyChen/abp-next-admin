@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Zion.Product.EntityFrameworkCore;
 using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
+using Zion.Product.ProductContext.EntityFrameworkCore;
 
 namespace Zion.Product.ProductContext;
 

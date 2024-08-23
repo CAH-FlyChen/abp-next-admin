@@ -22,6 +22,6 @@ export interface UpdateBrand extends CreateOrUpdateBrandBase {
 }
 
 export interface GetBrandPagedRequest extends PagedAndSortedResultRequestDto {
-  name: string;
+  name?: string;
 }
 

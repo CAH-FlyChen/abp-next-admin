@@ -1,10 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
-using Zion.Product;
-using Zion.Product.ProductContext;
 
-namespace Zion.Product.EntityFrameworkCore;
+namespace Zion.Product.ProductContext.EntityFrameworkCore;
 
 [ConnectionStringName(ProductDbProperties.ConnectionStringName)]
 public class ProductDbContext : AbpDbContext<ProductDbContext>, IProductDbContext
@@ -21,6 +19,7 @@ public class ProductDbContext : AbpDbContext<ProductDbContext>, IProductDbContex
     /// 产品单位
     /// </summary>
     public DbSet<Unit> Units { get; set; }
+    public DbSet<Product> Products { get; set; }
 
     public ProductDbContext(DbContextOptions<ProductDbContext> options)
         : base(options)

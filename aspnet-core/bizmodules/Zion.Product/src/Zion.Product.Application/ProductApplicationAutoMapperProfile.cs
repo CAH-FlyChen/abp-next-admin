@@ -1,10 +1,9 @@
 using Zion.Product;
 using Zion.Product.Dtos;
-using Zion.Product.ProductContext;
 using Zion.Product.ProductContext.Dtos;
 using AutoMapper;
 
-namespace Zion.Product;
+namespace Zion.Product.ProductContext;
 
 public class ProductApplicationAutoMapperProfile : Profile
 {
@@ -22,5 +21,8 @@ public class ProductApplicationAutoMapperProfile : Profile
         CreateMap<Unit, UnitDto>();
         CreateMap<UnitCreateDto, Unit>(MemberList.Source);
         CreateMap<UnitUpdateDto, Unit>(MemberList.Source);
+        CreateMap<Product, ProductDto>(MemberList.None);
+        CreateMap<ProductCreateDto, Product>(MemberList.Source);
+        CreateMap<ProductUpdateDto, Product>(MemberList.Source);
     }
 }

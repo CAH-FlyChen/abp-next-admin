@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Zion.Product.Samples;
 
-public class SampleAppService : ProductAppService, ISampleAppService
+public class SampleAppService : ProductModuleAppService, ISampleAppService
 {
     public Task<SampleDto> GetAsync()
     {

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net8.0</TargetFrameworks>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Zion.Sales</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Ddd.Application.Contracts"  />
+    <PackageReference Include="Volo.Abp.Authorization"  />
+    <ProjectReference Include="..\Zion.Sales.Domain.Shared\Zion.Sales.Domain.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

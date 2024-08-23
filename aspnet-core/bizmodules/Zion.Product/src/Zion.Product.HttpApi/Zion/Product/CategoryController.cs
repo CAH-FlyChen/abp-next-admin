@@ -4,12 +4,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Volo.Abp;
 using Volo.Abp.Application.Dtos;
+using System.Collections.Generic;
+using Zion.Product.ProductContext.Dtos;
 
 namespace Zion.Product.Zion.Product;
 
 [RemoteService(Name = ProductRemoteServiceConsts.RemoteServiceName)]
 [Route("/api/product/category")]
-public class CategoryController : ProductController, ICategoryAppService
+public class CategoryController : ProductBaseController, ICategoryAppService
 {
     private readonly ICategoryAppService _service;
 
@@ -51,5 +53,18 @@ public class CategoryController : ProductController, ICategoryAppService
         public virtual Task<PagedResultDto<CategoryDto>> GetListAsync(CategoryGetListInput input)
     {
         return _service.GetListAsync(input);
+    }
+
+    [HttpGet]
+    [Route("TreeData")]
+    public virtual Task<List<GetCategoryTreeResultItemDto>> GetTreeData()
+    {
+        return _service.GetTreeData();
+    }
+    [HttpGet]
+    [Route("root-data")]
+    public Task<PagedResultDto<CategoryDto>> GetRootListAsync(CategoryGetListInput input)
+    {
+        return _service.GetRootListAsync(input);
     }
 }

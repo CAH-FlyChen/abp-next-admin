@@ -22,6 +22,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\bizmodules\Zion.Product\src\Zion.Product.EntityFrameworkCore\Zion.Product.EntityFrameworkCore.csproj" />
+		<ProjectReference Include="..\..\bizmodules\Zion.Sales\src\Zion.Sales.EntityFrameworkCore\Zion.Sales.EntityFrameworkCore.csproj" />
 		<ProjectReference Include="..\..\bizmodules\Zion.System\src\Zion.System.EntityFrameworkCore\Zion.System.EntityFrameworkCore.csproj" />
 		<ProjectReference Include="..\..\framework\auditing\LINGYUN.Abp.AuditLogging.EntityFrameworkCore\LINGYUN.Abp.AuditLogging.EntityFrameworkCore.csproj" />
 		<ProjectReference Include="..\..\framework\wechat\LINGYUN.Abp.WeChat\LINGYUN.Abp.WeChat.csproj" />

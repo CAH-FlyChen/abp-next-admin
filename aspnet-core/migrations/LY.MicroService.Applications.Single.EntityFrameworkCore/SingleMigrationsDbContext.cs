@@ -16,8 +16,9 @@ using Volo.Abp.IdentityServer.EntityFrameworkCore;
 using Volo.Abp.OpenIddict.EntityFrameworkCore;
 using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
-using Zion.Product.EntityFrameworkCore;
 using Zion.System.EntityFrameworkCore;
+using Zion.Product.ProductContext.EntityFrameworkCore;
+using Zion.Sales.EntityFrameworkCore;
 
 namespace LY.MicroService.Applications.Single.EntityFrameworkCore;
 
@@ -52,5 +53,6 @@ public class SingleMigrationsDbContext : AbpDbContext<SingleMigrationsDbContext>
         modelBuilder.ConfigureMessageService();
         modelBuilder.ConfigureSystem();
         modelBuilder.ConfigureProduct();
+        modelBuilder.ConfigureSales();
     }
 }

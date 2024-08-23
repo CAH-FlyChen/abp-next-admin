@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
 using Volo.Abp.EntityFrameworkCore.Modeling;
 
-namespace Zion.Product.EntityFrameworkCore;
+namespace Zion.Product.ProductContext.EntityFrameworkCore;
 
 public static class ProductDbContextModelCreatingExtensions
 {
@@ -57,6 +57,16 @@ public static class ProductDbContextModelCreatingExtensions
         builder.Entity<Unit>(b =>
         {
             b.ToTable(ProductDbProperties.DbTablePrefix + "Units", ProductDbProperties.DbSchema, table => table.HasComment("产品单位"));
+            b.ConfigureByConvention(); 
+            
+
+            /* Configure more properties here */
+        });
+
+
+        builder.Entity<Product>(b =>
+        {
+            b.ToTable(ProductDbProperties.DbTablePrefix + "Products", ProductDbProperties.DbSchema);
             b.ConfigureByConvention(); 
             
 

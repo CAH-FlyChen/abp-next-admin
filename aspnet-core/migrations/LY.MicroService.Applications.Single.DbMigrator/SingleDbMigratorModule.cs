@@ -3,13 +3,17 @@ using LY.MicroService.Applications.Single.EntityFrameworkCore;
 using Volo.Abp.Autofac;
 using Volo.Abp.Modularity;
 using Zion.Product;
-using Zion.Product.EntityFrameworkCore;
+using Zion.Product.ProductContext.EntityFrameworkCore;
+using Zion.Sales;
+using Zion.Sales.EntityFrameworkCore;
 using Zion.System;
 using Zion.System.EntityFrameworkCore;
 
 namespace LY.MicroService.Applications.Single.DbMigrator;
 
 [DependsOn(
+    typeof(SalesApplicationModule),
+    typeof(SalesEntityFrameworkCoreModule),
     typeof(ProductApplicationModule),//menu
     typeof(ProductEntityFrameworkCoreModule),
     typeof(SystemEntityFrameworkCoreModule),

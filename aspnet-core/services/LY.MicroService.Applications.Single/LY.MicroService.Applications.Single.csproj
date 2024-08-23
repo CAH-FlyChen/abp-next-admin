@@ -53,6 +53,9 @@
 		<ProjectReference Include="..\..\bizmodules\Zion.Product\src\Zion.Product.Application\Zion.Product.Application.csproj" />
 		<ProjectReference Include="..\..\bizmodules\Zion.Product\src\Zion.Product.EntityFrameworkCore\Zion.Product.EntityFrameworkCore.csproj" />
 		<ProjectReference Include="..\..\bizmodules\Zion.Product\src\Zion.Product.HttpApi\Zion.Product.HttpApi.csproj" />
+		<ProjectReference Include="..\..\bizmodules\Zion.Sales\src\Zion.Sales.Application\Zion.Sales.Application.csproj" />
+		<ProjectReference Include="..\..\bizmodules\Zion.Sales\src\Zion.Sales.EntityFrameworkCore\Zion.Sales.EntityFrameworkCore.csproj" />
+		<ProjectReference Include="..\..\bizmodules\Zion.Sales\src\Zion.Sales.HttpApi\Zion.Sales.HttpApi.csproj" />
 		
 		<ProjectReference Include="..\..\bizmodules\Zion.System\src\Zion.System.Application\Zion.System.Application.csproj" />
 		<ProjectReference Include="..\..\bizmodules\Zion.System\src\Zion.System.EntityFrameworkCore\Zion.System.EntityFrameworkCore.csproj" />
