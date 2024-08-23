@@ -40,6 +40,14 @@ public class ZionUIVBenAdminNavigationDefinitionProvider: NavigationDefinitionPr
               component: "/system/region/index",
               description: "公司信息",
               multiTenancySides: MultiTenancySides.Host));
+        sys.AddItem(
+          new ApplicationMenu(
+              name: "Ad",
+              displayName: "广告管理",
+              url: "/system/ad",
+              component: "/system/ad/index",
+              description: "广告管理",
+              multiTenancySides: MultiTenancySides.Host));
         return new NavigationDefinition(sys);
     }
 }

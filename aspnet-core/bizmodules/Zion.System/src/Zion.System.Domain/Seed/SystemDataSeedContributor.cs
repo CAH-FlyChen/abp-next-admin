@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LINGYUN.Platform.Datas;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
+using Volo.Abp.Guids;
 using Zion.System.RegionContext;
 
 namespace Zion.System;
@@ -14,10 +16,29 @@ public class SystemDataSeedContributor : IDataSeedContributor, ITransientDepende
     public IAbpLazyServiceProvider LazyServiceProvider { get; set; } = default!;
 
     private IRegionRepository _regionRepository => LazyServiceProvider.LazyGetRequiredService<IRegionRepository>();
+    private IDataDictionaryDataSeeder _dataDictSeeder => LazyServiceProvider.LazyGetRequiredService<IDataDictionaryDataSeeder>();
+    private IGuidGenerator _guidGenerator => LazyServiceProvider.LazyGetRequiredService<IGuidGenerator>();
 
     public async Task SeedAsync(DataSeedContext context)
     {
         await SeedRegion();
+        await SeedAdType();
+    }
+
+    private async Task SeedAdType()
+    {
+        var data = await _dataDictSeeder
+            .SeedAsync(
+                "AdType",
+                "AdType",
+                "广告类型",
+                "用于广告模块中的广告分类",
+                null,
+                null,
+                true);
+
+        data.AddItem(_guidGenerator, "Barnner", "首页Barnner", "Barnner", isStatic: true);
+
     }
 
     private async Task SeedRegion()

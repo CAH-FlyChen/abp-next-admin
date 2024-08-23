@@ -1,3 +1,4 @@
+using Zion.System.AdContext;
 using Zion.System.RegionContext;
 using Zion.System.CompanyContext;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,6 +22,7 @@ public class SystemEntityFrameworkCoreModule : AbpModule
                  */
             options.AddRepository<Company, CompanyRepository>();
             options.AddRepository<Region, RegionRepository>();
+            options.AddRepository<Ad, AdRepository>();
         });
     }
 }

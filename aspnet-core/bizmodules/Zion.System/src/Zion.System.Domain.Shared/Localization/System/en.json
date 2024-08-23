@@ -31,6 +31,19 @@
     "RegionRegionTypeCode": "RegionRegionTypeCode",
     "CreateRegion": "CreateRegion",
     "EditRegion": "EditRegion",
-    "RegionDeletionConfirmationMessage": "Are you sure to delete the region {0}?"
+    "RegionDeletionConfirmationMessage": "Are you sure to delete the region {0}?",
+    "Permission:Ad": "Ad",
+    "Menu:Ad": "MenuAd",
+    "Ad": "Ad",
+    "AdName": "AdName",
+    "AdImageUrl": "AdImageUrl",
+    "AdSortOrder": "AdSortOrder",
+    "AdTypeCode": "AdTypeCode",
+    "AdTargetUrl": "AdTargetUrl",
+    "AdExpDateTime": "AdExpDateTime",
+    "AdDescription": "AdDescription",
+    "CreateAd": "CreateAd",
+    "EditAd": "EditAd",
+    "AdDeletionConfirmationMessage": "Are you sure to delete the ad {0}?"
   }
 }

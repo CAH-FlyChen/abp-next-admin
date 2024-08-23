@@ -12,6 +12,7 @@
     <PackageReference Include="Newtonsoft.Json" />
     <PackageReference Include="Volo.Abp.Ddd.Domain" />
 	<PackageReference Include="NPinyin.Core" />
+	<ProjectReference Include="..\..\..\..\modules\platform\LINGYUN.Platform.Domain\LINGYUN.Platform.Domain.csproj" />
     <ProjectReference Include="..\Zion.System.Domain.Shared\Zion.System.Domain.Shared.csproj" />
 	  <PackageReference Include="Volo.Abp.Identity.Domain" />
   </ItemGroup>

@@ -27,4 +27,14 @@ public class SystemPermissions
         public const string Create = Default + ".Create";
         public const string Delete = Default + ".Delete";
     }
+    /// <summary>
+    /// 广告
+    /// </summary>
+    public class Ad
+    {
+        public const string Default = GroupName + ".Ad";
+        public const string Update = Default + ".Update";
+        public const string Create = Default + ".Create";
+        public const string Delete = Default + ".Delete";
+    }
 }

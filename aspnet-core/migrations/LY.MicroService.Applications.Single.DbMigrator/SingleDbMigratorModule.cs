@@ -14,9 +14,13 @@ namespace LY.MicroService.Applications.Single.DbMigrator;
 [DependsOn(
     typeof(SalesApplicationModule),
     typeof(SalesEntityFrameworkCoreModule),
+
     typeof(ProductApplicationModule),//menu
     typeof(ProductEntityFrameworkCoreModule),
+
+    typeof(SystemApplicationModule),
     typeof(SystemEntityFrameworkCoreModule),
+
     typeof(AbpUINavigationVueVbenAdminModule),
     typeof(SingleMigrationsEntityFrameworkCoreModule),
     typeof(AbpAutofacModule)

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -30,7 +30,8 @@ public class Ad : FullAuditedAggregateRoot<Guid>
     /// 广告类型
     /// </summary>
     [Required]
-    public ADType TypeCode { get; set; }
+    [MaxLength(20)]
+    public string TypeCode { get; set; }
     /// <summary>
     /// 跳转地址
     /// </summary>
@@ -46,4 +47,28 @@ public class Ad : FullAuditedAggregateRoot<Guid>
     /// </summary>
     [MaxLength(2000)]
     public string Description { get; set; }
+
+    protected Ad()
+    {
+    }
+
+    public Ad(
+        Guid id,
+        string name,
+        string imageUrl,
+        int sortOrder,
+        string typeCode,
+        string targetUrl,
+        DateTime? expDateTime,
+        string description
+    ) : base(id)
+    {
+        Name = name;
+        ImageUrl = imageUrl;
+        SortOrder = sortOrder;
+        TypeCode = typeCode;
+        TargetUrl = targetUrl;
+        ExpDateTime = expDateTime;
+        Description = description;
+    }
 }

@@ -3,6 +3,7 @@ using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 using Zion.System.CompanyContext;
 using Zion.System.RegionContext;
+using Zion.System.AdContext;
 
 namespace Zion.System.EntityFrameworkCore;
 
@@ -17,4 +18,8 @@ public interface ISystemDbContext : IEfCoreDbContext
     /// 行政区域
     /// </summary>
     DbSet<Region> Regions { get; set; }
+    /// <summary>
+    /// 广告
+    /// </summary>
+    DbSet<Ad> Ads { get; set; }
 }

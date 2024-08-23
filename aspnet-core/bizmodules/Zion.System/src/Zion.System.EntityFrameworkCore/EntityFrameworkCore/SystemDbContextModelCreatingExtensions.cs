@@ -1,3 +1,4 @@
+using Zion.System.AdContext;
 using Zion.System.RegionContext;
 using Zion.System.CompanyContext;
 using Microsoft.EntityFrameworkCore;
@@ -62,6 +63,16 @@ public static class SystemDbContextModelCreatingExtensions
             {
                 e.Code,
             });
+
+            /* Configure more properties here */
+        });
+
+
+        builder.Entity<Ad>(b =>
+        {
+            b.ToTable(SystemDbProperties.DbTablePrefix + "Ads", SystemDbProperties.DbSchema, table => table.HasComment("广告"));
+            b.ConfigureByConvention(); 
+            
 
             /* Configure more properties here */
         });

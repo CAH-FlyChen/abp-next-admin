@@ -32,7 +32,6 @@
     "CreateRegion": "CreateRegion",
     "EditRegion": "EditRegion",
     "RegionDeletionConfirmationMessage": "Are you sure to delete the region {0}?",
-
     "DisplayName:RegionType": "区域类型",
     "DisplayName:ParentRegion": "上级区域",
     "DisplayName:Region": "区域",
@@ -47,6 +46,19 @@
     "DisplayName:CreationTime": "创建时间",
     "AddNewSub": "添加子项",
     "DisplayName:InitialChar": "首字母",
-    "DisplayName:ImageUrl": "图片地址"
+    "DisplayName:ImageUrl": "图片地址",
+    "Permission:Ad": "Ad",
+    "Menu:Ad": "MenuAd",
+    "Ad": "Ad",
+    "AdName": "AdName",
+    "AdImageUrl": "AdImageUrl",
+    "AdSortOrder": "AdSortOrder",
+    "AdTypeCode": "AdTypeCode",
+    "AdTargetUrl": "AdTargetUrl",
+    "AdExpDateTime": "AdExpDateTime",
+    "AdDescription": "AdDescription",
+    "CreateAd": "CreateAd",
+    "EditAd": "EditAd",
+    "AdDeletionConfirmationMessage": "Are you sure to delete the ad {0}?"
   }
 }
