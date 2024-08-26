@@ -31,7 +31,7 @@ export function getDataColumns(): BasicColumn[] {
       resizable: true,
     },
     {
-      title: L('DisplayName:TypeCode'),
+      title: L('DisplayName:AdTypeCode'),
       dataIndex: 'typeCode',
       align: 'left',
       width: 150,

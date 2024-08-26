@@ -62,7 +62,7 @@ export function useAdFormContext({ adModel, formElRef }: UseAdFormContext) {
         tab: L('DisplayName:Basic'),
         field: 'typeCode',
         component: 'Input',
-        label: L('DisplayName:TypeCode'),
+        label: L('DisplayName:AdTypeCode'),
         colProps: { span: 24 },
         required: true,
       },
