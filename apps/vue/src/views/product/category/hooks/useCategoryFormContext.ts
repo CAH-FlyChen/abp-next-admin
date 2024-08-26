@@ -104,7 +104,6 @@ export function useCategoryFormContext({ categoryModel, formElRef }: UseCategory
   function handleFormSubmit() {
     const formEl = unref(formElRef);
     return formEl?.validate().then(() => {
-      debugger;
       const model = unref(categoryModel);
       const input = formEl?.getFieldsValue();
       return model.id

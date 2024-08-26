@@ -6,7 +6,7 @@ import { FormProps } from '/@/components/Form';
 const { L } = useLocalization(['AppPlatform','System','System']);
 
 // 自有组件
-
+import { getByName } from '/@/api/platform/datas';
 
 // 搜索用到的模型
 export function getSearchFormSchemas(): Partial<FormProps> {
@@ -18,6 +18,21 @@ export function getSearchFormSchemas(): Partial<FormProps> {
         component: 'Input',
         label: L('DisplayName:Name'),
         colProps: { span: 8 },
+      },
+      {
+        field: 'typeCode',
+        component: 'ApiSelect',
+        label: L('DisplayName:AdTypeCode'),
+        colProps: { span: 8 },
+        componentProps: {
+          showSearch: true, // 开启搜索
+          api: ()=>getByName('AdType'),
+          resultField:'items',
+          immediate:true,
+          labelField: 'displayName',
+          valueField: 'defaultValue',
+          optionFilterProp:'name', // 搜索按name字段搜索
+        }
       },
       /*
       {

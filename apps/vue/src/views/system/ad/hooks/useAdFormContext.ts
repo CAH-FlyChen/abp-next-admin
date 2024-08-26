@@ -7,9 +7,10 @@ import { unref, computed, watch, createVNode } from 'vue';
 import { useLocalization } from '/@/hooks/abp/useLocalization';
 import { cloneDeep } from 'lodash-es';
 import { listToTree } from '/@/utils/helper/treeHelper';
-//import moment from 'moment'
+import dayjs from 'dayjs';
 //自有模块
 import { getList, create, update } from '/@/api/system/ad';
+import { getByName } from '/@/api/platform/datas';
 import { Ad, UpdateAd, CreateAd } from '/@/api/system/ad/model';
 
 interface UseAdFormContext {
@@ -54,6 +55,14 @@ export function useAdFormContext({ adModel, formElRef }: UseAdFormContext) {
         tab: L('DisplayName:Basic'),
         field: 'sortOrder',
         component: 'Input',
+        defaultValue:'',
+        componentProps: ({ formModel }) => {
+          return {
+            oninput: (e) => {
+              formModel.sortOrder = formModel.sortOrder.replace(/\D*/g, '');
+            },
+          };
+        },
         label: L('DisplayName:SortOrder'),
         colProps: { span: 24 },
         required: true,
@@ -61,7 +70,16 @@ export function useAdFormContext({ adModel, formElRef }: UseAdFormContext) {
       {
         tab: L('DisplayName:Basic'),
         field: 'typeCode',
-        component: 'Input',
+        component: 'ApiSelect',
+        componentProps: {
+          showSearch: true, // 开启搜索
+          api: ()=>getByName('AdType'),
+          resultField:'items',
+          immediate:true,
+          labelField: 'displayName',
+          valueField: 'defaultValue',
+          optionFilterProp:'name', // 搜索按name字段搜索
+        },
         label: L('DisplayName:AdTypeCode'),
         colProps: { span: 24 },
         required: true,
@@ -78,9 +96,11 @@ export function useAdFormContext({ adModel, formElRef }: UseAdFormContext) {
         tab: L('DisplayName:Basic'),
         field: 'expDateTime',
         component: 'DatePicker',
-        // componentProps:{
-        //   showTime:{ defaultValue: moment('23:59:59', 'HH:mm:ss') }
-        // },
+        componentProps:{
+          showTime:{
+            defaultValue: dayjs('23:59:59', 'HH:mm:ss') 
+          }
+        },
         label: L('DisplayName:ExpDateTime'),
         colProps: { span: 24 },
         required: true,

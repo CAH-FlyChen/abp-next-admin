@@ -106,7 +106,7 @@ export function useBrandFormContext({ brandModel, formElRef }: UseBrandFormConte
   function handleFormSubmit() {
     const formEl = unref(formElRef);
     return formEl?.validate().then(() => {
-      debugger;
+  
       const model = unref(brandModel);
       const input = formEl?.getFieldsValue();
       return model.id

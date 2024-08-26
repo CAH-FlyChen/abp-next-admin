@@ -76,7 +76,6 @@ export function useUnitFormContext({ unitModel, formElRef }: UseUnitFormContext)
   function handleFormSubmit() {
     const formEl = unref(formElRef);
     return formEl?.validate().then(() => {
-      debugger;
       const model = unref(unitModel);
       const input = formEl?.getFieldsValue();
       return model.id

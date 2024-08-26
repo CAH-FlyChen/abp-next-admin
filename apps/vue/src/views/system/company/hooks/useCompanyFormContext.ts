@@ -127,7 +127,6 @@ export function useCompanyFormContext({ companyModel, formElRef }: UseCompanyFor
   function handleFormSubmit() {
     const formEl = unref(formElRef);
     return formEl?.validate().then(() => {
-      debugger;
       const model = unref(companyModel);
       const input = formEl?.getFieldsValue();
       return model.id

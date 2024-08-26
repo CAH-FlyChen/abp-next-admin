@@ -18,7 +18,7 @@
           </a-tag>
         </template>
         <template v-if="column.key === 'isSuggest'">
-          <LikeOutlined v-if="record.isSuggest" style="color:green"/>
+          <LikeOutlined v-if="record.isSuggest" style="color:green" />
           <!-- <a-tag
             :color="record.isSuggest? 'green' : 'transparent'"
           >
