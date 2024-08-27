@@ -67,10 +67,20 @@ public static class ProductDbContextModelCreatingExtensions
         builder.Entity<Product>(b =>
         {
             b.ToTable(ProductDbProperties.DbTablePrefix + "Products", ProductDbProperties.DbSchema);
-            b.ConfigureByConvention(); 
-            
+            b.ConfigureByConvention();
+            b.OwnsMany(t => t.Skus);
 
             /* Configure more properties here */
+        });
+
+        builder.Entity<ProductSku>(b =>
+        {
+            b.ToTable(ProductDbProperties.DbTablePrefix + "ProductSkus", ProductDbProperties.DbSchema);
+        });
+
+        builder.Entity<ProductSkuType>(b =>
+        {
+            b.ToTable(ProductDbProperties.DbTablePrefix + "ProductSkuTypes", ProductDbProperties.DbSchema);
         });
     }
 }

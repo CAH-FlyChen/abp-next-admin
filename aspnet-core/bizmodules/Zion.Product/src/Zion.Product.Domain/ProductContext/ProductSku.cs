@@ -10,17 +10,17 @@ namespace Zion.Product.ProductContext;
 public class ProductSku : Entity<Guid>
 {
     public Guid ProductId { get; set; }
-    /// <summary>
-    /// sku类型
-    /// </summary>
-    public Guid TypeId { get; set; }
+
     /// <summary>
     /// sku名称
     /// </summary>
     [MaxLength(100)]
     public string Name { get; set; }
 
-    public virtual ProductSkuType Type { get; set; }
+    /// <summary>
+    /// 产品设定的规格键值对
+    /// </summary>
+    public ProductSkuSpecValue ProductSkuSpec { get; set; }
 
     public virtual Product Product { get; set; }
 }
