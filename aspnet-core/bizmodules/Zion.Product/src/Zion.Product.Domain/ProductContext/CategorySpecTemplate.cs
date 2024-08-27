@@ -1,19 +1,34 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Volo.Abp.Domain.Values;
 
 namespace Zion.Product.ProductContext;
 
-public class CategorySpecTemplate : SpecificationTemplate
+public class CategorySpecTemplate : ValueObject
 {
-    public Guid? CategoryId { get; set; }
-    public virtual Category Category { get; set; }
+    [Key]
+    public Guid Id { get; set;}
 
-    protected override IEnumerable<object> GetAtomicValuesImp()
+    public Guid? CategoryId { get; set; }
+
+    public List<SpecificationGroup> SpecGroups { get; set; }
+
+    protected override IEnumerable<object> GetAtomicValues()
     {
-        yield return CategoryId!;
-        yield return SpecGroups;
+        yield return CategoryId;
+        foreach (var spec in SpecGroups)
+        {
+            yield return spec.Title;
+            foreach (var item in spec.Specifications)
+            {
+                yield return item.Title;
+                yield return item.Options;
+            }
+        }
     }
 }

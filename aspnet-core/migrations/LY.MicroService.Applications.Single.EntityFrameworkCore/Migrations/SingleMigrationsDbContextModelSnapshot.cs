@@ -5839,7 +5839,7 @@ namespace LY.MicroService.Applications.Single.EntityFrameworkCore.Migrations
 
             modelBuilder.Entity("Zion.System.CompanyContext.Company", b =>
                 {
-                    b.OwnsOne("Zion.System.CompanyContext.CompanyLocation", "CompanyLocation", b1 =>
+                    b.OwnsOne("Zion.System.CompanyContext.Company.CompanyLocation#Zion.System.CompanyContext.CompanyLocation", "CompanyLocation", b1 =>
                         {
                             b1.Property<Guid>("CompanyId")
                                 .HasColumnType("char(36)");
@@ -5872,7 +5872,7 @@ namespace LY.MicroService.Applications.Single.EntityFrameworkCore.Migrations
 
                             b1.HasKey("CompanyId");
 
-                            b1.ToTable("App_System_Companies");
+                            b1.ToTable("App_System_Companies", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("CompanyId");

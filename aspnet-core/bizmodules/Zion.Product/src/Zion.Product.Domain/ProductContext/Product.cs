@@ -58,7 +58,7 @@ public class Product : FullAuditedAggregateRoot<Guid>,IHasCompanyIdFilter, IHasD
     /// </summary>
     public virtual ICollection<ProductSpecTemplate> SpecTemplates { get; set; }
 
-    public virtual ProductSku SKU { get; set; }
+    //public virtual ProductSku SKU { get; set; }
 
     protected Product()
     {

@@ -33,7 +33,7 @@ public class Category : FullAuditedAggregateRoot<Guid>, IHasDeleteUniqueId
     /// </summary>
     public virtual Category? Parent { get; set; }
     public virtual ICollection<Category>? Children { get; set; }
-    public virtual ICollection<CategorySpecTemplate> CategorySpecTemplates { get; set; }
+    public virtual ICollection<CategorySpecTemplate> SpecTemplates { get; set; }
 
     public Guid DUId { get; set; } = Guid.Empty;
 

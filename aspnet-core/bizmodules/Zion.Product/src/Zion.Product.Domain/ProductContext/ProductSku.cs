@@ -20,7 +20,7 @@ public class ProductSku : Entity<Guid>
     /// <summary>
     /// 产品设定的规格键值对
     /// </summary>
-    public ProductSkuSpecValue ProductSkuSpec { get; set; }
+    //public ProductSkuSpecValue ProductSkuSpec { get; set; }
 
     public virtual Product Product { get; set; }
 }

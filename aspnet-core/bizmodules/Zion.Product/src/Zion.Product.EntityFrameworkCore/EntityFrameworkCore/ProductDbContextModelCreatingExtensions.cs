@@ -37,8 +37,33 @@ public static class ProductDbContextModelCreatingExtensions
         builder.Entity<Category>(b =>
         {
             b.ToTable(ProductDbProperties.DbTablePrefix + "Categories", ProductDbProperties.DbSchema);
-            b.ConfigureByConvention(); 
-            
+            b.ConfigureByConvention();
+
+            //b.OwnsMany(t => t.CategorySpecTemplates, a =>
+            //{
+            //    a.OwnsOne(t => t.Category);
+
+            //    a.OwnsMany(t => t.SpecGroups, b =>
+            //    {
+            //        b.OwnsOne(t => t.SpecificationTemplate);
+            //        b.OwnsMany(t => t.Specifications, c =>
+            //        {
+            //            c.WithOwner().HasForeignKey(t => t.SpecificationGroupId);
+            //        });
+            //    });
+            //});
+
+            b.OwnsMany(t => t.SpecTemplates, a =>
+            {
+                a.WithOwner().HasForeignKey(t => t.CategoryId);
+                a.OwnsMany(t => t.SpecGroups, b => {
+                    b.WithOwner().HasForeignKey(t=>t.CategorySpecTemplateId);
+                    b.OwnsMany(t => t.Specifications, c =>
+                    {
+                        c.WithOwner().HasForeignKey(t=>t.SpecificationGroupId);
+                    });
+                });
+            });
 
             /* Configure more properties here */
         });
@@ -68,19 +93,25 @@ public static class ProductDbContextModelCreatingExtensions
         {
             b.ToTable(ProductDbProperties.DbTablePrefix + "Products", ProductDbProperties.DbSchema);
             b.ConfigureByConvention();
-            b.OwnsMany(t => t.Skus);
 
+            b.OwnsMany(t => t.SpecTemplates, a =>
+            {
+                a.WithOwner().HasForeignKey(t => t.ProductId);
+                a.OwnsMany(t => t.SpecGroups, b => {
+                    b.WithOwner().HasForeignKey(t => t.CategorySpecTemplateId);
+                    b.OwnsMany(t => t.Specifications, c =>
+                    {
+                        c.WithOwner().HasForeignKey(t => t.SpecificationGroupId);
+                    });
+                });
+            });
             /* Configure more properties here */
         });
 
-        builder.Entity<ProductSku>(b =>
-        {
-            b.ToTable(ProductDbProperties.DbTablePrefix + "ProductSkus", ProductDbProperties.DbSchema);
-        });
+        //builder.Entity<ProductSku>(b =>
+        //{
+        //    b.ToTable(ProductDbProperties.DbTablePrefix + "ProductSkus", ProductDbProperties.DbSchema);
+        //});
 
-        builder.Entity<ProductSkuType>(b =>
-        {
-            b.ToTable(ProductDbProperties.DbTablePrefix + "ProductSkuTypes", ProductDbProperties.DbSchema);
-        });
     }
 }
