@@ -36,6 +36,10 @@ public class ProductUpdateDto
     [DisplayName("ProductDescription")]
     public string? Description { get; set; }
     /// <summary>
+    /// 产品主图
+    /// </summary>
+    public string? ImageUrl { get; set; }
+    /// <summary>
     /// 是否推荐
     /// </summary>
     public bool IsSuggest { get; set; }
@@ -45,4 +49,5 @@ public class ProductUpdateDto
 
     [DisplayName("ProductDUId")]
     public Guid DUId { get; set; }
+
 }

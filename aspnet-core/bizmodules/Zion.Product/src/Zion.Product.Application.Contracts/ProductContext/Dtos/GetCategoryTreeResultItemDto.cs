@@ -11,4 +11,6 @@ public class GetCategoryTreeResultItemDto
     public Guid Id { get; set; }
     public Guid? ParentId { get; set; }
     public List<GetCategoryTreeResultItemDto> Children { get; set; }
+    public List<ProductSimpleDto> Products { get; set; }
+    public string? ImageUrl { get; set; }
 }

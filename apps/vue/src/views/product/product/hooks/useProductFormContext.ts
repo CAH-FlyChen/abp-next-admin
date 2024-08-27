@@ -103,6 +103,14 @@ export function useProductFormContext({ productModel, formElRef }: UseProductFor
       },
       {
         tab: L('DisplayName:Basic'),
+        field: 'imageUrl',
+        component: 'Input',
+        label: L('DisplayName:ImageUrl'),
+        colProps: { span: 24 },
+        required: false,
+      },
+      {
+        tab: L('DisplayName:Basic'),
         field: 'isSuggest',
         component: 'Checkbox',
         defaultValue: false,

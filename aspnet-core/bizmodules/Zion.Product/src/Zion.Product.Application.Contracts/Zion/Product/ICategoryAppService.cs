@@ -17,6 +17,6 @@ public interface ICategoryAppService :
         CategoryCreateDto,
         CategoryUpdateDto>
 {
-    Task<List<GetCategoryTreeResultItemDto>> GetTreeData();
+    Task<List<GetCategoryTreeResultItemDto>> GetTreeData(Guid? id, bool isResultIncludeProduct = false);
     Task<PagedResultDto<CategoryDto>> GetRootListAsync(CategoryGetListInput input);
 }

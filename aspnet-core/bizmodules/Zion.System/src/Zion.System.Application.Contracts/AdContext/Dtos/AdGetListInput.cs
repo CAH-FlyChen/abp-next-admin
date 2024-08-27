@@ -48,4 +48,6 @@ public class AdGetListInput : PagedAndSortedResultRequestDto
     /// </summary>
     [DisplayName("AdDescription")]
     public string? Description { get; set; }
+
+    public bool? AllowExpData { get; set; }
 }

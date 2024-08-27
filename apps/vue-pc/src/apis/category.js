@@ -2,12 +2,14 @@ import request from '@/utils/http'
 
 
 export function getCategoryAPI (id) {
+
   return request({
-    url: '/api/product/category',
+    url: '/api/product/category/treedata',
     params: {
       id
     }
   })
+  
 }
 
 /**

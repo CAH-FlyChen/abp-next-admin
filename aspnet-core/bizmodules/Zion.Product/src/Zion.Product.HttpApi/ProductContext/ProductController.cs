@@ -53,6 +53,16 @@ public class ProductController : ProductBaseController, IProductAppService
     {
         return _service.GetListAsync(input);
     }
-
-
+    [HttpGet]
+    [Route("new")]
+    public Task<PagedResultDto<ProductDto>> GetNewListAsync(ProductGetListInput input)
+    {
+        return _service.GetNewListAsync(input);
+    }
+    [HttpGet]
+    [Route("hot")]
+    public Task<PagedResultDto<ProductDto>> GetHotListAsync(ProductGetListInput input)
+    {
+        return _service.GetHotListAsync(input);
+    }
 }

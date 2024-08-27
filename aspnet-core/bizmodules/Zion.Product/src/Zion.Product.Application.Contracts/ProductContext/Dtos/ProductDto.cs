@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Volo.Abp.Application.Dtos;
 
 namespace Zion.Product.ProductContext.Dtos;
@@ -31,6 +32,10 @@ public class ProductDto : FullAuditedEntityDto<Guid>
     /// </summary>
     public string? Description { get; set; }
     /// <summary>
+    /// 产品主图
+    /// </summary>
+    public string? ImageUrl { get; set; }
+    /// <summary>
     /// 是否推荐
     /// </summary>
     public bool IsSuggest { get; set; }
@@ -44,4 +49,34 @@ public class ProductDto : FullAuditedEntityDto<Guid>
 
     public BrandSimpleDto? Brand { get; set; }
     public CategorySimpleDto? Category { get; set; }
+    /// <summary>
+    /// 所在分类的路径数组
+    /// </summary>
+    public List<CategorySimpleDto>? CategoryList { get; set; }
+}
+
+
+[Serializable]
+public class ProductSimpleDto
+{
+    public Guid Id { get; set; }
+    /// <summary>
+    /// 自有唯一编码
+    /// </summary>
+    public string? Code { get; set; }
+
+    /// <summary>
+    /// 产品名称
+    /// </summary>
+    public string Name { get; set; }
+
+    /// <summary>
+    /// 描述
+    /// </summary>
+    public string? Description { get; set; }
+    /// <summary>
+    /// 产品主图
+    /// </summary>
+    public string? ImageUrl { get; set; }
+    public Guid? CategoryId { get; set; }
 }

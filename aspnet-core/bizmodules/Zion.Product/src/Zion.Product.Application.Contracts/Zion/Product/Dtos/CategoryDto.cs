@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using Volo.Abp.Application.Dtos;
 
 namespace Zion.Product.Dtos;
@@ -11,7 +12,8 @@ public class CategoryDto : FullAuditedEntityDto<Guid>
     /// 名称
     /// </summary>
     public string Name { get; set; }
-
+    [MaxLength(4000)]
+    public string? ImageUrl { get; set; }
     /// <summary>
     /// 等级
     /// </summary>

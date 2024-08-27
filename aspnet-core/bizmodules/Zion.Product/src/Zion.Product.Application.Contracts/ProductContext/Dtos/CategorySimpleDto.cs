@@ -10,3 +10,8 @@ public class CategorySimpleDto
     public Guid Id { get; set; }
     public string Name { get; set; }
 }
+
+public class CategoryListDto
+{
+    public List<CategorySimpleDto> Categories { get; set; }
+}

@@ -5002,6 +5002,10 @@ namespace LY.MicroService.Applications.Single.EntityFrameworkCore.Migrations
                         .HasColumnType("longtext")
                         .HasColumnName("ExtraProperties");
 
+                    b.Property<string>("ImageUrl")
+                        .HasMaxLength(4000)
+                        .HasColumnType("varchar(4000)");
+
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("tinyint(1)")
@@ -5087,6 +5091,10 @@ namespace LY.MicroService.Applications.Single.EntityFrameworkCore.Migrations
                         .IsRequired()
                         .HasColumnType("longtext")
                         .HasColumnName("ExtraProperties");
+
+                    b.Property<string>("ImageUrl")
+                        .HasMaxLength(4000)
+                        .HasColumnType("varchar(4000)");
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()

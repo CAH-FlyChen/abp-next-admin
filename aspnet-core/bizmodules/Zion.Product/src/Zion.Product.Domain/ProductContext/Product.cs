@@ -48,6 +48,13 @@ public class Product : FullAuditedAggregateRoot<Guid>,IHasCompanyIdFilter, IHasD
     public bool IsValid { get; set; } = true;
 
     public Guid DUId { get; set; } = Guid.Empty;
+    /// <summary>
+    /// 产品主图
+    /// </summary>
+    [MaxLength(4000)]
+    public string? ImageUrl { get; set; }
+
+    public virtual List<ProductSku> Skus { get; set; }
 
     protected Product()
     {
@@ -60,6 +67,7 @@ public class Product : FullAuditedAggregateRoot<Guid>,IHasCompanyIdFilter, IHasD
         Guid? brandId,
         Guid? categoryId,
         string? description,
+        string? imageUrl,
         bool isSuggest,
         bool isValid,
         Guid companyId) : base(id)
@@ -69,6 +77,7 @@ public class Product : FullAuditedAggregateRoot<Guid>,IHasCompanyIdFilter, IHasD
         BrandId = brandId;
         CategoryId = categoryId;
         Description = description;
+        ImageUrl = imageUrl;
         IsSuggest = isSuggest;
         CompanyId = companyId;
         IsValid = isValid;

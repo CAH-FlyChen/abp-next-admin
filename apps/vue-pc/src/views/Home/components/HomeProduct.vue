@@ -14,17 +14,17 @@ onMounted(() => getGoods())
 
 <template>
   <div class="home-product">
-    <HomePanel :title="cate.name" v-for="cate in goodsProduct" :key="cate.id">
+    <HomePanel :title="cate.name" v-for="cate in goodsProduct" :key="cate.id" class="pannel">
       <div class="box">
         <RouterLink class="cover" to="/">
-          <img v-img-lazy="cate.picture" />
-          <strong class="label">
+          <img v-img-lazy="cate.imageUrl" />
+          <!-- <strong class="label">
             <span>{{ cate.name }}馆</span>
             <span>{{ cate.saleInfo }}</span>
-          </strong>
+          </strong> -->
         </RouterLink>
         <ul class="goods-list">
-          <li v-for="goods in cate.goods" :key="goods.id">
+          <li v-for="goods in cate.products" :key="goods.id">
             <GoodsItem :goods="goods" />
           </li>
         </ul>
@@ -35,7 +35,6 @@ onMounted(() => getGoods())
 
 <style scoped lang='scss'>
 .home-product {
-  background: #fff;
   margin-top: 20px;
 
   .sub {
@@ -56,7 +55,9 @@ onMounted(() => getGoods())
       }
     }
   }
-
+  .pannel{
+    margin-bottom: 20px;
+  }
   .box {
     display: flex;
 

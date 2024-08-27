@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Zion.Product.Dtos;
 
@@ -21,6 +22,9 @@ public class CategoryCreateDto
 
     [DisplayName("CategoryParentId")]
     public Guid? ParentId { get; set; }
+
+    [MaxLength(4000)]
+    public string? ImageUrl { get; set; }
 
 
     [DisplayName("CategoryChildren")]

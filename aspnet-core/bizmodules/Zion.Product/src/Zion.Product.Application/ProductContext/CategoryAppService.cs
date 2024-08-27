@@ -22,6 +22,8 @@ public class CategoryAppService : CrudAppService<Category, CategoryDto, Guid, Ca
     protected override string DeletePolicyName { get; set; } = ProductPermissions.Category.Delete;
 
     private readonly ICategoryRepository _repository;
+    private IProductRepository _productRepository => LazyServiceProvider.LazyGetRequiredService<IProductRepository>();
+    private DtoHelper _dtoHelper => LazyServiceProvider.LazyGetRequiredService<DtoHelper>();
 
     public CategoryAppService(ICategoryRepository repository) : base(repository)
     {
@@ -94,28 +96,56 @@ public class CategoryAppService : CrudAppService<Category, CategoryDto, Guid, Ca
     /// 获取树状数据
     /// </summary>
     /// <returns></returns>
-    public async Task<List<GetCategoryTreeResultItemDto>> GetTreeData()
+    public async Task<List<GetCategoryTreeResultItemDto>> GetTreeData(Guid? id,bool isResultIncludeProduct=false)
     {
         var data = await _repository.GetListAsync();
 
-        return BuildTreeItems(data,null);
+        var r = new List<GetCategoryTreeResultItemDto>();
+        //没有指定Id
+        if (id == null) {
+            r = BuildTreeItems(data, null);
+        }
+        else
+        {
+            //指定了id
+            var rootItem = data.SingleOrDefault(t => t.Id == id);
+            var rootItemDto = new GetCategoryTreeResultItemDto()
+            {
+                Id = rootItem.Id,
+                Name = rootItem.Name,
+                ParentId = rootItem.ParentId,
+                ImageUrl = rootItem.ImageUrl
+            };
+
+            rootItemDto.Children = BuildTreeItems(data, id);
+            r.Add(rootItemDto);
+        }
+
+        if(isResultIncludeProduct)
+            await _dtoHelper.FillProductDto(r);
+
+        return r;
     }
+
+
+
+
+
+
 
     /// <summary>
     /// 构建树装结构
     /// </summary>
     /// <param name="data"></param>
     /// <returns></returns>
-    
-
-
     private List<GetCategoryTreeResultItemDto> BuildTreeItems(List<Category> data, Guid? parentId)
     {
         var items = data.Where(t => t.ParentId == parentId).Select(t => new GetCategoryTreeResultItemDto()
         {
             Name = t.Name,
             Id = t.Id,
-            ParentId = t.ParentId
+            ParentId = t.ParentId,
+            ImageUrl = t.ImageUrl,
         }).ToList();
 
         foreach(var  item in items)

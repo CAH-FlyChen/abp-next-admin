@@ -25,6 +25,9 @@ public class Category : FullAuditedAggregateRoot<Guid>, IHasDeleteUniqueId
     public int Level { get; protected set; } = 0;
 
     public Guid? ParentId { get; protected set; }
+
+    [MaxLength(4000)]
+    public string? ImageUrl { get; set; }
     /// <summary>
     /// 上级分类
     /// </summary>
@@ -32,6 +35,7 @@ public class Category : FullAuditedAggregateRoot<Guid>, IHasDeleteUniqueId
     public virtual ICollection<Category>? Children { get; set; }
 
     public Guid DUId { get; set; } = Guid.Empty;
+
 
 
     public void CheckCanDelete()
@@ -69,6 +73,7 @@ public class Category : FullAuditedAggregateRoot<Guid>, IHasDeleteUniqueId
         string name,
         int level,
         Guid? parentId,
+        string? imageUrl,
         Category? parent,
         ICollection<Category>? children,
         Guid dUId
@@ -77,6 +82,7 @@ public class Category : FullAuditedAggregateRoot<Guid>, IHasDeleteUniqueId
         Name = name;
         Level = level;
         ParentId = parentId;
+        ImageUrl = imageUrl;
         Parent = parent;
         Children = children;
         DUId = dUId;

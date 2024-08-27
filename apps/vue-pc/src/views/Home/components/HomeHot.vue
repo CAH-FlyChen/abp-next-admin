@@ -5,7 +5,7 @@ import { onMounted, ref } from 'vue'
 const hotList = ref([])
 const getHotList = async () => {
   const res = await getHotAPI()
-  hotList.value = res.result
+  hotList.value = res.result.items
 }
 onMounted(() => getHotList())
 
@@ -17,9 +17,9 @@ onMounted(() => getHotList())
     <ul class="goods-list">
       <li v-for="item in hotList" :key="item.id">
         <RouterLink to="/">
-          <img v-img-lazy="item.picture" alt="">
-          <p class="name">{{ item.title }}</p>
-          <p class="desc">{{ item.alt }}</p>
+          <img v-img-lazy="item.imageUrl" alt="">
+          <p class="name">{{ item.name }}</p>
+          <p class="desc">{{ item.description }}</p>
         </RouterLink>
       </li>
     </ul>

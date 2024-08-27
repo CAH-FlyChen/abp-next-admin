@@ -44,6 +44,14 @@ export function useCategoryFormContext({ categoryModel, formElRef }: UseCategory
       },
       {
         tab: L('DisplayName:Basic'),
+        field: 'imageUrl',
+        component: 'Input',
+        label: L('DisplayName:ImageUrl'),
+        colProps: { span: 24 },
+        required: true,
+      },
+      {
+        tab: L('DisplayName:Basic'),
         field: 'parentId',
         component: 'TreeSelect',
         label: L('DisplayName:ParentCategory'),

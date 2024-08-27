@@ -6,6 +6,8 @@ using Zion.Product.ProductContext.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Application.Dtos;
 using Zion.AppService;
+using Volo.Abp.Domain.Entities.Events.Distributed;
+using System.Collections.Generic;
 
 namespace Zion.Product.ProductContext;
 
@@ -46,7 +48,7 @@ public class ProductAppService : ZionCrudAppService<Product, ProductDto, Guid, P
     {
         await CheckCreatePolicyAsync();
 
-        var entity = new Product(GuidGenerator.Create(), input.Code, input.Name, input.BrandId, input.CategoryId, input.Description,input.IsSuggest,
+        var entity = new Product(GuidGenerator.Create(), input.Code, input.Name, input.BrandId, input.CategoryId, input.Description,input.ImageUrl,input.IsSuggest,
             input.IsValid,ZionContext.CurrentCompanyId!.Value);
 
         TryToSetTenantId(entity);
@@ -78,5 +80,69 @@ public class ProductAppService : ZionCrudAppService<Product, ProductDto, Guid, P
             entityDtos
         );
 
+    }
+
+    public async Task<PagedResultDto<ProductDto>> GetNewListAsync(ProductGetListInput input)
+    {
+        await CheckGetListPolicyAsync();
+
+        var query = await CreateFilteredQueryAsync(input);
+
+        var totalCount = await AsyncExecuter.CountAsync(query);
+
+        //query = ApplySorting(query, input);
+        query = query.OrderByDescending(t=>t.CreationTime);
+        query = ApplyPaging(query, input);
+
+        var entities = await AsyncExecuter.ToListAsync(query);
+        var entityDtos = await MapToGetListOutputDtosAsync(entities);
+
+        await dtoHelper.FillBrandInfoDto(entityDtos);
+        await dtoHelper.FillCategoryInfoDto(entityDtos);
+
+        return new PagedResultDto<ProductDto>(
+            totalCount,
+            entityDtos
+        );
+
+    }
+
+    public async Task<PagedResultDto<ProductDto>> GetHotListAsync(ProductGetListInput input)
+    {
+        await CheckGetListPolicyAsync();
+
+        var query = await CreateFilteredQueryAsync(input);
+
+        var totalCount = await AsyncExecuter.CountAsync(query);
+
+        //query = ApplySorting(query, input);
+        query = query.OrderByDescending(t => t.CreationTime);
+        query = ApplyPaging(query, input);
+
+        var entities = await AsyncExecuter.ToListAsync(query);
+        var entityDtos = await MapToGetListOutputDtosAsync(entities);
+
+        await dtoHelper.FillBrandInfoDto(entityDtos);
+        await dtoHelper.FillCategoryInfoDto(entityDtos);
+
+        return new PagedResultDto<ProductDto>(
+            totalCount,
+            entityDtos
+        );
+
+    }
+
+    public async Task<ProductDto> GetAsync(Guid id)
+    {
+        await CheckGetPolicyAsync();
+
+        var entity = await GetEntityByIdAsync(id);
+
+        var r = await MapToGetOutputDtoAsync(entity);
+
+        await dtoHelper.FillBrandInfoDto(new List<ProductDto>() { r });
+        await dtoHelper.FillCategoryListDto(new List<ProductDto>() { r });
+
+        return r;
     }
 }

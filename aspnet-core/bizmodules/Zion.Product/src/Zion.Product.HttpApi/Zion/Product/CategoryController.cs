@@ -57,9 +57,9 @@ public class CategoryController : ProductBaseController, ICategoryAppService
 
     [HttpGet]
     [Route("TreeData")]
-    public virtual Task<List<GetCategoryTreeResultItemDto>> GetTreeData()
+    public virtual Task<List<GetCategoryTreeResultItemDto>> GetTreeData(Guid? id, bool isResultIncludeProduct = false)
     {
-        return _service.GetTreeData();
+        return _service.GetTreeData(id, isResultIncludeProduct);
     }
     [HttpGet]
     [Route("root-data")]

@@ -3,9 +3,8 @@ import request from '@/utils/http'
 
 export const getDetail = (id) => {
   return request({
-    url: '/goods',
+    url: '/api/product/product/'+id,
     params: {
-      id
     }
   })
 }

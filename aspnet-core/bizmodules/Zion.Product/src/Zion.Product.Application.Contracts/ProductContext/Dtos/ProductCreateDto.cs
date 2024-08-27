@@ -38,6 +38,10 @@ public class ProductCreateDto
     /// </summary>
     [DisplayName("ProductDescription")]
     public string? Description { get; set; }
+    /// <summary>
+    /// 产品主图
+    /// </summary>
+    public string? ImageUrl { get; set; }
 
     [DisplayName("ProductIsValid")]
     public bool IsValid { get; set; }

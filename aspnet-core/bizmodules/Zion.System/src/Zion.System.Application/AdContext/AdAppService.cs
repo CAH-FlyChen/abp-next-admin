@@ -38,6 +38,7 @@ public class AdAppService : CrudAppService<Ad, AdDto, Guid, AdGetListInput, AdCr
             .WhereIf(!input.TargetUrl.IsNullOrWhiteSpace(), x => x.TargetUrl.Contains(input.TargetUrl))
             .WhereIf(input.ExpDateTime != null, x => x.ExpDateTime == input.ExpDateTime)
             .WhereIf(!input.Description.IsNullOrWhiteSpace(), x => x.Description.Contains(input.Description))
+            .WhereIf(input.AllowExpData==false,x=>x.ExpDateTime>DateTime.Now)
             ;
     }
 }

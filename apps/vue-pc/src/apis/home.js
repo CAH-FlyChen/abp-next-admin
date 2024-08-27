@@ -5,11 +5,11 @@ import httpInstance from '@/utils/http'
 
 export function getBannerAPI (params = {}) {
   // 默认为1 商品为2
-  const { distributionSite = '1' } = params
+  const { typeCode = 'Barnner',allowExpData=false } = params
   return httpInstance({
-    url: '/home/banner',
+    url: '/api/system/ad',
     params: {
-      distributionSite
+      typeCode
     }
   })
 }
@@ -21,7 +21,7 @@ export function getBannerAPI (params = {}) {
  */
 export const findNewAPI = () => {
   return httpInstance({
-    url: '/home/new'
+    url: '/api/product/product/new'
   })
 }
 
@@ -32,17 +32,20 @@ export const findNewAPI = () => {
  */
 export const getHotAPI = () => {
   return httpInstance({
-    url: '/home/hot'
+    url: '/api/product/product/hot'
   })
 }
 
 /**
- * @description: 获取所有商品模块
+ * @description: 获取分类信息带商品
  * @param {*}
  * @return {*}
  */
 export const getGoodsAPI = () => {
   return httpInstance({
-    url: '/home/goods'
+    url: '/api/product/category/treedata',
+    params:{
+      isResultIncludeProduct:true
+    }
   })
 }

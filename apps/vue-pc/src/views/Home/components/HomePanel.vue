@@ -19,9 +19,9 @@ defineProps({
     <div class="container">
       <div class="head">
         <!-- 主标题和副标题 -->
-        <h3>
+        <h2>
           {{ title }}<small>{{ subTitle }}</small>
-        </h3>
+        </h2>
       </div>
       <!-- 主体内容区域 -->
       <slot />
@@ -31,10 +31,10 @@ defineProps({
 
 <style scoped lang='scss'>
 .home-panel {
-  background-color: #fff;
+  // background-color: #fff;
 
   .head {
-    padding: 40px 0;
+    padding: 10px 0;
     display: flex;
     align-items: flex-end;
 
