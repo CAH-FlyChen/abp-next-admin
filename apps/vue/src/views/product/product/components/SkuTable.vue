@@ -1,6 +1,11 @@
 <template>
   <div>
-    <SkuEditorModal @register="registerEditorModal" @ok="okClicked" />
+    <SkuEditorModal 
+      @register="registerEditorModal" 
+      @ok="okClicked"
+      :specTemplateObj="specTemplateObj" 
+      v-model:selectedJsonValue="selectedJsonValue"
+      />
   </div>
   <BasicTable
       @register="registerTable" 
@@ -32,7 +37,7 @@
 
 
 <script lang="ts" setup>
-import { watch } from 'vue'
+import { watch,computed,ref } from 'vue'
 import { BasicTable, useTable, BasicColumn, TableAction } from '/@/components/Table';
 import { useModal } from '/@/components/Modal';
 import SkuEditorModal from './SkuEditorModal.vue';
@@ -65,6 +70,13 @@ const props = defineProps(
     )
 const emit = defineEmits(['update:tabledata'])
 
+const selectedJsonValue = ref('')
+
+const specTemplateObj = computed(() => { 
+  if(props.specTemplateJsonData) return JSON.parse(props.specTemplateJsonData)
+  return {}
+})
+
 const [registerTable,{ setTableData, deleteTableDataRecord }] = useTable({
   title: 'TableAction组件及固定列示例',
   columns: columns,
@@ -76,7 +88,7 @@ const [registerTable,{ setTableData, deleteTableDataRecord }] = useTable({
   },
 });
 
-const [registerEditorModal, { openModal:openSkuEditorModal }] = useModal();
+const [registerEditorModal, { openModal:openSkuEditorModal, setModalProps }] = useModal();
 
 
 
@@ -89,16 +101,18 @@ function handleAddNew(record?: Recordable) {
   //openDrawer(true, {});
   console.log("JJJJ",record)
   openSkuEditorModal(true,{
-    skuTemplate:props.specTemplateJsonData,
-    skuValue:{}
+    // skuTemplate:props.specTemplateJsonData,
+    // skuValue:{}
   })
 }
 
 function handleEdit(record: Recordable) {
   console.log('点击了编辑', record);
+  selectedJsonValue.value = record?.privateSpecName;
+
   openSkuEditorModal(true,{
-    skuTemplate:props.specTemplateJsonData,
-    skuValue:record?.privateSpecName
+    // skuTemplate:props.specTemplateJsonData,
+    // skuValue:record?.privateSpecName
   })
 }
 function handleDelete(record: Recordable) {
@@ -110,6 +124,8 @@ function handleDelete(record: Recordable) {
 function okClicked(){
   console.log("okc clicked")
 }
+
+const test=ref('aaaa')
 
 //methods.setTableData(refP)
 </script>
