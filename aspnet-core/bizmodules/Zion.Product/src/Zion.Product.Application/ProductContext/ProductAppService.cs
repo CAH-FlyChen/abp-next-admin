@@ -8,6 +8,7 @@ using Volo.Abp.Application.Dtos;
 using Zion.AppService;
 using Volo.Abp.Domain.Entities.Events.Distributed;
 using System.Collections.Generic;
+using System.Linq.Dynamic.Core;
 
 namespace Zion.Product.ProductContext;
 
@@ -49,7 +50,7 @@ public class ProductAppService : ZionCrudAppService<Product, ProductDto, Guid, P
         await CheckCreatePolicyAsync();
 
         var entity = new Product(GuidGenerator.Create(), input.Code, input.Name, input.BrandId, input.CategoryId, input.Description,input.ImageUrl,input.IsSuggest,
-            input.IsValid,ZionContext.CurrentCompanyId!.Value);
+            input.IsValid,input.SpecTemplateJsonData,ZionContext.CurrentCompanyId!.Value);
 
         TryToSetTenantId(entity);
 
@@ -136,12 +137,14 @@ public class ProductAppService : ZionCrudAppService<Product, ProductDto, Guid, P
     {
         await CheckGetPolicyAsync();
 
-        var entity = await GetEntityByIdAsync(id);
+        var entity = (await _repository.WithDetailsAsync(t=>t.SKUs)).Single(t=>t.Id == id);
 
         var r = await MapToGetOutputDtoAsync(entity);
 
         await dtoHelper.FillBrandInfoDto(new List<ProductDto>() { r });
         await dtoHelper.FillCategoryListDto(new List<ProductDto>() { r });
+        //sku
+
 
         return r;
     }

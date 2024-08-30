@@ -40,6 +40,7 @@ import {
   LocalizableInput
 } from '/@/components/Abp';
 import { AddressSelector } from '/@/components/Address';
+import { SkuEditor } from '/@/components/Zion';
 
 
 const componentMap = new Map<ComponentType, Component>();
@@ -60,6 +61,7 @@ customComponentMap.set('ApiTransfer', ApiTransfer);
 customComponentMap.set('RadioButtonGroup', RadioButtonGroup);
 
 customComponentMap.set('AddressSelector', AddressSelector);
+customComponentMap.set('ZionSkuEditor',SkuEditor);
 
 componentMap.set('InputGroup', Input.Group);
 componentMap.set('InputPassword', Input.Password);

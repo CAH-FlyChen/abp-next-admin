@@ -54,7 +54,7 @@ const addCart = () => {
 <template>
   <div class="xtx-goods-page">
     <div class="container">
-      {{ goods }}
+      {{ goods.specTemplate }}
       <div class="bread-container">
         <el-breadcrumb separator=">">
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
@@ -125,7 +125,7 @@ const addCart = () => {
                 </dl>
               </div>
               <!-- sku组件 -->
-              <!-- <XtxSku :goods="goods" @change="skuChange" /> -->
+              <XtxSku :goods="goods" @change="skuChange" />
               <!-- 数据组件 -->
               <el-input-number v-model="count" @change="countChange" />
               <!-- 按钮组件 -->

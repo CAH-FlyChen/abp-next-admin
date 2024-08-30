@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace Zion.Product.ProductContext.Dtos;
@@ -49,5 +50,12 @@ public class ProductUpdateDto
 
     [DisplayName("ProductDUId")]
     public Guid DUId { get; set; }
+
+    /// <summary>
+    /// 私有规格模板
+    /// </summary>
+    public string? SpecTemplateJsonData { get; set; }
+
+    public List<ProductSkuDto>? SKUs { get; set; }
 
 }

@@ -13,4 +13,5 @@ public class GetCategoryTreeResultItemDto
     public List<GetCategoryTreeResultItemDto> Children { get; set; }
     public List<ProductSimpleDto> Products { get; set; }
     public string? ImageUrl { get; set; }
+    public string? SpecTemplateJsonData { get; set; }
 }

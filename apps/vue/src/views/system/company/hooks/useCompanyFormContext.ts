@@ -11,7 +11,6 @@ import { listToTree } from '/@/utils/helper/treeHelper';
 //自有模块
 import { getList, create, update } from '/@/api/system/company';
 import { Company, UpdateCompany, CreateCompany } from '/@/api/system/company/model';
-import { AddressSelector } from '/@/components/Address'
 
 interface UseCompanyFormContext {
   companyModel: Ref<Company>;

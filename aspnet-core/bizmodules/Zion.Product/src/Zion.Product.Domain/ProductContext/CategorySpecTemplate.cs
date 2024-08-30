@@ -9,16 +9,16 @@ using Volo.Abp.Domain.Values;
 
 namespace Zion.Product.ProductContext;
 
-public class CategorySpecTemplate : ValueObject
+public class CategorySpecTemplate : SpecificationTemplate
 {
     [Key]
     public Guid Id { get; set;}
 
     public Guid? CategoryId { get; set; }
 
-    public List<SpecificationGroup> SpecGroups { get; set; }
+    //public List<SpecificationGroup> SpecGroups { get; set; }
 
-    protected override IEnumerable<object> GetAtomicValues()
+    protected override IEnumerable<object> GetAtomicValuesInternal()
     {
         yield return CategoryId;
         foreach (var spec in SpecGroups)

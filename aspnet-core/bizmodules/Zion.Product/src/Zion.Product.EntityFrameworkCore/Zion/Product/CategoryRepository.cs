@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,4 +18,13 @@ public class CategoryRepository : EfCoreRepository<IProductDbContext, Category, 
     {
         return (await GetQueryableAsync()).IncludeDetails();
     }
+
+    //public async Task<IQueryable<Category>> WithSpecAsync()
+    //{
+    //    return (await GetQueryableAsync())
+    //        .Include(t => t.SpecTemplate)
+    //            .ThenInclude(t => t.SpecGroups)
+    //                .ThenInclude(t => t.Specifications);
+
+    //}
 }

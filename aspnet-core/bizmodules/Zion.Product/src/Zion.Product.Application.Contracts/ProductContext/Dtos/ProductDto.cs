@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Volo.Abp.Application.Dtos;
 
 namespace Zion.Product.ProductContext.Dtos;
@@ -53,6 +55,21 @@ public class ProductDto : FullAuditedEntityDto<Guid>
     /// 所在分类的路径数组
     /// </summary>
     public List<CategorySimpleDto>? CategoryList { get; set; }
+
+    /// <summary>
+    /// 私有规格模板
+    /// </summary>
+    public string? SpecTemplateJsonData { get; set; }
+
+    public CategorySpecTemplateDto? SpecTemplate { 
+        get {
+            if (SpecTemplateJsonData == null)
+                return null;
+            return JsonSerializer.Deserialize<CategorySpecTemplateDto>(SpecTemplateJsonData);
+        }
+    }
+
+    public List<ProductSkuDto>? SKUs { get; set; }
 }
 
 

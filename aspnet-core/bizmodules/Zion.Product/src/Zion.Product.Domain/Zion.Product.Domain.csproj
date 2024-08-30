@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MD5" />
     <PackageReference Include="NPinyin.Core" />
     <PackageReference Include="Volo.Abp.Ddd.Domain" />
   </ItemGroup>
@@ -16,6 +17,10 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Zion.System\src\Zion.System.Domain.Shared\Zion.System.Domain.Shared.csproj" />
     <ProjectReference Include="..\Zion.Product.Domain.Shared\Zion.Product.Domain.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="PriceContext\" />
   </ItemGroup>
 
 </Project>

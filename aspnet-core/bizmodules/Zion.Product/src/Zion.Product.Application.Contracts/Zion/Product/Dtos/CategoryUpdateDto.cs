@@ -26,4 +26,6 @@ public class CategoryUpdateDto
     [MaxLength(4000)]
     public string? ImageUrl { get; set; }
 
+    public string? SpecTemplateJsonData { get; set; }
+
 }

@@ -57,6 +57,8 @@
     "DisplayName:Category": "分类",
     "DisplayName:Product": "产品",
     "DisplayName:IsValid": "有效",
-    "DisplayName:IsSuggest": "推荐"
+    "DisplayName:IsSuggest": "推荐",
+    "DisplayName:SpecInfo": "规格信息",
+    "DisplayName:Spec": "规格"
   }
 }

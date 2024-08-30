@@ -24,5 +24,7 @@ public class ProductApplicationAutoMapperProfile : Profile
         CreateMap<Product, ProductDto>(MemberList.None);
         CreateMap<ProductCreateDto, Product>(MemberList.Source);
         CreateMap<ProductUpdateDto, Product>(MemberList.Source);
+        CreateMap<ProductSku, ProductSkuDto>(MemberList.None);
+        CreateMap<ProductSkuDto, ProductSku>(MemberList.None);
     }
 }

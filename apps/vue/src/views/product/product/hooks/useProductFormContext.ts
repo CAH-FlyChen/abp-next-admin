@@ -127,7 +127,26 @@ export function useProductFormContext({ productModel, formElRef }: UseProductFor
         colProps: { span: 24 },
         required: true,
       },
-      
+      {
+        tab: L('DisplayName:SpecInfo'),
+        field: 'specTemplateJsonData',
+        component: 'InputTextArea',
+        componentProps: {
+          style:'height:500px'
+        },
+        label: L('DisplayName:Spec'),
+        colProps: { span: 24 },
+        required: true,
+      },
+      {
+        tab: L('DisplayName:Sku'),
+        field: 'skUs',
+        component: 'ZionSkuEditor',
+        label: L('DisplayName:Sku'),
+        colProps: { span: 24 },
+        required: true,
+        tabSlot:"skuContentSlot"
+      },
     ];
   }
 

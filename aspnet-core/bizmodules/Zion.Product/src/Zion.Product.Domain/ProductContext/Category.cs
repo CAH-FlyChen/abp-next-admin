@@ -28,16 +28,43 @@ public class Category : FullAuditedAggregateRoot<Guid>, IHasDeleteUniqueId
 
     [MaxLength(4000)]
     public string? ImageUrl { get; set; }
+
     /// <summary>
     /// 上级分类
     /// </summary>
     public virtual Category? Parent { get; set; }
     public virtual ICollection<Category>? Children { get; set; }
-    public virtual ICollection<CategorySpecTemplate> SpecTemplates { get; set; }
+
+    //暂时不用
+    //public virtual CategorySpecTemplate SpecTemplate { get; private set; }
+
+    public string? SpecTemplateJsonData { get; set; }
 
     public Guid DUId { get; set; } = Guid.Empty;
 
+    protected Category()
+    {
+    }
 
+    public Category(
+        Guid id,
+        string name,
+        int level,
+        Guid? parentId,
+        string? imageUrl,
+        Category? parent,
+        ICollection<Category>? children,
+        Guid dUId
+    ) : base(id)
+    {
+        Name = name;
+        Level = level;
+        ParentId = parentId;
+        ImageUrl = imageUrl;
+        Parent = parent;
+        Children = children;
+        DUId = dUId;
+    }
 
     public void CheckCanDelete()
     {
@@ -65,27 +92,8 @@ public class Category : FullAuditedAggregateRoot<Guid>, IHasDeleteUniqueId
         Children.Add(catalog);
     }
 
-    protected Category()
-    {
-    }
-
-    public Category(
-        Guid id,
-        string name,
-        int level,
-        Guid? parentId,
-        string? imageUrl,
-        Category? parent,
-        ICollection<Category>? children,
-        Guid dUId
-    ) : base(id)
-    {
-        Name = name;
-        Level = level;
-        ParentId = parentId;
-        ImageUrl = imageUrl;
-        Parent = parent;
-        Children = children;
-        DUId = dUId;
-    }
+    //public void SetSpecTemplate(CategorySpecTemplate specTemplate)
+    //{
+    //    this.SpecTemplate = specTemplate;
+    //}
 }

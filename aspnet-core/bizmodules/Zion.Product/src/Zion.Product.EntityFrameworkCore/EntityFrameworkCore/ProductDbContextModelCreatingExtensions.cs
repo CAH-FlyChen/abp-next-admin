@@ -3,6 +3,7 @@ using Zion.Product;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
 using Volo.Abp.EntityFrameworkCore.Modeling;
+using System.Reflection.Emit;
 
 namespace Zion.Product.ProductContext.EntityFrameworkCore;
 
@@ -33,37 +34,38 @@ public static class ProductDbContextModelCreatingExtensions
         });
         */
 
+        //builder.Entity<SpecificationTemplate>(a =>
+        //{
+        //    a.OwnsMany(t => t.SpecGroups, b =>
+        //    {
+        //        b.WithOwner().HasForeignKey(t => t.CategorySpecTemplateId);
+        //        b.OwnsMany(t => t.Specifications, c =>
+        //        {
+        //            c.WithOwner().HasForeignKey(t => t.SpecificationGroupId);
+        //        });
+        //    });
+        //});
+
+        //builder.Entity<SpecificationTemplate>().UseTphMappingStrategy();
+
 
         builder.Entity<Category>(b =>
         {
             b.ToTable(ProductDbProperties.DbTablePrefix + "Categories", ProductDbProperties.DbSchema);
             b.ConfigureByConvention();
 
-            //b.OwnsMany(t => t.CategorySpecTemplates, a =>
+            //b.OwnsMany(t => t.SpecTemplates, a =>
             //{
-            //    a.OwnsOne(t => t.Category);
-
+            //    a.WithOwner().HasForeignKey(t => t.CategoryId);
             //    a.OwnsMany(t => t.SpecGroups, b =>
             //    {
-            //        b.OwnsOne(t => t.SpecificationTemplate);
+            //        b.WithOwner().HasForeignKey(t => t.CategorySpecTemplateId);
             //        b.OwnsMany(t => t.Specifications, c =>
             //        {
             //            c.WithOwner().HasForeignKey(t => t.SpecificationGroupId);
             //        });
             //    });
             //});
-
-            b.OwnsMany(t => t.SpecTemplates, a =>
-            {
-                a.WithOwner().HasForeignKey(t => t.CategoryId);
-                a.OwnsMany(t => t.SpecGroups, b => {
-                    b.WithOwner().HasForeignKey(t=>t.CategorySpecTemplateId);
-                    b.OwnsMany(t => t.Specifications, c =>
-                    {
-                        c.WithOwner().HasForeignKey(t=>t.SpecificationGroupId);
-                    });
-                });
-            });
 
             /* Configure more properties here */
         });
@@ -94,17 +96,18 @@ public static class ProductDbContextModelCreatingExtensions
             b.ToTable(ProductDbProperties.DbTablePrefix + "Products", ProductDbProperties.DbSchema);
             b.ConfigureByConvention();
 
-            b.OwnsMany(t => t.SpecTemplates, a =>
-            {
-                a.WithOwner().HasForeignKey(t => t.ProductId);
-                a.OwnsMany(t => t.SpecGroups, b => {
-                    b.WithOwner().HasForeignKey(t => t.CategorySpecTemplateId);
-                    b.OwnsMany(t => t.Specifications, c =>
-                    {
-                        c.WithOwner().HasForeignKey(t => t.SpecificationGroupId);
-                    });
-                });
-            });
+            //b.OwnsMany(t => t.SpecTemplates, a =>
+            //{
+            //    a.WithOwner().HasForeignKey(t => t.ProductId);
+            //    a.OwnsMany(t => t.SpecGroups, b =>
+            //    {
+            //        b.WithOwner().HasForeignKey(t => t.CategorySpecTemplateId);
+            //        b.OwnsMany(t => t.Specifications, c =>
+            //        {
+            //            c.WithOwner().HasForeignKey(t => t.SpecificationGroupId);
+            //        });
+            //    });
+            //});
             /* Configure more properties here */
         });
 

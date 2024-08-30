@@ -26,6 +26,7 @@ public class CategoryCreateDto
     [MaxLength(4000)]
     public string? ImageUrl { get; set; }
 
+    public string? SpecTemplateJsonData { get; set; }
 
     [DisplayName("CategoryChildren")]
     public ICollection<CategoryCreateDto>? Children { get; set; }

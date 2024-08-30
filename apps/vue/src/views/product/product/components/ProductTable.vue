@@ -34,7 +34,7 @@
           
           {{ record.category?record.category.name:"" }}
         
-      </template>
+        </template>
         <template v-else-if="column.key === 'action'">
           <TableAction
             :actions="[

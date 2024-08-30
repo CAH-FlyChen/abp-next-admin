@@ -21,6 +21,8 @@ public class CategoryDto : FullAuditedEntityDto<Guid>
 
     public Guid? ParentId { get; set; }
 
+    public string? SpecTemplateJsonData { get; set; }
+
     ///// <summary>
     ///// 上级分类
     ///// </summary>

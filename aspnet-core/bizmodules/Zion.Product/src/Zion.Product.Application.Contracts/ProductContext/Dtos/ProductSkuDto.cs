@@ -1,16 +1,15 @@
-﻿using MD5Hash;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using Volo.Abp.Domain.Entities;
 
 namespace Zion.Product.ProductContext;
-public class ProductSku : Entity<Guid>
+public class ProductSkuDto
 {
+    public Guid Id { get; set; }
+
     public Guid ProductId { get; set; }
 
     /// <summary>
@@ -20,29 +19,13 @@ public class ProductSku : Entity<Guid>
     public string? Name { get; set; }
     /// <summary>
     /// 规格名称，用于前台通过他查询skuid  md5(规则值1+规则值n) 规则值按照顺序排序
-    /// eg  颜色|黄色,容量|125G   sku编辑器产生的值
+    /// eg  颜色|黄色,容量|125G
     /// </summary>
-    [MaxLength (2000)]
+    [MaxLength(2000)]
     public string? PrivateSpecName { get; set; }
     /// <summary>
     /// eg   md5("颜色|黄色,容量|125G")
     /// </summary>
     [MaxLength(50)]
     public string? PrivateSpecNameMd5 { get; set; }
-
-    /// <summary>
-    /// 产品设定的规格键值对
-    /// </summary>
-    //public ProductSkuSpecValue ProductSkuSpec { get; set; }
-
-    public virtual Product Product { get; set; }
-
-    public ProductSku(Guid id,string? name, string? privateSpecName)
-        :base(id)
-    {
-        Name = name;
-        PrivateSpecName = privateSpecName;
-        if (name.IsNullOrEmpty()) name = privateSpecName;
-        PrivateSpecNameMd5 = privateSpecName.GetMD5();
-    }
 }

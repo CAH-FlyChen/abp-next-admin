@@ -114,7 +114,8 @@ public class CategoryAppService : CrudAppService<Category, CategoryDto, Guid, Ca
                 Id = rootItem.Id,
                 Name = rootItem.Name,
                 ParentId = rootItem.ParentId,
-                ImageUrl = rootItem.ImageUrl
+                ImageUrl = rootItem.ImageUrl,
+                SpecTemplateJsonData = rootItem.SpecTemplateJsonData
             };
 
             rootItemDto.Children = BuildTreeItems(data, id);
@@ -124,14 +125,8 @@ public class CategoryAppService : CrudAppService<Category, CategoryDto, Guid, Ca
         if(isResultIncludeProduct)
             await _dtoHelper.FillProductDto(r);
 
-        return r;
+         return r;
     }
-
-
-
-
-
-
 
     /// <summary>
     /// 构建树装结构
@@ -146,6 +141,7 @@ public class CategoryAppService : CrudAppService<Category, CategoryDto, Guid, Ca
             Id = t.Id,
             ParentId = t.ParentId,
             ImageUrl = t.ImageUrl,
+            SpecTemplateJsonData = t.SpecTemplateJsonData
         }).ToList();
 
         foreach(var  item in items)

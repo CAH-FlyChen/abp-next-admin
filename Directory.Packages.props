@@ -11,6 +11,7 @@
   </PropertyGroup>
   <!-- Abp Framework -->
   <ItemGroup>
+    <PackageVersion Include="MD5" Version="2.2.5" />
     <PackageVersion Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageVersion Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.LeptonXLite" Version="3.0.5" />
     <PackageVersion Include="Volo.Abp.Core" Version="$(VoloAbpPackageVersion)" />
@@ -136,7 +137,6 @@
     <PackageVersion Include="Volo.Abp.TenantManagement.EntityFrameworkCore" Version="$(VoloAbpPackageVersion)" />
     <PackageVersion Include="Volo.Abp.TenantManagement.Application" Version="$(VoloAbpPackageVersion)" />
     <PackageVersion Include="Volo.Abp.TenantManagement.HttpApi" Version="$(VoloAbpPackageVersion)" />
-
   </ItemGroup>
   <!-- .NET -->
   <ItemGroup>

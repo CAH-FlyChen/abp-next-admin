@@ -21,7 +21,12 @@
       :action-col-options="{
         span: 24,
       }"
-    />
+    >
+    <template #skuContentSlot="rObj ">
+      {{rObj?.data.specTemplateJsonData}}
+      <skuTable :tabledata="rObj?.data.skUs" :specTemplateJsonData="rObj?.data.specTemplateJsonData" />
+    </template>
+    </TabForm>
   </BasicDrawer>
 </template>
 
@@ -37,6 +42,7 @@
   import { basicProps } from './props';
   import { Product } from '/@/api/product/product/model';
   import { useProductFormContext } from '../hooks/useProductFormContext';
+  import skuTable from './SkuTable.vue'
   
 
   const emits = defineEmits(['change', 'register']);

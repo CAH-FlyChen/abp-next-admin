@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Volo.Abp.Domain.Entities.Auditing;
+using Volo.Abp.Guids;
 using Zion.System;
 
 namespace Zion.Product.ProductContext;
@@ -56,9 +57,14 @@ public class Product : FullAuditedAggregateRoot<Guid>,IHasCompanyIdFilter, IHasD
     /// <summary>
     /// 特有规格选项,例如 颜色，尺寸 的选项，供界面选择用，其实也是Specifications的特有属性的选项
     /// </summary>
-    public virtual ICollection<ProductSpecTemplate> SpecTemplates { get; set; }
+    //public virtual ProductSpecTemplate SpecTemplate { get; set; }
 
-    //public virtual ProductSku SKU { get; set; }
+    public virtual List<ProductSku> SKUs { get; set; }
+
+    /// <summary>
+    /// 私有规格模板，公有在category
+    /// </summary>
+    public string? SpecTemplateJsonData { get; set; }
 
     protected Product()
     {
@@ -74,6 +80,7 @@ public class Product : FullAuditedAggregateRoot<Guid>,IHasCompanyIdFilter, IHasD
         string? imageUrl,
         bool isSuggest,
         bool isValid,
+        string? specTemplateJsonData,
         Guid companyId) : base(id)
     {
         Code = code;
@@ -85,5 +92,13 @@ public class Product : FullAuditedAggregateRoot<Guid>,IHasCompanyIdFilter, IHasD
         IsSuggest = isSuggest;
         CompanyId = companyId;
         IsValid = isValid;
+        SpecTemplateJsonData = specTemplateJsonData;
+        SKUs = new List<ProductSku>();
     }
+
+    public void AddSKU(string name,string specName)
+    {
+        SKUs.Add(new ProductSku(SimpleGuidGenerator.Instance.Create(), name, specName));
+    }
+
 }

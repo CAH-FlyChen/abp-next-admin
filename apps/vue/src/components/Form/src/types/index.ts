@@ -119,4 +119,5 @@ export type ComponentType =
   | 'ExtraPropertyDictionary'
   | 'LocalizableInput'
   | 'ColorPicker'
-  | 'AddressSelector';
+  | 'AddressSelector'
+  | 'ZionSkuEditor';

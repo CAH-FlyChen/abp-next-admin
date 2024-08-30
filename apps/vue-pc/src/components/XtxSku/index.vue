@@ -1,13 +1,12 @@
 <template>
   <div class="goods-sku">
-    <dl v-for="item in goods.specs" :key="item.id">
-      <dt>{{ item.name }}</dt>
+    <dl v-for="item in privateSpecifications" :key="item.title">
+      <dt>{{ item.title }}</dt>
       <dd>
-        <template v-for="val in item.values" :key="val.name">
-          <img :class="{ selected: val.selected, disabled: val.disabled }" @click="clickSpecs(item, val)"
-            v-if="val.picture" :src="val.picture" />
-          <span :class="{ selected: val.selected, disabled: val.disabled }" @click="clickSpecs(item, val)" v-else>{{
-              val.name
+        <template v-for="val in item.options" :key="val.title">
+          <img :class="{ selected: val.isSelected, disabled: val.disabled }" @click="clickSpecs(item, val)" v-if="val.imageUrl" :src="val.imageUrl" />
+          <span :class="{ selected: val.isSelected, disabled: val.disabled }" @click="clickSpecs(item, val)" v-else>{{
+              val.title
           }}</span>
         </template>
       </dd>
@@ -15,8 +14,11 @@
   </div>
 </template>
 <script>
-import { watchEffect } from 'vue'
+import { watchEffect,watch,ref } from 'vue'
 import getPowerSet from './power-set'
+
+const privateSpecifications = ref([])
+
 const spliter = '★'
 // 根据skus数据得到路径字典对象
 const getPathMap = (skus) => {
@@ -59,14 +61,16 @@ function initDisabledStatus (specs, pathMap) {
 // 得到当前选中规格集合
 const getSelectedArr = (specs) => {
   const selectedArr = []
-  specs.forEach((spec, index) => {
-    const selectedVal = spec.values.find(val => val.selected)
+  specs.value.forEach((spec, index) => {
+    console.log("ssss",spec)
+    const selectedVal = spec.options.find(val => val.isSelected)
     if (selectedVal) {
-      selectedArr[index] = selectedVal.name
+      selectedArr[index] = spec.title+"|"+selectedVal.title
     } else {
       selectedArr[index] = undefined
     }
   })
+  console.log(selectedArr)
   return selectedArr
 }
 
@@ -89,6 +93,8 @@ const updateDisabledStatus = (specs, pathMap) => {
 }
 
 
+
+
 export default {
   name: 'XtxGoodSku',
   props: {
@@ -100,31 +106,48 @@ export default {
   },
   emits: ['change'],
   setup (props, { emit }) {
+
+    const privateSpecifications = ref([])
+    watch(()=>props.goods,(n,o)=>{
+      privateSpecifications.value = []
+      n.specTemplate?.specGroups.forEach((v)=>{
+        v.specifications?.forEach((s)=>{
+          if(s.isGlobal==false){
+            privateSpecifications.value.push(s)
+          }
+        })
+      })
+    })
+
     let pathMap = {}
     watchEffect(() => {
       // 得到所有字典集合
-      pathMap = getPathMap(props.goods.skus)
+      pathMap = getPathMap(privateSpecifications)
       // 组件初始化的时候更新禁用状态
       initDisabledStatus(props.goods.specs, pathMap)
     })
+    
 
     const clickSpecs = (item, val) => {
+      console.log(item)
       if (val.disabled) return false
       // 选中与取消选中逻辑
-      if (val.selected) {
-        val.selected = false
+      if (val.isSelected) {
+        val.isSelected = false
       } else {
-        item.values.forEach(bv => { bv.selected = false })
-        val.selected = true
+        item.options.forEach(bv => { bv.isSelected = false })
+        val.isSelected = true
       }
       // 点击之后再次更新选中状态
-      updateDisabledStatus(props.goods.specs, pathMap)
+      //updateDisabledStatus(props.goods.specs, pathMap)
+
       // 把选择的sku信息传出去给父组件
       // 触发change事件将sku数据传递出去
-      const selectedArr = getSelectedArr(props.goods.specs).filter(value => value)
+      const selectedArr = getSelectedArr(privateSpecifications).filter(value => value)
       // 如果选中得规格数量和传入得规格总数相等则传出完整信息(都选择了)
       // 否则传出空对象
-      if (selectedArr.length === props.goods.specs.length) {
+      console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",selectedArr.length,privateSpecifications.value.length)
+      if (selectedArr.length === privateSpecifications.value.length) {
         // 从路径字典中得到skuId
         const skuId = pathMap[selectedArr.join(spliter)][0]
         const sku = props.goods.skus.find(sku => sku.id === skuId)
@@ -140,7 +163,7 @@ export default {
         emit('change', {})
       }
     }
-    return { clickSpecs }
+    return { clickSpecs,privateSpecifications }
   }
 }
 </script>

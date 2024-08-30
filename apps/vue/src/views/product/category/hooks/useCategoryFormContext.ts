@@ -66,6 +66,17 @@ export function useCategoryFormContext({ categoryModel, formElRef }: UseCategory
           getPopupContainer: () => document.body,
         },
       },
+      {
+        tab: L('DisplayName:SpecInfo'),
+        field: 'SpecTemplateJsonData',
+        component: 'InputTextArea',
+        componentProps: {
+          style:'height:500px'
+        },
+        label: L('DisplayName:Spec'),
+        colProps: { span: 24 },
+        required: true,
+      }
     ];
   }
 

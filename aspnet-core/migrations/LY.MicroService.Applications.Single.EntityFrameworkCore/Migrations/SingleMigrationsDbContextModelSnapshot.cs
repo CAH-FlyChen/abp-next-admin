@@ -5031,6 +5031,9 @@ namespace LY.MicroService.Applications.Single.EntityFrameworkCore.Migrations
                     b.Property<Guid?>("ParentId")
                         .HasColumnType("char(36)");
 
+                    b.Property<string>("SpecTemplateJsonData")
+                        .HasColumnType("longtext");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ParentId");
@@ -5121,9 +5124,40 @@ namespace LY.MicroService.Applications.Single.EntityFrameworkCore.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
+                    b.Property<string>("SpecTemplateJsonData")
+                        .HasColumnType("longtext");
+
                     b.HasKey("Id");
 
                     b.ToTable("App_Product_Products", (string)null);
+                });
+
+            modelBuilder.Entity("Zion.Product.ProductContext.ProductSku", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(2000)
+                        .HasColumnType("varchar(2000)");
+
+                    b.Property<string>("PrivateSpecName")
+                        .HasMaxLength(2000)
+                        .HasColumnType("varchar(2000)");
+
+                    b.Property<string>("PrivateSpecNameMd5")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductSku");
                 });
 
             modelBuilder.Entity("Zion.Product.ProductContext.Unit", b =>
@@ -5828,6 +5862,17 @@ namespace LY.MicroService.Applications.Single.EntityFrameworkCore.Migrations
                     b.Navigation("Parent");
                 });
 
+            modelBuilder.Entity("Zion.Product.ProductContext.ProductSku", b =>
+                {
+                    b.HasOne("Zion.Product.ProductContext.Product", "Product")
+                        .WithMany("SKUs")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("Zion.Sales.SalesContext.ShoppingCartItem", b =>
                 {
                     b.HasOne("Zion.Sales.SalesContext.ShoppingCart", null)
@@ -5839,7 +5884,7 @@ namespace LY.MicroService.Applications.Single.EntityFrameworkCore.Migrations
 
             modelBuilder.Entity("Zion.System.CompanyContext.Company", b =>
                 {
-                    b.OwnsOne("Zion.System.CompanyContext.Company.CompanyLocation#Zion.System.CompanyContext.CompanyLocation", "CompanyLocation", b1 =>
+                    b.OwnsOne("Zion.System.CompanyContext.CompanyLocation", "CompanyLocation", b1 =>
                         {
                             b1.Property<Guid>("CompanyId")
                                 .HasColumnType("char(36)");
@@ -5872,7 +5917,7 @@ namespace LY.MicroService.Applications.Single.EntityFrameworkCore.Migrations
 
                             b1.HasKey("CompanyId");
 
-                            b1.ToTable("App_System_Companies", (string)null);
+                            b1.ToTable("App_System_Companies");
 
                             b1.WithOwner()
                                 .HasForeignKey("CompanyId");
@@ -5990,6 +6035,11 @@ namespace LY.MicroService.Applications.Single.EntityFrameworkCore.Migrations
             modelBuilder.Entity("Zion.Product.ProductContext.Category", b =>
                 {
                     b.Navigation("Children");
+                });
+
+            modelBuilder.Entity("Zion.Product.ProductContext.Product", b =>
+                {
+                    b.Navigation("SKUs");
                 });
 
             modelBuilder.Entity("Zion.Sales.SalesContext.ShoppingCart", b =>

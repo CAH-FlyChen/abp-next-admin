@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 using Volo.Abp.Domain.Values;
 
 namespace Zion.Product.ProductContext;
-public class ProductSpecTemplate : ValueObject
+public class ProductSpecTemplate : SpecificationTemplate
 {
     [Key]
     public Guid Id { get; set; }
 
     public Guid? ProductId { get; set; }
 
-    public List<SpecificationGroup> SpecGroups { get; set; }
+    //public List<SpecificationGroup> SpecGroups { get; set; }
 
-    protected override IEnumerable<object> GetAtomicValues()
+    protected override IEnumerable<object> GetAtomicValuesInternal()
     {
         yield return ProductId!;
         foreach (var spec in SpecGroups)
