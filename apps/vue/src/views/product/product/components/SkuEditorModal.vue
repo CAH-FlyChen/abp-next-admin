@@ -58,7 +58,8 @@
       data:{
         selectedValueJson: JSON.stringify(selectedValueObj),
         name:record.name
-      }
+      },
+      record:record
     }
   }
 

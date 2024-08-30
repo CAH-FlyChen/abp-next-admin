@@ -120,10 +120,10 @@ function okClicked(e){
   console.log("okc clicked",elSku.value.GetData())
   var d = elSku.value.GetData()
   if(d.mode==="add"){
-
+    var newRecord = {}
   }
   else{
-    
+    d.record.xxx = xxx
   }
   closeModal()
 }
