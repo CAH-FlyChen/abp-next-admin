@@ -1,10 +1,10 @@
 <template>
   <div>
     <SkuEditorModal 
+      ref="elSku"
       @register="registerEditorModal" 
       @ok="okClicked"
-      :specTemplateObj="specTemplateObj" 
-      v-model:selectedJsonValue="selectedJsonValue"
+      :specTemplateObj="specTemplateObj"
       />
   </div>
   <BasicTable
@@ -54,7 +54,7 @@ const columns: BasicColumn[] = [
       dataIndex: 'name',
     },
     {
-      title: 'Spec路径',
+      title: '规格值',
       dataIndex: 'privateSpecName',
       ifShow: (_column) => {
         return true; // 根据业务控制是否显示
@@ -62,6 +62,7 @@ const columns: BasicColumn[] = [
     }
   ];
 
+const elSku = ref()  
 const props = defineProps(
     { 
       tabledata: Array,
@@ -69,8 +70,6 @@ const props = defineProps(
      }
     )
 const emit = defineEmits(['update:tabledata'])
-
-const selectedJsonValue = ref('')
 
 const specTemplateObj = computed(() => { 
   if(props.specTemplateJsonData) return JSON.parse(props.specTemplateJsonData)
@@ -88,7 +87,7 @@ const [registerTable,{ setTableData, deleteTableDataRecord }] = useTable({
   },
 });
 
-const [registerEditorModal, { openModal:openSkuEditorModal, setModalProps }] = useModal();
+const [registerEditorModal, { openModal:openSkuEditorModal, setModalProps,closeModal }] = useModal();
 
 
 
@@ -99,20 +98,16 @@ watch(()=>props.tabledata,(newV)=>{
 
 function handleAddNew(record?: Recordable) {
   //openDrawer(true, {});
-  console.log("JJJJ",record)
   openSkuEditorModal(true,{
-    // skuTemplate:props.specTemplateJsonData,
-    // skuValue:{}
+    mode:"add"
   })
 }
 
 function handleEdit(record: Recordable) {
   console.log('点击了编辑', record);
-  selectedJsonValue.value = record?.privateSpecName;
-
   openSkuEditorModal(true,{
-    // skuTemplate:props.specTemplateJsonData,
-    // skuValue:record?.privateSpecName
+    mode:"edit",
+    record:record
   })
 }
 function handleDelete(record: Recordable) {
@@ -121,11 +116,17 @@ function handleDelete(record: Recordable) {
   emit('update:tabledata', props.tabledata)
 }
 
-function okClicked(){
-  console.log("okc clicked")
-}
+function okClicked(e){
+  console.log("okc clicked",elSku.value.GetData())
+  var d = elSku.value.GetData()
+  if(d.mode==="add"){
 
-const test=ref('aaaa')
+  }
+  else{
+    
+  }
+  closeModal()
+}
 
 //methods.setTableData(refP)
 </script>

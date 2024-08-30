@@ -23,7 +23,6 @@
       }"
     >
     <template #skuContentSlot="rObj ">
-      {{rObj?.data.specTemplateJsonData}}
       <skuTable :tabledata="rObj?.data.skUs" :specTemplateJsonData="rObj?.data.specTemplateJsonData" />
     </template>
     </TabForm>

@@ -128,7 +128,7 @@ export function useProductFormContext({ productModel, formElRef }: UseProductFor
         required: true,
       },
       {
-        tab: L('DisplayName:SpecInfo'),
+        tab: L('DisplayName:SpecTemplateInfo'),
         field: 'specTemplateJsonData',
         component: 'InputTextArea',
         componentProps: {
@@ -139,7 +139,7 @@ export function useProductFormContext({ productModel, formElRef }: UseProductFor
         required: true,
       },
       {
-        tab: L('DisplayName:Sku'),
+        tab: L('SKU'),
         field: 'skUs',
         component: 'ZionSkuEditor',
         label: L('DisplayName:Sku'),

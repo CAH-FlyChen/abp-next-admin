@@ -59,6 +59,7 @@
     "DisplayName:IsValid": "有效",
     "DisplayName:IsSuggest": "推荐",
     "DisplayName:SpecInfo": "规格信息",
+    "DisplayName:SpecTemplateInfo": "规格模板",
     "DisplayName:Spec": "规格"
   }
 }

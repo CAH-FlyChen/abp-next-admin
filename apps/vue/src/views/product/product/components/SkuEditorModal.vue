@@ -2,7 +2,7 @@
   <BasicModal @register="registerModal" v-bind="$attrs" title="编辑SKU" :helpMessage="['提示1', '提示2']" >
     <div v-for="(groupItem) in props.specTemplateObj?.SpecGroups" >
       <div style="background-color: yellow">{{ groupItem.Title }}</div>
-
+      <div>SKU名称 <a-input v-model:value="record.name" placeholder="SKU名称" /></div>
       <div v-for="specItem in groupItem.Specifications">
         <div>{{ specItem.Title }}</div>
 
@@ -15,69 +15,69 @@
   </BasicModal>
 </template>
 <script lang="ts" setup>
-  import { ref,nextTick,computed ,watch} from 'vue'
+  import { ref,nextTick,computed ,watch , isRef ,isReactive} from 'vue'
   import { BasicModal, useModalInner } from '/@/components/Modal';
-
-
-  const emits = defineEmits(['update:selectedJsonValue','update:test'])
-
-  // const value = ref<number>(1);
-
-  const selectedValueObj = ref({})
 
   var props = defineProps({
     specTemplateObj:{
       type:Object,
       default:{SpecGroups:[]}
-    },
-    selectedJsonValue:String,
-    test:String
+    }
   })
-
-  // watch(()=>props.selectedJsonValue,(newV)=>{
-  //   selectedValueObj.value = JSON.parse(newV)
-  // })
-
+  const selectedValueObj = ref({})
+  var record = {name:""};
+  var mode = null;
   watch(
     selectedValueObj,
     (newV)=>{
-      var d = JSON.stringify(newV);
-      console.log("prop changed to and fire",newV);
-      emits('update:selectedJsonValue', d)
+      if(record!=null){
+        record.privateSpecName = JSON.stringify(newV);
+        console.log(record.privateSpecName)
+        record.name=""
+        var keys = new Array()
+        for (const k in newV) {
+          keys.push(k)
+        }
+        keys.sort()
+        console.log(keys)
+        keys.forEach(function (k) {
+          record.name += "|"+k+"|"+ newV[k]
+        });
+        if(record.name.length>0)
+          record.name = record.name.substring(1)
+      }
     },
     {
       deep: true
     }
   )
 
-
-
-  // const selectedValueObj = computed({
-  //     get() {
-  //       if(props.selectedJsonValue) return JSON.parse(props.selectedJsonValue)
-  //       return {}
-  //     },
-  //     set(value) {
-  //       console.log('vvvvvvvvvvvvvvvvvvv',value)
-  //     }
-  //   });
+  function GetData(){
+    return {
+      mode:mode,
+      data:{
+        selectedValueJson: JSON.stringify(selectedValueObj),
+        name:record.name
+      }
+    }
+  }
 
   const [registerModal, { changeOkLoading, closeModal }] = useModalInner((data) => {
 
     nextTick(() => {
-      // skuTemplate.value = JSON.parse(data.skuTemplate);
-      // console.log("bbb",data.skuValue)
-      //skuValue.value = JSON.parse(data.skuValue);
-      //resetFields();
-      //setFieldsValue(data);
-      selectedValueObj.value = JSON.parse(props.selectedJsonValue)
+      mode = data.mode
+      if(data.mode==="add"){
+        record =  {name:""}
+        selectedValueObj.value = {}
+      }
+      else if(data.mode=="edit"){
+        record = data.record //reactive对象
+        selectedValueObj.value = JSON.parse(record.privateSpecName)
+      }
     });
   });
 
-
-
-  // defineExpose({
-  //   GetSelectedValue
-  // })
-
+  defineExpose({
+    GetData
+  })
 </script>
