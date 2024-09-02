@@ -10,6 +10,7 @@
     width="50%"
     @ok="handleSubmit"
   >
+  {{entity}}
     <TabForm
       ref="formElRef"
       :schemas="getFormSchemas"
@@ -75,6 +76,7 @@
   );
 
   function handleSubmit() {
+    console.log("changeing .....")
     changeOkLoading(true);
     handleFormSubmit()
       ?.then(() => {

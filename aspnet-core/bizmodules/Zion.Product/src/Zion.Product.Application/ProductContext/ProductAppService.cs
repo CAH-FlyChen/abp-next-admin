@@ -148,4 +148,18 @@ public class ProductAppService : ZionCrudAppService<Product, ProductDto, Guid, P
 
         return r;
     }
+
+    public virtual async Task<ProductDto> UpdateAsync(Guid id, ProductUpdateDto input)
+    {
+        await CheckUpdatePolicyAsync();
+
+
+        var entity = (await _repository.WithDetailsAsync(t=>t.SKUs)).SingleOrDefault(t=>t.Id == id);
+        //TODO: Check if input has id different than given id and normalize if it's default value, throw ex otherwise
+        await MapToEntityAsync(input, entity);
+        await Repository.UpdateAsync(entity, autoSave: true);
+
+
+        return await MapToGetOutputDtoAsync(entity);
+    }
 }

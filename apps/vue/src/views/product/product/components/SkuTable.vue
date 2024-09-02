@@ -76,7 +76,7 @@ const specTemplateObj = computed(() => {
   return {}
 })
 
-const [registerTable,{ setTableData, deleteTableDataRecord }] = useTable({
+const [registerTable,{ setTableData, deleteTableDataRecord,insertTableDataRecord,updateTableDataRecord }] = useTable({
   title: 'TableAction组件及固定列示例',
   columns: columns,
   bordered: true,
@@ -98,8 +98,10 @@ watch(()=>props.tabledata,(newV)=>{
 
 function handleAddNew(record?: Recordable) {
   //openDrawer(true, {});
+  console.log("record on add is",record)
   openSkuEditorModal(true,{
-    mode:"add"
+    mode:"add",
+    record:{}
   })
 }
 
@@ -118,12 +120,19 @@ function handleDelete(record: Recordable) {
 
 function okClicked(e){
   console.log("okc clicked",elSku.value.GetData())
-  var d = elSku.value.GetData()
-  if(d.mode==="add"){
-    var newRecord = {}
+  var modalReturnData = elSku.value.GetData()
+  var record = modalReturnData.record;//上面传入，这里传出
+  record.PrivateSpecName = modalReturnData.data.selectedValueJson.value
+
+  if(modalReturnData.mode==="add"){
+    //insert  record
+    insertTableDataRecord(record)
+    emit('update:tabledata', props.tabledata)
   }
   else{
-    d.record.xxx = xxx
+    //update
+    updateTableDataRecord(record.name,record)
+    emit('update:tabledata', props.tabledata)
   }
   closeModal()
 }
