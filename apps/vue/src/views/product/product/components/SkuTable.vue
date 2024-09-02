@@ -77,7 +77,7 @@ const specTemplateObj = computed(() => {
 })
 
 const [registerTable,{ setTableData, deleteTableDataRecord,insertTableDataRecord,updateTableDataRecord }] = useTable({
-  title: 'TableAction组件及固定列示例',
+  title: '',
   columns: columns,
   bordered: true,
   actionColumn: {

@@ -10,7 +10,6 @@
     width="50%"
     @ok="handleSubmit"
   >
-  {{entity}}
     <TabForm
       ref="formElRef"
       :schemas="getFormSchemas"

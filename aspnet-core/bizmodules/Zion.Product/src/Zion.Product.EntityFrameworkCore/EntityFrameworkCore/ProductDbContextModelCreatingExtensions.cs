@@ -111,10 +111,12 @@ public static class ProductDbContextModelCreatingExtensions
             /* Configure more properties here */
         });
 
-        //builder.Entity<ProductSku>(b =>
-        //{
-        //    b.ToTable(ProductDbProperties.DbTablePrefix + "ProductSkus", ProductDbProperties.DbSchema);
-        //});
+        builder.Entity<ProductSku>(b =>
+        {
+            //b.ToTable(ProductDbProperties.DbTablePrefix + "ProductSkus", ProductDbProperties.DbSchema);
+            b.Property(t => t.Name).HasMaxLength(500);
+            b.HasIndex(t => new { t.ProductId, t.Name }).IsUnique(true);
+        });
 
     }
 }
