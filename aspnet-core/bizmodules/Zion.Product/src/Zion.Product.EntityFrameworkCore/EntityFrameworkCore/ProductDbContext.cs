@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Specifications;
+using Zion.Product.PriceContext;
 
 namespace Zion.Product.ProductContext.EntityFrameworkCore;
 
@@ -27,6 +28,7 @@ public class ProductDbContext : AbpDbContext<ProductDbContext>, IProductDbContex
     //public DbSet<SpecificationGroup> SpecificationGroups { get; set; }
     //public DbSet<SpecificationGroupItem> SpecificationGroupItems { get; set; }
 
+    public DbSet<Price> Prices { get; set; }
 
     public ProductDbContext(DbContextOptions<ProductDbContext> options)
         : base(options)

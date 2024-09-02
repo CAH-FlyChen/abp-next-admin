@@ -1,6 +1,8 @@
 using Zion.Product;
 using Zion.Product.Dtos;
 using Zion.Product.ProductContext.Dtos;
+using Zion.Product.PriceContext;
+using Zion.Product.PriceContext.Dtos;
 using AutoMapper;
 
 namespace Zion.Product.ProductContext;
@@ -26,5 +28,8 @@ public class ProductApplicationAutoMapperProfile : Profile
         CreateMap<ProductUpdateDto, Product>(MemberList.Source);
         CreateMap<ProductSku, ProductSkuDto>(MemberList.None);
         CreateMap<ProductSkuDto, ProductSku>(MemberList.None);
+        CreateMap<Price, PriceDto>();
+        CreateMap<PriceCreateDto, Price>(MemberList.Source);
+        CreateMap<PriceUpdateDto, Price>(MemberList.Source);
     }
 }

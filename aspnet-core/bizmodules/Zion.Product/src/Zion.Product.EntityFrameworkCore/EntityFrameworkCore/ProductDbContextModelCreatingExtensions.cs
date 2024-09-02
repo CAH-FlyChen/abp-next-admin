@@ -1,3 +1,4 @@
+using Zion.Product.PriceContext;
 using Zion.Product.ProductContext;
 using Zion.Product;
 using Microsoft.EntityFrameworkCore;
@@ -118,5 +119,15 @@ public static class ProductDbContextModelCreatingExtensions
             b.HasIndex(t => new { t.ProductId, t.Name }).IsUnique(true);
         });
 
+
+
+        builder.Entity<Price>(b =>
+        {
+            b.ToTable(ProductDbProperties.DbTablePrefix + "Prices", ProductDbProperties.DbSchema);
+            b.ConfigureByConvention(); 
+            
+
+            /* Configure more properties here */
+        });
     }
 }

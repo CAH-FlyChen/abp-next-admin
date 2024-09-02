@@ -50,6 +50,20 @@
     "ProductDUId": "ProductDUId",
     "CreateProduct": "CreateProduct",
     "EditProduct": "EditProduct",
-    "ProductDeletionConfirmationMessage": "Are you sure to delete the product {0}?"
+    "ProductDeletionConfirmationMessage": "Are you sure to delete the product {0}?",
+    "Permission:Price": "Price",
+    "Menu:Price": "MenuPrice",
+    "Price": "Price",
+    "PriceProductId": "PriceProductId",
+    "PricePriceRetail": "PricePriceRetail",
+    "PricePriceCombi": "PricePriceCombi",
+    "PricePriceCost": "PricePriceCost",
+    "PricePrice1": "PricePrice1",
+    "PricePrice2": "PricePrice2",
+    "CreatePrice": "CreatePrice",
+    "EditPrice": "EditPrice",
+    "PriceDeletionConfirmationMessage": "Are you sure to delete the price {0}?",
+    "PriceCompanyId": "PriceCompanyId",
+    "PriceHistories": "PriceHistories"
   }
 }

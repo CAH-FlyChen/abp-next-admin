@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
+using Zion.Product.PriceContext;
 
 namespace Zion.Product.ProductContext.EntityFrameworkCore;
 
@@ -20,4 +21,5 @@ public interface IProductDbContext : IEfCoreDbContext
     /// </summary>
     DbSet<Unit> Units { get; set; }
     DbSet<Product> Products { get; set; }
+    DbSet<Price> Prices { get; set; }
 }

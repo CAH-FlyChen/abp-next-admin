@@ -44,4 +44,11 @@ public class ProductPermissions
         public const string Create = Default + ".Create";
         public const string Delete = Default + ".Delete";
     }
+    public class Price
+    {
+        public const string Default = GroupName + ".Price";
+        public const string Update = Default + ".Update";
+        public const string Create = Default + ".Create";
+        public const string Delete = Default + ".Delete";
+    }
 }

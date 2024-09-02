@@ -1,3 +1,4 @@
+using Zion.Product.PriceContext;
 using Zion.Product.ProductContext;
 using Zion.Product;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,6 +24,7 @@ public class ProductEntityFrameworkCoreModule : AbpModule
             options.AddRepository<Brand, BrandRepository>();
             options.AddRepository<Unit, UnitRepository>();
             options.AddRepository<Product, ProductRepository>();
+            options.AddRepository<Price, PriceRepository>();
         });
     }
 }

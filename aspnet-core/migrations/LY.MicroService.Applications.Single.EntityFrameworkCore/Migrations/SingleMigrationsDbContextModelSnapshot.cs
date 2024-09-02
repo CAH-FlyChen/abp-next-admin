@@ -4890,6 +4890,80 @@ namespace LY.MicroService.Applications.Single.EntityFrameworkCore.Migrations
                     b.ToTable("AbpSettingDefinitions", (string)null);
                 });
 
+            modelBuilder.Entity("Zion.Product.PriceContext.Price", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("CompanyId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("varchar(40)")
+                        .HasColumnName("ConcurrencyStamp");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("DeleterId");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("DeletionTime");
+
+                    b.Property<string>("ExtraProperties")
+                        .IsRequired()
+                        .HasColumnType("longtext")
+                        .HasColumnName("ExtraProperties");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<decimal>("Price1")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("Price2")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("PriceCombi")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("PriceCost")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("PriceRetail")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("App_Product_Prices", (string)null);
+                });
+
             modelBuilder.Entity("Zion.Product.ProductContext.Brand", b =>
                 {
                     b.Property<Guid>("Id")

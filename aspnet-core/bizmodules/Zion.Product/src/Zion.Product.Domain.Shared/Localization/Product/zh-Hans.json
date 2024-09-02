@@ -60,6 +60,20 @@
     "DisplayName:IsSuggest": "推荐",
     "DisplayName:SpecInfo": "规格信息",
     "DisplayName:SpecTemplateInfo": "规格模板",
-    "DisplayName:Spec": "规格"
+    "DisplayName:Spec": "规格",
+    "Permission:Price": "Price",
+    "Menu:Price": "MenuPrice",
+    "Price": "Price",
+    "PriceProductId": "PriceProductId",
+    "PricePriceRetail": "PricePriceRetail",
+    "PricePriceCombi": "PricePriceCombi",
+    "PricePriceCost": "PricePriceCost",
+    "PricePrice1": "PricePrice1",
+    "PricePrice2": "PricePrice2",
+    "CreatePrice": "CreatePrice",
+    "EditPrice": "EditPrice",
+    "PriceDeletionConfirmationMessage": "Are you sure to delete the price {0}?",
+    "PriceCompanyId": "PriceCompanyId",
+    "PriceHistories": "PriceHistories"
   }
 }
