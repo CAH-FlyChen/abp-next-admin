@@ -4,6 +4,10 @@ using System.Threading.Tasks;
 using Zion.Product.Permissions;
 using Zion.Product.PriceContext.Dtos;
 using Volo.Abp.Application.Services;
+using Zion.Product.ProductContext;
+using Volo.Abp.Domain.Entities;
+using System.Collections.Generic;
+using System.Net.Http.Headers;
 
 namespace Zion.Product.PriceContext;
 
@@ -18,6 +22,7 @@ public class PriceAppService : CrudAppService<Price, PriceDto, Guid, PriceGetLis
     protected override string DeletePolicyName { get; set; } = ProductPermissions.Price.Delete;
 
     private readonly IPriceRepository _repository;
+    IProductRepository _productRepository => LazyServiceProvider.LazyGetRequiredService<IProductRepository>();
 
     public PriceAppService(IPriceRepository repository) : base(repository)
     {
@@ -53,4 +58,28 @@ public class PriceAppService : CrudAppService<Price, PriceDto, Guid, PriceGetLis
 
         return await MapToGetOutputDtoAsync(entity);
     }
+
+    /// <summary>
+    /// 后端端根据商品id获取价格列表
+    /// </summary>
+    /// <param name="productId"></param>
+    /// <returns></returns>
+    //public async Task<List<PriceDto>> GetByProductIdAsync(Guid productId)
+    //{
+    //    await CheckGetPolicyAsync();
+
+    //    var entitys = await _repository.GetListAsync(x => x.ProductId == productId);
+
+    //    var skus = (await _productRepository.WithDetailsAsync(t => t.SKUs)).Single(t => t.Id == productId).SKUs;
+
+    //    var dtos = entitys.Select(t => ObjectMapper.Map<Price,PriceDto>(t));
+    //    foreach(var dto in dtos)
+    //    {
+    //        var sku = skus.SingleOrDefault(t => t.Id == dto.ProductSKUId);
+    //        if (sku == null) continue;
+    //        dto.SKU = ObjectMapper.Map<ProductSku,ProductSkuDto>(sku);
+    //    }
+
+    //    return dtos.ToList();
+    //}
 }

@@ -11,6 +11,7 @@ namespace Zion.Product.PriceContext;
 public class Price : FullAuditedAggregateRoot<Guid>,IHasCompanyIdFilter
 {
     public Guid ProductId { get; set; }
+    public Guid? ProductSKUId { get; set; }
     /// <summary>
     /// 零售价
     /// </summary>

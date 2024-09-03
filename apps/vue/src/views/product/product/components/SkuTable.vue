@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{ specTemplateObj }}
     <SkuEditorModal 
       ref="elSku"
       @register="registerEditorModal" 
@@ -13,6 +14,15 @@
     >
       <template #toolbar>
         <a-button type="primary" @click="handleAddNew"> 添加 </a-button>
+      </template>
+
+      <template #body>
+        <tr>
+          <template v-for="column in dynamicColumns" :key="column.dataIndex">
+            <th>{{ column.title }}</th>
+            <td>{{ column.dataIndex }}</td>
+          </template>
+        </tr>
       </template>
 
       <template #bodyCell="{ column, record }">
@@ -32,35 +42,58 @@
           />
         </template>
       </template>
-    </BasicTable>
+
+  </BasicTable>
+
+
+
 </template>
 
 
 <script lang="ts" setup>
-import { watch,computed,ref } from 'vue'
+import { watch,computed,ref,onMounted } from 'vue'
+import type { Ref } from 'vue';
 import { BasicTable, useTable, BasicColumn, TableAction } from '/@/components/Table';
 import { useModal } from '/@/components/Modal';
 import SkuEditorModal from './SkuEditorModal.vue';
 
-
-const columns: BasicColumn[] = [
+const dynamicColumns: Ref<BasicColumn[]> = ref([
     {
       title: 'Id',
       dataIndex: 'id',
       ifShow:false
     },
-    {
-      title: 'SKU名称',
-      dataIndex: 'name',
-    },
-    {
-      title: '规格值',
-      dataIndex: 'privateSpecName',
-      ifShow: (_column) => {
-        return true; // 根据业务控制是否显示
-      },
-    }
-  ];
+    // {
+    //   title: 'SKU名称',
+    //   dataIndex: 'name',
+    // },
+    // {
+    //   title: '规格值',
+    //   dataIndex: 'privateSpecName',
+    //   ifShow: (_column) => {
+    //     return true; // 根据业务控制是否显示
+    //   },
+    // }
+]);
+
+// const columns: BasicColumn[] = [
+//     {
+//       title: 'Id',
+//       dataIndex: 'id',
+//       ifShow:false
+//     },
+//     {
+//       title: 'SKU名称',
+//       dataIndex: 'name',
+//     },
+//     {
+//       title: '规格值',
+//       dataIndex: 'privateSpecName',
+//       ifShow: (_column) => {
+//         return true; // 根据业务控制是否显示
+//       },
+//     }
+//   ];
 
 const elSku = ref()  
 const props = defineProps(
@@ -78,7 +111,7 @@ const specTemplateObj = computed(() => {
 
 const [registerTable,{ setTableData, deleteTableDataRecord,insertTableDataRecord,updateTableDataRecord }] = useTable({
   title: '',
-  columns: columns,
+  columns: dynamicColumns ,
   bordered: true,
   actionColumn: {
     width: 250,
@@ -89,12 +122,45 @@ const [registerTable,{ setTableData, deleteTableDataRecord,insertTableDataRecord
 
 const [registerEditorModal, { openModal:openSkuEditorModal, setModalProps,closeModal }] = useModal();
 
-
+const myTableData = ref([])
 
 watch(()=>props.tabledata,(newV)=>{
   console.log('prop changed',newV)
-  setTableData(newV)
+  //翻译数据
+  newV.forEach(e=>{
+    if(e.privateSpecName){
+      var o = JSON.parse(e.privateSpecName)
+      o.GroupTitle = "";
+      myTableData.value.push(o)
+      console.log("eeeeeeeeeeeeee",myTableData.value)
+    }
+  })
+
+  setTableData(myTableData.value)
+  console.log('prop changed end')
 })
+
+watch(()=>props.specTemplateJsonData,(d)=>{
+  console.log("specTemplateJsonData start",d)
+  var specs = JSON.parse(d)
+  var mycolums = new Array()
+  //生成colum
+  mycolums.push({ title: "组", dataIndex: "GroupTitle" })
+  specs.SpecGroups.forEach(e => {
+    
+    e.Specifications.forEach(t=>{
+      if(mycolums.indexOf(t.Title)==-1){
+        mycolums.push({ title: t.Title, dataIndex: t.Title })
+      }
+    })
+  });
+  mycolums.forEach(e=>{
+    dynamicColumns.value.push(e)
+  })
+  console.log("specTemplateJsonData end",mycolums)
+  setTableData(myTableData.value)
+})
+
 
 function handleAddNew(record?: Recordable) {
   //openDrawer(true, {});

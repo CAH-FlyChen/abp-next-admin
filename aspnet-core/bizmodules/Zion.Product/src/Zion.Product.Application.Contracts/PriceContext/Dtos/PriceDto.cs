@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Volo.Abp.Application.Dtos;
+using Zion.Product.ProductContext;
 
 namespace Zion.Product.PriceContext.Dtos;
 
@@ -8,6 +9,7 @@ namespace Zion.Product.PriceContext.Dtos;
 public class PriceDto : FullAuditedEntityDto<Guid>
 {
     public Guid ProductId { get; set; }
+    public Guid? ProductSKUId { get; set; }
 
     /// <summary>
     /// 零售价
@@ -35,4 +37,6 @@ public class PriceDto : FullAuditedEntityDto<Guid>
     public decimal Price2 { get; set; }
 
     public Guid CompanyId { get; set; }
+
+    //public ProductSkuDto SKU { get; set; }
 }

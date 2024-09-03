@@ -9,7 +9,7 @@ public class PriceCreateDto
 {
     [DisplayName("PriceProductId")]
     public Guid ProductId { get; set; }
-
+    public Guid? ProductSKUId { get; set; }
     /// <summary>
     /// 零售价
     /// </summary>

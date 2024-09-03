@@ -9,7 +9,7 @@ public class PriceUpdateDto
 {
     [DisplayName("PriceProductId")]
     public Guid ProductId { get; set; }
-
+    public Guid? ProductSKUId { get; set; }
     /// <summary>
     /// 零售价
     /// </summary>
@@ -43,6 +43,4 @@ public class PriceUpdateDto
     [DisplayName("PriceCompanyId")]
     public Guid CompanyId { get; set; }
 
-    [DisplayName("PriceHistories")]
-    public List<PriceChangeHistoryDto> Histories { get; set; }
 }
